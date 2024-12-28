@@ -5,46 +5,39 @@ namespace IssueTracker.ModelLayer
 {
     public class Issue
     {
-        // EPIC : ROADMAP | LONG TERM PLAN | 6 MONTHS (KEY: <PROJECTKEY>.<IssueId>)
-        // STORY : BACKLOG | SHORT TERM PLAN | 1 MONTH OR 1 SPRINT (KEY: <PROJECTKEY>.<IssueId>)
-        // TASK : TASK | 1 DAY to 1 WEEK (KEY: <PROJECTKEY>.<IssueId>)
-        // SUB-TASK : SMALL TASK | 1 DAY to 1 WEEK (KEY: <PROJECTKEY>.<IssueId>)
-        // BUG : BUG ISSUE (KEY: <PROJECTKEY>.<YYMDD>.<DaySrNo>)
         public int IssueId { get; set; }
         public string IssueKey { get; set; }
         public string IssueTitle { get; set; }
         public string IssueDescription { get; set; }
         public int ProjectId { get; set; }
-        public string ProjectKey { get; set; }
-        public string ProjectTitle { get; set; }
+        public Project Project { get; set; }
         public Int16 IssueTypeId { get; set; } // EPIC | STORY | TASK | SUB-TASK | BUG
-        public string IssueTypeTitle { get; set; }
+        public IssueType IssueType { get; set; }
         public Int16 IssuePriorityId { get; set; } // HIGH | MEDIUM | LOW
-        public string IssuePriorityTitle { get; set; }
+        public IssuePriority IssuePriority { get; set; }
+        public int ParentIssueId { get; set; }
+        public Issue ParentIssue { get; set; }
         public Int16 IssueStatusId { get; set; } // TO-DO | IN-PROGRESS | DONE
-        public string IssueStatusTitle { get; set; }
+        public IssueStatus IssueStatus { get; set; }
+        public string IssueEndDate { get; set; }
 
         public string EpicStartDate { get; set; }
         public string EpicDueDate { get; set; }
 
-        public Int16 StoryPointEstimate { get; set; } // STORY | TASK | SUB-TASK | BUG
-        public Int16 StorySprintId { get; set; } // STORY
-        public string StorySprintTitle { get; set; }
-        public int StoryReporterUserId { get; set; }
-        public string StoryReporterUserName { get; set; }
+        public Int16 StoryPointEstimate { get; set; }
+        public int StorySprintId { get; set; } 
+        public Sprint StorySprint { get; set; }
+        public int StoryManagerId { get; set; }
+        public User StoryManager { get; set; }
 
         public bool IsActive { get; set; }
         public string CreatedOn { get; set; }
-        public int CreatedByUserId { get; set; }
-        public string CreatedByUserName { get; set; }
+        public int CreatedById { get; set; }
+        public User CreatedBy { get; set; }
         public string LastModifiedOn { get; set; }
-        public int LastModifiedByUserId { get; set; }
-        public string LastModifiedByUserName { get; set; }
+        public int LastModifiedById { get; set; }
+        public User LastModifiedBy { get; set; }
 
-        public char NewStatus { get; set; }
-        public string Remarks { get; set; }
-        public bool BtnSubmitYN { get; set; }
-        public bool BtnVerifyYN { get; set; }
 
         public List<string> IssueLabelList { get; set; }
         public void AddIssueLabelItem(string item)
@@ -52,11 +45,19 @@ namespace IssueTracker.ModelLayer
             if (IssueLabelList is null) IssueLabelList = new List<string>();
             IssueLabelList.Add(item);
         }
+
         public List<Issue> ParentIssueList { get; set; }
         public void AddParentIssueItem(Issue item)
         {
             if (ParentIssueList is null) ParentIssueList = new List<Issue>();
             ParentIssueList.Add(item);
+        }
+
+        public List<IssueHistory> HistoryList { get; set; }
+        public void AddIssueHistoryItem(IssueHistory item)
+        {
+            if (HistoryList is null) HistoryList = new List<IssueHistory>();
+            HistoryList.Add(item);
         }
 
         public List<Log> Logs { get; set; }
@@ -70,7 +71,7 @@ namespace IssueTracker.ModelLayer
             Int16 IssueTypeId,
             int ProjectId,
             string IssueTitle,
-            int CreatedByUserId
+            int CreatedById
             )
         {
             return new Issue
@@ -78,7 +79,7 @@ namespace IssueTracker.ModelLayer
                 IssueTypeId = IssueTypeId,
                 ProjectId = ProjectId,
                 IssueTitle = IssueTitle,
-                CreatedByUserId = CreatedByUserId,
+                CreatedById = CreatedById,
             };
         }
 

@@ -7,8 +7,8 @@
     <ProjectGuid>{407F49E3-1D4F-4AC3-A34B-485511A2C8EA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>IssueTracker.Models</RootNamespace>
-    <AssemblyName>IssueTracker.Models</AssemblyName>
+    <RootNamespace>IssueTracker.ModelLayer</RootNamespace>
+    <AssemblyName>IssueTracker.ModelLayer</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -46,6 +46,9 @@
     <Compile Include="Epic.cs" />
     <Compile Include="Issue.cs" />
     <Compile Include="IssueHistory.cs" />
+    <Compile Include="IssuePriority.cs" />
+    <Compile Include="IssueStatus.cs" />
+    <Compile Include="IssueType.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="Project.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
