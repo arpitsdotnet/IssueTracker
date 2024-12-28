@@ -13,26 +13,32 @@ namespace IssueTracker.WebUI
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/WebFormsJs").Include(
-                            "~/Scripts/WebForms/WebForms.js",
-                            "~/Scripts/WebForms/WebUIValidation.js",
-                            "~/Scripts/WebForms/MenuStandards.js",
-                            "~/Scripts/WebForms/Focus.js",
-                            "~/Scripts/WebForms/GridView.js",
-                            "~/Scripts/WebForms/DetailsView.js",
-                            "~/Scripts/WebForms/TreeView.js",
-                            "~/Scripts/WebForms/WebParts.js"));
+                            "~/wwwroot/scripts/WebForms/WebForms.js",
+                            "~/wwwroot/scripts/WebForms/WebUIValidation.js",
+                            "~/wwwroot/scripts/WebForms/MenuStandards.js",
+                            "~/wwwroot/scripts/WebForms/Focus.js",
+                            "~/wwwroot/scripts/WebForms/GridView.js",
+                            "~/wwwroot/scripts/WebForms/DetailsView.js",
+                            "~/wwwroot/scripts/WebForms/TreeView.js",
+                            "~/wwwroot/scripts/WebForms/WebParts.js"));
 
             // Order is very important for these files to work, they have explicit dependencies
             bundles.Add(new ScriptBundle("~/bundles/MsAjaxJs").Include(
-                    "~/Scripts/WebForms/MsAjax/MicrosoftAjax.js",
-                    "~/Scripts/WebForms/MsAjax/MicrosoftAjaxApplicationServices.js",
-                    "~/Scripts/WebForms/MsAjax/MicrosoftAjaxTimer.js",
-                    "~/Scripts/WebForms/MsAjax/MicrosoftAjaxWebForms.js"));
+                    "~/wwwroot/scripts/WebForms/MsAjax/MicrosoftAjax.js",
+                    "~/wwwroot/scripts/WebForms/MsAjax/MicrosoftAjaxApplicationServices.js",
+                    "~/wwwroot/scripts/WebForms/MsAjax/MicrosoftAjaxTimer.js",
+                    "~/wwwroot/scripts/WebForms/MsAjax/MicrosoftAjaxWebForms.js"));
 
             // Use the Development version of Modernizr to develop with and learn from. Then, when you’re
             // ready for production, use the build tool at https://modernizr.com to pick only the tests you need
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                            "~/Scripts/modernizr-*"));
+                            "~/wwwroot/scripts/modernizr-*"));
+
+            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
+                            "~/wwwroot/scripts/jquery-3.4.1.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
+                            "~/wwwroot/scripts/bootstrap.min.js"));
         }
     }
 }

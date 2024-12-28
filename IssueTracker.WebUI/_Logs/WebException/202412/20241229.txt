@@ -1,0 +1,149 @@
+-------------------------------------------------------------------------
+ERROR [29-Dec-2024 01:10:22] 	You message has been showed successfully. 	
+
+-------------------------------------------------------------------------
+ERROR [29-Dec-2024 01:10:57] 	You message has been showed successfully. 	
+
+-------------------------------------------------------------------------
+ERROR [29-Dec-2024 01:11:18] 	You message has been showed successfully. 	
+
+-------------------------------------------------------------------------
+ERROR [29-Dec-2024 01:11:40] 	You message has been showed successfully. 	
+
+-------------------------------------------------------------------------
+ERROR [29-Dec-2024 01:12:10] 	You message has been showed successfully. 	
+
+-------------------------------------------------------------------------
+ERROR [29-Dec-2024 01:22:35] 	You message has been showed successfully. 	
+
+-------------------------------------------------------------------------
+ERROR [29-Dec-2024 01:23:30] 	You message has been showed successfully. 	
+
+-------------------------------------------------------------------------
+ERROR [29-Dec-2024 01:23:36] 	You message has been showed successfully. 	
+
+-------------------------------------------------------------------------
+ERROR [29-Dec-2024 01:26:10] 	You message has been showed successfully. 	
+
+-------------------------------------------------------------------------
+ERROR [29-Dec-2024 01:27:17] 	You message has been showed successfully. 	
+
+-------------------------------------------------------------------------
+ERROR [29-Dec-2024 01:27:23] 	You message has been showed successfully. 	
+
+-------------------------------------------------------------------------
+ERROR [29-Dec-2024 01:27:24] 	You message has been showed successfully. 	
+
+-------------------------------------------------------------------------
+ERROR [29-Dec-2024 01:27:24] 	You message has been showed successfully. 	
+
+-------------------------------------------------------------------------
+ERROR [29-Dec-2024 01:27:24] 	You message has been showed successfully. 	
+
+-------------------------------------------------------------------------
+ERROR [29-Dec-2024 01:27:24] 	You message has been showed successfully. 	
+
+-------------------------------------------------------------------------
+ERROR [29-Dec-2024 01:27:24] 	You message has been showed successfully. 	
+
+-------------------------------------------------------------------------
+ERROR [29-Dec-2024 01:27:47] 	You message has been showed successfully. 	
+
+-------------------------------------------------------------------------
+ERROR [29-Dec-2024 01:27:55] 	1You message has been showed successfully. 	
+
+-------------------------------------------------------------------------
+ERROR [29-Dec-2024 01:28:47] 	1You message has been showed successfully. 	
+
+-------------------------------------------------------------------------
+ERROR [29-Dec-2024 01:28:47] 	1You message has been showed successfully. 	
+
+-------------------------------------------------------------------------
+ERROR [29-Dec-2024 01:28:48] 	1You message has been showed successfully. 	
+
+-------------------------------------------------------------------------
+ERROR [29-Dec-2024 01:28:48] 	1You message has been showed successfully. 	
+
+-------------------------------------------------------------------------
+ERROR [29-Dec-2024 01:28:48] 	1You message has been showed successfully. 	
+
+-------------------------------------------------------------------------
+ERROR [29-Dec-2024 01:28:48] 	1You message has been showed successfully. 	
+
+-------------------------------------------------------------------------
+ERROR [29-Dec-2024 01:28:48] 	1You message has been showed successfully. 	
+
+-------------------------------------------------------------------------
+ERROR [29-Dec-2024 01:31:03] 	1You message has been showed successfully. 	
+
+-------------------------------------------------------------------------
+ERROR [29-Dec-2024 01:33:07] 	Your message has been showed successfully. 	
+
+-------------------------------------------------------------------------
+ERROR [29-Dec-2024 01:33:10] 	Your message has been showed successfully. 	
+
+-------------------------------------------------------------------------
+ERROR [29-Dec-2024 01:33:11] 	Your message has been showed successfully. 	
+
+-------------------------------------------------------------------------
+ERROR [29-Dec-2024 01:33:12] 	Your message has been showed successfully. 	
+
+-------------------------------------------------------------------------
+ERROR [29-Dec-2024 01:33:12] 	Your message has been showed successfully. 	
+
+-------------------------------------------------------------------------
+ERROR [29-Dec-2024 01:33:13] 	Your message has been showed successfully. 	
+
+-------------------------------------------------------------------------
+ERROR [29-Dec-2024 01:33:14] 	Your message has been showed successfully. 	
+
+-------------------------------------------------------------------------
+ERROR [29-Dec-2024 01:33:14] 	Your message has been showed successfully. 	
+
+-------------------------------------------------------------------------
+ERROR [29-Dec-2024 01:33:14] 	Your message has been showed successfully. 	
+
+-------------------------------------------------------------------------
+ERROR [29-Dec-2024 01:33:14] 	Your message has been showed successfully. 	
+
+ERROR [29-Dec-2024 01:35:57] 	Your message has been showed successfully. 
+	
+INFO [29-Dec-2024 01:35:57] 	Your message has been showed successfully. 
+
+-------------------------------------------------------------------------
+ERROR [29-Dec-2024 01:37:22] 	This is a custom exception. 	
+
+{"ClassName":"System.Exception","Message":"This is a custom exception.","Data":null,"InnerException":null,"HelpURL":null,"StackTraceString":"   at IssueTracker.WebUI.Pages.ProjectCreate.Page_Load(Object sender, EventArgs e)","RemoteStackTraceString":null,"RemoteStackIndex":0,"ExceptionMethod":"8\nPage_Load\nIssueTracker.WebUI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null\nIssueTracker.WebUI.Pages.ProjectCreate\nVoid Page_Load(System.Object, System.EventArgs)","HResult":-2146233088,"Source":"IssueTracker.WebUI","WatsonBuckets":null}
+
+ERROR [29-Dec-2024 01:37:27] 	Your message has been showed successfully. 	
+
+-------------------------------------------------------------------------
+ERROR [29-Dec-2024 01:38:36] 	This is a custom exception. 	
+
+{"ClassName":"System.Exception","Message":"This is a custom exception.","Data":null,"InnerException":null,"HelpURL":null,"StackTraceString":"   at IssueTracker.WebUI.Pages.ProjectCreate.Page_Load(Object sender, EventArgs e)","RemoteStackTraceString":null,"RemoteStackIndex":0,"ExceptionMethod":"8\nPage_Load\nIssueTracker.WebUI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null\nIssueTracker.WebUI.Pages.ProjectCreate\nVoid Page_Load(System.Object, System.EventArgs)","HResult":-2146233088,"Source":"IssueTracker.WebUI","WatsonBuckets":null}
+
+-------------------------------------------------------------------------
+ERROR [29-Dec-2024 01:38:38] 	Your message has been showed successfully. 	
+
+-------------------------------------------------------------------------
+ERROR [29-Dec-2024 01:45:43] 	This is a custom exception. 	
+
+{"ClassName":"System.Exception","Message":"This is a custom exception.","Data":null,"InnerException":null,"HelpURL":null,"StackTraceString":"   at IssueTracker.WebUI.Pages.ProjectCreate.Page_Load(Object sender, EventArgs e)","RemoteStackTraceString":null,"RemoteStackIndex":0,"ExceptionMethod":"8\nPage_Load\nIssueTracker.WebUI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null\nIssueTracker.WebUI.Pages.ProjectCreate\nVoid Page_Load(System.Object, System.EventArgs)","HResult":-2146233088,"Source":"IssueTracker.WebUI","WatsonBuckets":null}
+
+-------------------------------------------------------------------------
+INFO [29-Dec-2024 01:45:44] 	Your message has been showed successfully. 	
+
+-------------------------------------------------------------------------
+ERROR [29-Dec-2024 01:51:03] 	This is a custom exception. 	
+
+{"ClassName":"System.Exception","Message":"This is a custom exception.","Data":null,"InnerException":null,"HelpURL":null,"StackTraceString":"   at IssueTracker.WebUI.Pages.ProjectCreate.Page_Load(Object sender, EventArgs e) in D:\\dev\\repos\\IssueTracker\\IssueTracker.WebUI\\Pages\\ProjectCreate.aspx.cs:line 17","RemoteStackTraceString":null,"RemoteStackIndex":0,"ExceptionMethod":"8\nPage_Load\nIssueTracker.WebUI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null\nIssueTracker.WebUI.Pages.ProjectCreate\nVoid Page_Load(System.Object, System.EventArgs)","HResult":-2146233088,"Source":"IssueTracker.WebUI","WatsonBuckets":null}
+
+{"IssueId":0,"IssueKey":null,"IssueTitle":"REQUIREMENT ANALYSIS, FRD FOR HR AND PAYROLL","IssueDescription":null,"ProjectId":1,"ProjectKey":null,"ProjectTitle":null,"IssueTypeId":1,"IssueTypeTitle":null,"IssuePriorityId":0,"IssuePriorityTitle":null,"IssueStatusId":0,"IssueStatusTitle":null,"EpicStartDate":null,"EpicDueDate":null,"StoryPointEstimate":0,"StorySprintId":0,"StorySprintTitle":null,"StoryReporterUserId":0,"StoryReporterUserName":null,"IsActive":false,"CreatedOn":null,"CreatedByUserId":1,"CreatedByUserName":null,"LastModifiedOn":null,"LastModifiedByUserId":0,"LastModifiedByUserName":null,"NewStatus":"\u0000","Remarks":null,"BtnSubmitYN":false,"BtnVerifyYN":false,"IssueLabelList":null,"ParentIssueList":null,"Logs":null}
+
+-------------------------------------------------------------------------
+ERROR [29-Dec-2024 01:55:15] 	This is a custom exception. 	
+
+EXCEPTION: {"ClassName":"System.Exception","Message":"This is a custom exception.","Data":null,"InnerException":null,"HelpURL":null,"StackTraceString":"   at IssueTracker.WebUI.Pages.ProjectCreate.Page_Load(Object sender, EventArgs e)","RemoteStackTraceString":null,"RemoteStackIndex":0,"ExceptionMethod":"8\nPage_Load\nIssueTracker.WebUI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null\nIssueTracker.WebUI.Pages.ProjectCreate\nVoid Page_Load(System.Object, System.EventArgs)","HResult":-2146233088,"Source":"IssueTracker.WebUI","WatsonBuckets":null}
+
+DATA: {"IssueId":0,"IssueKey":null,"IssueTitle":"REQUIREMENT ANALYSIS, FRD FOR HR AND PAYROLL","IssueDescription":null,"ProjectId":1,"ProjectKey":null,"ProjectTitle":null,"IssueTypeId":1,"IssueTypeTitle":null,"IssuePriorityId":0,"IssuePriorityTitle":null,"IssueStatusId":0,"IssueStatusTitle":null,"EpicStartDate":null,"EpicDueDate":null,"StoryPointEstimate":0,"StorySprintId":0,"StorySprintTitle":null,"StoryReporterUserId":0,"StoryReporterUserName":null,"IsActive":false,"CreatedOn":null,"CreatedByUserId":1,"CreatedByUserName":null,"LastModifiedOn":null,"LastModifiedByUserId":0,"LastModifiedByUserName":null,"NewStatus":"\u0000","Remarks":null,"BtnSubmitYN":false,"BtnVerifyYN":false,"IssueLabelList":null,"ParentIssueList":null,"Logs":null}
+
