@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace IssueTracker.ModelLayer
+﻿namespace IssueTracker.ModelLayer.Issues.Objects
 {
     /// <summary>
     /// EPIC | STORY | TASK | SUB-TASK | BUG
@@ -14,7 +12,7 @@ namespace IssueTracker.ModelLayer
     /// </example>
     public class IssueType
     {
-        public Int16 IssueTypeId { get; set; }
+        public short IssueTypeId { get; set; }
         public string IssueTypeTitle { get; set; }
 
     }

@@ -41,20 +41,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Comment.cs" />
-    <Compile Include="CommentHistory.cs" />
+    <Compile Include="Base\PageRequest.cs" />
+    <Compile Include="Comments\Objects\Comment.cs" />
+    <Compile Include="Comments\Objects\CommentHistory.cs" />
     <Compile Include="Epic.cs" />
-    <Compile Include="Issue.cs" />
-    <Compile Include="IssueHistory.cs" />
-    <Compile Include="IssuePriority.cs" />
-    <Compile Include="IssueStatus.cs" />
-    <Compile Include="IssueType.cs" />
+    <Compile Include="Issues\Objects\Issue.cs" />
+    <Compile Include="Issues\Objects\IssueHistory.cs" />
+    <Compile Include="Issues\Objects\IssuePriority.cs" />
+    <Compile Include="Issues\Objects\IssueStatus.cs" />
+    <Compile Include="Issues\Requests\UpdateIssueRequest.cs" />
+    <Compile Include="Issues\Requests\CreateIssueRequest.cs" />
+    <Compile Include="Issues\Requests\GetIssueRequest.cs" />
+    <Compile Include="Issues\Objects\IssueType.cs" />
     <Compile Include="Log.cs" />
-    <Compile Include="Project.cs" />
+    <Compile Include="Projects\Objects\ProjectHistory.cs" />
+    <Compile Include="Projects\Objects\ProjectCategory.cs" />
+    <Compile Include="Projects\Objects\Project.cs" />
+    <Compile Include="Projects\Requests\CreateProjectRequest.cs" />
+    <Compile Include="Projects\Requests\GetProjectRequest.cs" />
+    <Compile Include="Projects\Objects\ProjectTemplate.cs" />
+    <Compile Include="Projects\Objects\ProjectType.cs" />
+    <Compile Include="Projects\Requests\UpdateProjectRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Result.cs" />
-    <Compile Include="Sprint.cs" />
-    <Compile Include="User.cs" />
+    <Compile Include="Base\Result.cs" />
+    <Compile Include="Sprints\Objects\Sprint.cs" />
+    <Compile Include="Users\Objects\User.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Comments\Requests\" />
+    <Folder Include="Sprints\Requests\" />
+    <Folder Include="Users\Requests\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

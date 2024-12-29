@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace IssueTracker.ModelLayer
+﻿namespace IssueTracker.ModelLayer.Sprints.Objects
 {
     public class Sprint
     {

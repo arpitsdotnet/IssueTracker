@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using IssueTracker.ModelLayer.Users.Objects;
 
-namespace IssueTracker.ModelLayer
+namespace IssueTracker.ModelLayer.Projects.Objects
 {
     public class Project
     {
@@ -11,11 +8,16 @@ namespace IssueTracker.ModelLayer
         public string ProjectKey { get; set; }
         public string ProjectTitle { get; set; }
         public string ProjectIconUrl { get; set; }
-        public int ProjectCategoryId { get; set; } // SOFTWARE PROJECT | SERVICE MANAGEMENT | WORK MANAGEMENT | MARKETING | HUMAN RESOURCES | FINANCE | DESIGN | PERSONAL | OPERATIONAL | LEGAL | SALES
-        public int ProjectTemplateId { get; set; } // KANBAN | SCRUM | BUG TRACKING
-        public int ProjectTypeId { get; set; } // TEAM MANAGED | COMPANY MANAGED
+        public short ProjectCategoryId { get; set; }
+        public ProjectCategory ProjectCategory { get; set; }
+        public short ProjectTemplateId { get; set; }
+        public ProjectTemplate ProjectTemplate { get; set; }
+        public short ProjectTypeId { get; set; }
+        public ProjectType ProjectType { get; set; }
         public int ProjectManagerId { get; set; }
+        public User ProjectManager { get; set; }
         public int ProjectDefaultAssigneeId { get; set; }
+        public User ProjectDefaultAssignee { get; set; }
         public int ClientId { get; set; }
         public string ClientName { get; set; }
         public string ClientNumber { get; set; }
@@ -26,10 +28,10 @@ namespace IssueTracker.ModelLayer
 
         public bool IsActive { get; set; }
         public string CreatedOn { get; set; }
-        public int CreatedByUserId { get; set; }
-        public string CreatedByUserName { get; set; }
+        public int CreatedById { get; set; }
+        public User CreatedBy { get; set; }
         public string LastModifiedOn { get; set; }
-        public int LastModifiedByUserId { get; set; }
-        public string LastModifiedByUserName { get; set; }
+        public int LastModifiedById { get; set; }
+        public User LastModifiedBy { get; set; }
     }
 }

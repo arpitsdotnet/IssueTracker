@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace IssueTracker.ModelLayer
+﻿namespace IssueTracker.ModelLayer.Users.Objects
 {
     public class User
     {
@@ -11,9 +6,9 @@ namespace IssueTracker.ModelLayer
         public string UserName { get; set; }
         public string UserEmail { get; set; }
         public string UserPhone { get; set; }
-        public Int16 UserRoleId { get; set; } // ADMINISTRATOR | MANAGER | TEAM LEAD | SCRUM MASTER | DEVELOPER | TESTER | DESIGNER
-        public string OTP { get; set; } 
-        public string OTPExpiryTime { get; set; } 
+        public short UserRoleId { get; set; } // ADMINISTRATOR | MANAGER | TEAM LEAD | SCRUM MASTER | DEVELOPER | TESTER | DESIGNER
+        public string OTP { get; set; }
+        public string OTPExpiryTime { get; set; }
         public string OTPInvalidCount { get; set; }
 
         public bool IsActive { get; set; }

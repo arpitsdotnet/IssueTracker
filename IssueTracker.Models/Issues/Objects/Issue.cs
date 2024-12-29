@@ -1,7 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using IssueTracker.ModelLayer.Projects.Objects;
+using IssueTracker.ModelLayer.Sprints.Objects;
+using IssueTracker.ModelLayer.Users.Objects;
 
-namespace IssueTracker.ModelLayer
+namespace IssueTracker.ModelLayer.Issues.Objects
 {
     public class Issue
     {
@@ -11,21 +13,21 @@ namespace IssueTracker.ModelLayer
         public string IssueDescription { get; set; }
         public int ProjectId { get; set; }
         public Project Project { get; set; }
-        public Int16 IssueTypeId { get; set; } // EPIC | STORY | TASK | SUB-TASK | BUG
+        public short IssueTypeId { get; set; } // EPIC | STORY | TASK | SUB-TASK | BUG
         public IssueType IssueType { get; set; }
-        public Int16 IssuePriorityId { get; set; } // HIGH | MEDIUM | LOW
+        public short IssuePriorityId { get; set; } // HIGH | MEDIUM | LOW
         public IssuePriority IssuePriority { get; set; }
         public int ParentIssueId { get; set; }
         public Issue ParentIssue { get; set; }
-        public Int16 IssueStatusId { get; set; } // TO-DO | IN-PROGRESS | DONE
+        public short IssueStatusId { get; set; } // TO-DO | IN-PROGRESS | DONE
         public IssueStatus IssueStatus { get; set; }
         public string IssueEndDate { get; set; }
 
         public string EpicStartDate { get; set; }
         public string EpicDueDate { get; set; }
 
-        public Int16 StoryPointEstimate { get; set; }
-        public int StorySprintId { get; set; } 
+        public short StoryPointEstimate { get; set; }
+        public int StorySprintId { get; set; }
         public Sprint StorySprint { get; set; }
         public int StoryManagerId { get; set; }
         public User StoryManager { get; set; }
@@ -67,50 +69,5 @@ namespace IssueTracker.ModelLayer
             Logs.Add(item);
         }
 
-        public static Issue CreateInitialRequest(
-            Int16 IssueTypeId,
-            int ProjectId,
-            string IssueTitle,
-            int CreatedById
-            )
-        {
-            return new Issue
-            {
-                IssueTypeId = IssueTypeId,
-                ProjectId = ProjectId,
-                IssueTitle = IssueTitle,
-                CreatedById = CreatedById,
-            };
-        }
-
-        //public Issue CreateRequest(
-        //    int IssueId,
-        //    string IssueTitle,
-        //    string IssueDescription,
-        //    Int16 IssuePriorityId,
-        //    int ProjectId,
-        //    int AddedByUserId,
-        //    int VerifyByUserId) => new Issue
-        //    {
-        //        IssueId = IssueId,
-        //        IssueTitle = IssueTitle,
-        //        IssueDescription = IssueDescription,
-        //        IssuePriorityId = IssuePriorityId,
-        //        ProjectId = ProjectId,
-        //        AddedByUserId = AddedByUserId,
-        //        VerifyByUserId = VerifyByUserId
-        //    };
-
-        //public Issue StatusChangeRequest(
-        //    int IssueId,
-        //    int VerifyByUserId,
-        //    char NewStatus,
-        //    string Remarks) => new Issue
-        //    {
-        //        IssueId = IssueId,
-        //        VerifyByUserId = VerifyByUserId,
-        //        NewStatus = NewStatus,
-        //        Remarks = Remarks
-        //    };
     }
 }
