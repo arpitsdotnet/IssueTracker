@@ -44,6 +44,10 @@
     <Compile Include="Base\PageRequest.cs" />
     <Compile Include="Comments\Objects\Comment.cs" />
     <Compile Include="Comments\Objects\CommentHistory.cs" />
+    <Compile Include="Constants\IssuePriorities.cs" />
+    <Compile Include="Constants\IssueStatuses.cs" />
+    <Compile Include="Constants\IssueTypes.cs" />
+    <Compile Include="Constants\IssueRowStatus.cs" />
     <Compile Include="Epic.cs" />
     <Compile Include="Issues\Objects\Issue.cs" />
     <Compile Include="Issues\Objects\IssueHistory.cs" />
@@ -57,6 +61,7 @@
     <Compile Include="Projects\Objects\ProjectHistory.cs" />
     <Compile Include="Projects\Objects\ProjectCategory.cs" />
     <Compile Include="Projects\Objects\Project.cs" />
+    <Compile Include="Constants\ProjectRowStatus.cs" />
     <Compile Include="Projects\Requests\CreateProjectRequest.cs" />
     <Compile Include="Projects\Requests\GetProjectRequest.cs" />
     <Compile Include="Projects\Objects\ProjectTemplate.cs" />

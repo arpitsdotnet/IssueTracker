@@ -91,99 +91,121 @@ namespace IssueTracker.DataLayer
 
         public ResultList<TResponse> LoadData<TResponse>(string storedProcedure, object parameters)
         {
-            using (SqlConnection con = new SqlConnection(GetConnectionString()))
-            {
-                var dynamicp = new Dapper.DynamicParameters();
-                dynamicp.AddDynamicParams(parameters);
-                dynamicp.Add("R_Success", dbType: DbType.Int16, direction: ParameterDirection.Output);
-                dynamicp.Add("R_Message", dbType: DbType.String, direction: ParameterDirection.Output);
-
-                List<TResponse> data = con.Query<TResponse>(storedProcedure, dynamicp, commandType: CommandType.StoredProcedure).ToList();
-
-                Int16 isSuccess = dynamicp.Get<Int16>("R_Success");
-                string message = dynamicp.Get<string>("R_Message");
-
-                if (isSuccess == -1)
-                    throw new Exception(message);
-
-                if (isSuccess == 0)
-                    throw new ArgumentException(message);
-
-                if (data == null || data.Count <= 0)
-                    return new ResultList<TResponse> { IsSuccess = false, Message = "No Record Found." };
-
-                return new ResultList<TResponse> { IsSuccess = true, Message = message, Data = data };
-            }
-        }
-
-        public ResultList<TResponse> LoadData<TRequest, TResponse>(string storedProcedure, TRequest parameters)
-        {
-            using (SqlConnection con = new SqlConnection(GetConnectionString()))
-            {
-                var dynamicp = new Dapper.DynamicParameters();
-                dynamicp.AddDynamicParams(parameters);
-                dynamicp.Add("R_RecordCount", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                dynamicp.Add("R_Success", dbType: DbType.Int16, direction: ParameterDirection.Output);
-                dynamicp.Add("R_Message", dbType: DbType.String, direction: ParameterDirection.Output);
-
-                List<TResponse> data = con.Query<TResponse>(storedProcedure, dynamicp, commandType: CommandType.StoredProcedure).ToList();
-
-                Int32 recordCount = dynamicp.Get<Int32>("R_RecordCount");
-                Int16 isSuccess = dynamicp.Get<Int16>("R_Success");
-                string message = dynamicp.Get<string>("R_Message");
-
-                if (isSuccess == -1)
-                    throw new Exception(message);
-
-                if (isSuccess == 0)
-                    throw new ArgumentException(message);
-
-                if (data == null || data.Count <= 0)
-                    return new ResultList<TResponse> { IsSuccess = false, Message = "No Record Found.", RecordCount = recordCount };
-
-                return new ResultList<TResponse> { IsSuccess = true, Message = message, Data = data, RecordCount = recordCount };
-            }
-        }
-
-        public ResultSingle<TResponse> SaveData<TResponse>(string storedProcedure, object parameters)
-        {
-            SqlTransaction transaction = null;
             try
             {
                 using (SqlConnection con = new SqlConnection(GetConnectionString()))
                 {
                     var dynamicp = new Dapper.DynamicParameters();
                     dynamicp.AddDynamicParams(parameters);
-                    dynamicp.Add("R_Success", dbType: DbType.Int16, direction: ParameterDirection.Output);
-                    dynamicp.Add("R_Message", dbType: DbType.String, direction: ParameterDirection.Output);
+                    dynamicp.Add("R_Success", dbType: DbType.Byte, direction: ParameterDirection.Output);
+                    dynamicp.Add("R_Message", dbType: DbType.String, direction: ParameterDirection.Output, size: 1000);
+
+                    List<TResponse> data = con.Query<TResponse>(storedProcedure, dynamicp, commandType: CommandType.StoredProcedure).ToList();
+
+                    ushort isSuccess = dynamicp.Get<ushort>("R_Success");
+                    string message = dynamicp.Get<string>("R_Message");
+
+                    if (isSuccess > 10)
+                        throw new Exception(message);
+
+                    if (isSuccess == 0)
+                        throw new ArgumentException(message);
+
+                    if (data == null || data.Count <= 0)
+                        return new ResultList<TResponse>(false) { Message = "No Record Found." };
+
+                    return new ResultList<TResponse>(true) { Message = message, Data = data };
+                }
+            }
+            catch (ArgumentException ex)
+            {
+                return new ResultList<TResponse>(false) { Message = ex.Message };
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public ResultList<TResponse> LoadData<TRequest, TResponse>(string storedProcedure, TRequest parameters)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(GetConnectionString()))
+                {
+                    var dynamicp = new Dapper.DynamicParameters();
+                    dynamicp.AddDynamicParams(parameters);
+                    dynamicp.Add("R_RecordCount", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                    dynamicp.Add("R_Success", dbType: DbType.Byte, direction: ParameterDirection.Output);
+                    dynamicp.Add("R_Message", dbType: DbType.String, direction: ParameterDirection.Output, size: 1000);
+
+                    List<TResponse> data = con.Query<TResponse>(storedProcedure, dynamicp, commandType: CommandType.StoredProcedure).ToList();
+
+                    int recordCount = dynamicp.Get<int>("R_RecordCount");
+                    ushort isSuccess = dynamicp.Get<ushort>("R_Success");
+                    string message = dynamicp.Get<string>("R_Message");
+
+                    if (isSuccess > 10)
+                        throw new Exception(message);
+
+                    if (isSuccess == 0)
+                        throw new ArgumentException(message);
+
+                    if (data == null || data.Count <= 0)
+                        return new ResultList<TResponse>(false) { Message = "No Record Found.", RecordCount = recordCount };
+
+                    return new ResultList<TResponse>(true) { Message = message, Data = data, RecordCount = recordCount };
+                }
+            }
+            catch (ArgumentException ex)
+            {
+                return new ResultList<TResponse>(false) { Message = ex.Message };
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public ResultSingle<TResponse> SaveData<TResponse>(string storedProcedure, object parameters)
+        {
+            try
+            {
+                using (SqlConnection con = new SqlConnection(GetConnectionString()))
+                {
+                    var dynamicp = new Dapper.DynamicParameters();
+                    dynamicp.AddDynamicParams(parameters);
+                    dynamicp.Add("R_Success", dbType: DbType.Byte, direction: ParameterDirection.Output);
+                    dynamicp.Add("R_Message", dbType: DbType.String, direction: ParameterDirection.Output, size: 1000);
                     dynamicp.Add("R_Data", dbType: DbType.Object, direction: ParameterDirection.Output);
 
-                    transaction = con.BeginTransaction();
-                    con.Execute(storedProcedure, dynamicp, transaction, commandType: CommandType.StoredProcedure);
+                    _tran = con.BeginTransaction();
+                    con.Execute(storedProcedure, dynamicp, _tran, commandType: CommandType.StoredProcedure);
 
-                    Int16 isSuccess = dynamicp.Get<Int16>("R_Success");
+                    ushort isSuccess = dynamicp.Get<ushort>("R_Success");
                     string message = dynamicp.Get<string>("R_Message");
                     TResponse data = dynamicp.Get<TResponse>("R_Data");
 
-                    if (isSuccess == -1)
-                    {
-                        transaction.Rollback();
+                    if (isSuccess > 10)
                         throw new Exception(message);
-                    }
 
                     if (isSuccess == 0)
-                    {
-                        transaction.Rollback();
                         throw new ArgumentException(message);
-                    }
 
-                    transaction.Commit();
-                    return new ResultSingle<TResponse> { IsSuccess = true, Message = message, Data = data };
+                    _tran.Commit();
+                    return new ResultSingle<TResponse>(true) { Message = message, Data = data };
                 }
             }
-            catch
+            catch (ArgumentException ex)
             {
-                transaction.Rollback();
+                if (_tran != null)
+                    _tran.Rollback();
+                return new ResultSingle<TResponse>(false) { Message = ex.Message };
+            }
+            catch (Exception)
+            {
+                if (_tran != null)
+                    _tran.Rollback();
                 throw;
             }
         }
@@ -200,38 +222,46 @@ namespace IssueTracker.DataLayer
         /// <returns></returns>
         public ResultSingle<TResponse> SaveContinueData<TResponse>(string storedProcedure, object parameters)
         {
-            if (_conn == null || _conn.State == ConnectionState.Closed)
-                throw new Exception("Connection is required to save continue data. Please use OpenConnection method.");
-
-            if (_tran == null)
-                throw new Exception("Transaction is required to save continue data. Please use BeginTransaction method.");
-
-            var dynamicp = new Dapper.DynamicParameters();
-            dynamicp.AddDynamicParams(parameters);
-            dynamicp.Add("R_Success", dbType: DbType.Int16, direction: ParameterDirection.Output);
-            dynamicp.Add("R_Message", dbType: DbType.String, direction: ParameterDirection.Output);
-            dynamicp.Add("R_Data", dbType: DbType.Object, direction: ParameterDirection.Output);
-
-            _conn.Execute(storedProcedure, dynamicp, _tran, commandType: CommandType.StoredProcedure);
-
-            Int16 isSuccess = dynamicp.Get<Int16>("R_Success");
-            string message = dynamicp.Get<string>("R_Message");
-            TResponse data = dynamicp.Get<TResponse>("R_Data");
-
-            if (isSuccess == -1)
+            try
             {
-                _tran.Rollback();
-                throw new Exception(message);
-            }
+                if (_conn == null || _conn.State == ConnectionState.Closed)
+                    throw new Exception("Connection is required to save continue data. Please use OpenConnection method.");
 
-            if (isSuccess == 0)
+                if (_tran == null)
+                    throw new Exception("Transaction is required to save continue data. Please use BeginTransaction method.");
+
+                var dynamicp = new Dapper.DynamicParameters();
+                dynamicp.AddDynamicParams(parameters);
+                dynamicp.Add("R_Success", dbType: DbType.Byte, direction: ParameterDirection.Output);
+                dynamicp.Add("R_Message", dbType: DbType.String, direction: ParameterDirection.Output, size: 1000);
+                dynamicp.Add("R_Data", dbType: DbType.Object, direction: ParameterDirection.Output);
+
+                _conn.Execute(storedProcedure, dynamicp, _tran, commandType: CommandType.StoredProcedure);
+
+                ushort isSuccess = dynamicp.Get<ushort>("R_Success");
+                string message = dynamicp.Get<string>("R_Message");
+                TResponse data = dynamicp.Get<TResponse>("R_Data");
+
+                if (isSuccess > 10)
+                    throw new Exception(message);
+
+                if (isSuccess == 0)
+                    throw new ArgumentException(message);
+
+                return new ResultSingle<TResponse>(true) { Message = message, Data = data };
+            }
+            catch (ArgumentException ex)
             {
-                _tran.Rollback();
-                throw new ArgumentException(message);
+                if (_tran != null)
+                    _tran.Rollback();
+                return new ResultSingle<TResponse>(false) { Message = ex.Message };
             }
-
-            return new ResultSingle<TResponse> { IsSuccess = true, Message = message, Data = data };
-
+            catch (Exception)
+            {
+                if (_tran != null)
+                    _tran.Rollback();
+                throw;
+            }
         }
 
     }

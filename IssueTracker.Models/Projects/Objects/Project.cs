@@ -1,32 +1,30 @@
-﻿using IssueTracker.ModelLayer.Users.Objects;
+﻿using IssueTracker.ModelLayer.Constants;
+using IssueTracker.ModelLayer.Users.Objects;
 
 namespace IssueTracker.ModelLayer.Projects.Objects
 {
     public class Project
     {
-        public int ProjectId { get; set; }
-        public string ProjectKey { get; set; }
-        public string ProjectTitle { get; set; }
-        public string ProjectIconUrl { get; set; }
-        public short ProjectCategoryId { get; set; }
-        public ProjectCategory ProjectCategory { get; set; }
-        public short ProjectTemplateId { get; set; }
-        public ProjectTemplate ProjectTemplate { get; set; }
-        public short ProjectTypeId { get; set; }
-        public ProjectType ProjectType { get; set; }
-        public int ProjectManagerId { get; set; }
-        public User ProjectManager { get; set; }
-        public int ProjectDefaultAssigneeId { get; set; }
-        public User ProjectDefaultAssignee { get; set; }
-        public int ClientId { get; set; }
+        public int ProjId { get; set; }
+        public string ProjKey { get; set; }
+        public string ProjTitle { get; set; }
+        public string ProjIconUrl { get; set; }
+        public short ProjCategoryId { get; set; }
+        public ProjectCategory ProjCategory { get; set; }
+        public short ProjTemplateId { get; set; }
+        public ProjectTemplate ProjTemplate { get; set; }
+        public short ProjTypeId { get; set; }
+        public ProjectType ProjType { get; set; }
+        public int ProjManagerId { get; set; }
+        public User ProjManager { get; set; }
+        public int ProjDefaultAssigneeId { get; set; }
+        public User ProjDefaultAssignee { get; set; }
         public string ClientName { get; set; }
-        public string ClientNumber { get; set; }
-        public int PrimaryContactId { get; set; }
         public string PrimaryContactName { get; set; }
         public string PrimaryContactNumber { get; set; }
         public string PrimaryContactEmail { get; set; }
 
-        public bool IsActive { get; set; }
+        public ProjectRowStatus RowStatus { get; set; }
         public string CreatedOn { get; set; }
         public int CreatedById { get; set; }
         public User CreatedBy { get; set; }

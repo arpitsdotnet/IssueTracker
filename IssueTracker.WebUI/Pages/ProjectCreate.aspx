@@ -31,8 +31,7 @@
                                         <asp:Label ID="Lbl_ProjectCategory" runat="server" Text="Category *"></asp:Label>
                                     </div>
                                     <div>
-                                        <asp:DropDownList ID="Ddl_ProjectCategory" runat="server">
-                                            <asp:ListItem Text="- NOT FOUND -" Value="0" />
+                                        <asp:DropDownList ID="Ddl_ProjectCategory" runat="server" CssClass="form-control">
                                             <asp:ListItem Text="Software Management" Value="1" Selected="True" />
                                             <asp:ListItem Text="Service Management" Value="2" />
                                         </asp:DropDownList>
@@ -65,9 +64,11 @@
                                 </asp:RadioButtonList>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <asp:Button ID="Btn_Submit" runat="server" Text="Submit" OnClick="Btn_Submit_Click" />
-                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 text-right">
+                    <div class="form-group">
+                        <asp:Button ID="Btn_Submit" runat="server" Text="Submit" CssClass="btn btn-primary" OnClick="Btn_Submit_Click" />
                     </div>
                 </div>
             </div>

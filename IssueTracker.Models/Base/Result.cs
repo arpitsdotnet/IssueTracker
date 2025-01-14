@@ -7,7 +7,13 @@ namespace IssueTracker.ModelLayer.Base
 {
     public class ResultList<TResponse>
     {
-        public bool IsSuccess { get; set; }
+        public ResultList(bool isSuccess)
+        {
+            IsSuccess = isSuccess;
+        }
+
+        public bool IsSuccess { get; private set; }
+        public string Title { get; set; }
         public string Message { get; set; }
         public int RecordCount { get; set; }
 
@@ -16,7 +22,13 @@ namespace IssueTracker.ModelLayer.Base
 
     public class ResultSingle<TResponse>
     {
-        public bool IsSuccess { get; set; }
+        public ResultSingle(bool isSuccess)
+        {
+            IsSuccess = isSuccess;
+        }
+
+        public bool IsSuccess { get; private set; }
+        public string Title { get; set; }
         public string Message { get; set; }
 
         public TResponse Data { get; set; }

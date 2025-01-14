@@ -1,11 +1,20 @@
 ﻿using System;
 using System.Linq;
+using IssueTracker.BusinessLayer.Controllers;
+using IssueTracker.ModelLayer.Projects.Requests;
 using IssueTracker.WebUIHelper;
 
 namespace IssueTracker.WebUI.Pages
 {
     public partial class ProjectCreate : RootPage
     {
+        private readonly ProjectController _projectController;
+
+        public ProjectCreate()
+        {
+            _projectController = new ProjectController();
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -21,43 +30,6 @@ namespace IssueTracker.WebUI.Pages
             }
         }
 
-        #region Private Members
-
-        private string GenerateProjectKey(string text)
-        {
-            char[] characterToRemove = { '~', '`', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+', '[', '{', ']', '}', '\\', '|', ';', ':', '\'', '"', ',', '<', '.', '>', '/', '?', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
-
-            string filteredText = "";
-            foreach (char character in text.ToCharArray())
-            {
-                if (characterToRemove.Contains(character))
-                    continue;
-                filteredText += character.ToString();
-            }
-
-            string projectKey = "";
-            if (filteredText.Contains(" "))
-            {
-                string[] arrayText = filteredText.Split(' ');
-                foreach (var item in arrayText)
-                {
-                    if (item.Length < 1)
-                        continue;
-                    projectKey += item.Substring(0, 1);
-                }
-            }
-            else
-            {
-                projectKey = filteredText;
-            }
-
-            var trimLength = (projectKey.Length > 4 ? 4 : projectKey.Length);
-            projectKey = projectKey.Substring(0, trimLength);
-
-            return projectKey.ToUpper();
-        }
-
-        #endregion
 
         protected void Txt_ProjectTitle_TextChanged(object sender, EventArgs e)
         {
@@ -68,7 +40,7 @@ namespace IssueTracker.WebUI.Pages
 
                 string text = Txt_ProjectTitle.Text.Trim();
 
-                Txt_ProjectKey.Text = GenerateProjectKey(text);
+                Txt_ProjectKey.Text = _projectController.GenerateProjectKey(text);
             }
             catch (ArgumentException ex)
             {
@@ -84,7 +56,26 @@ namespace IssueTracker.WebUI.Pages
         {
             try
             {
-                ShowSuccess("Your project has been initiated successfully.");
+                var projectCategoryId = Convert.ToInt16(Ddl_ProjectCategory.SelectedValue);
+                var projectTemplateId = Convert.ToInt16(Ddl_ProjectTemplate.SelectedValue);
+                var projectTypeId = Convert.ToInt16(Rbl_ProjectType.SelectedValue);
+
+                var project = CreateProjectRequest.Generate(   
+                    SessionId: 1,
+                    ProjTitle: Txt_ProjectTitle.Text.Trim(),
+                    ProjKey: Txt_ProjectKey.Text.Trim(),
+                    ProjCategoryId: projectCategoryId,
+                    ProjTemplateId: projectTemplateId,
+                    ProjTypeId: projectTypeId,
+                    ProjIconUrl: ""
+                );
+
+                var result = _projectController.SaveProject(project);
+
+                if (result.IsSuccess == false)
+                    ShowWarning(result.Message);
+
+                ShowSuccess(result.Message);
             }
             catch (ArgumentException ex)
             {

@@ -13,17 +13,29 @@ namespace IssueTracker.BusinessLayer.Controllers
         {
             _dBContext = SQLDataAccess.Instance;
         }
+
         public ResultList<Issue> GetIssues(GetIssueRequest issueRequest)
         {
-            var data = _dBContext.LoadData<GetIssueRequest, Issue>("spIssue_Get", issueRequest);
+            var validationResult = issueRequest.Validate();
+
+            if (validationResult.IsSuccess == false)
+                return validationResult;
+
+            var data = _dBContext.LoadData<GetIssueRequest, Issue>("sps_Issue", issueRequest);
 
             return data;
         }
+
         public ResultSingle<Issue> SaveIssue(CreateIssueRequest issueRequest)
         {
-            var data = _dBContext.SaveData<Int32>("spIssue_Save", issueRequest);
+            var validationResult = issueRequest.Validate();
 
-            return new ResultSingle<Issue> { IsSuccess = data.IsSuccess, Message = data.Message, Data = new Issue { IssueId = data.Data } };
+            if (validationResult.IsSuccess == false)
+                return validationResult;
+
+            var data = _dBContext.SaveData<int>("spu_Issue", issueRequest);
+
+            return new ResultSingle<Issue>(data.IsSuccess) { Message = data.Message, Data = new Issue { IssueId = data.Data } };
         }
     }
 }

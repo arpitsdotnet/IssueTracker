@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using IssueTracker.ModelLayer.Constants;
 using IssueTracker.ModelLayer.Projects.Objects;
 using IssueTracker.ModelLayer.Sprints.Objects;
 using IssueTracker.ModelLayer.Users.Objects;
@@ -32,7 +33,7 @@ namespace IssueTracker.ModelLayer.Issues.Objects
         public int StoryManagerId { get; set; }
         public User StoryManager { get; set; }
 
-        public bool IsActive { get; set; }
+        public IssueRowStatus RowStatus { get; set; }
         public string CreatedOn { get; set; }
         public int CreatedById { get; set; }
         public User CreatedBy { get; set; }

@@ -1,5 +1,6 @@
 ﻿using System;
 using IssueTracker.ModelLayer.Base;
+using IssueTracker.ModelLayer.Projects.Objects;
 
 namespace IssueTracker.ModelLayer.Projects.Requests
 {
@@ -7,31 +8,36 @@ namespace IssueTracker.ModelLayer.Projects.Requests
     {
         private GetProjectRequest() { }
 
-        public int UserId { get; set; }
-
         public int ProjectId { get; set; }
         public int ProjectManagerId { get; set; }
+        public int SessionId { get; private set; }
 
         public static GetProjectRequest Create(
-            int UserId,
             int ProjectId) => new GetProjectRequest
             {
-                UserId = UserId,
                 ProjectId = ProjectId
             };
 
-        public static GetProjectRequest Create(
-            int UserId,
+        public static GetProjectRequest Generate(
+            int SessionId,
             int ProjectId = 0,
             int ProjectManagerId = 0,
             int PageNo = 1,
             short PageSize = 1000) => new GetProjectRequest
             {
-                UserId = UserId,
+                SessionId = SessionId,
                 ProjectId = ProjectId,
                 ProjectManagerId = ProjectManagerId,
                 PageNo = PageNo,
                 PageSize = PageSize
             };
+
+        public ResultList<Project> Validate()
+        {
+            if (SessionId == 0)
+                return new ResultList<Project>(false) { Title = "Invalid!", Message = "Login is invalid, please try re-login." };
+
+            return new ResultList<Project>(true);
+        }
     }
 }
