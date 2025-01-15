@@ -9,7 +9,10 @@
     <title><%: Page.Title %> - My ASP.NET Application</title>
 
     <webopt:BundleReference runat="server" Path="~/Content/css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <asp:PlaceHolder runat="server">
         <link rel="stylesheet" href='<%= $"{ResolveUrl("~/wwwroot/css/Site.css")}?v={System.IO.File.GetLastWriteTime(Server.MapPath("~/wwwroot/css/Site.css")).ToString("yyMMddHHmmss")}" %>' />
     </asp:PlaceHolder>
@@ -23,6 +26,7 @@
         <%: Scripts.Render("~/bundles/MsAjaxJs") %>
     </asp:PlaceHolder>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js" integrity="sha512-b+nQTCdtTBIRIbraqNEwsjB6UvL3UEMkXnhzd8awtCYh0Kcsjl9uEgwVFVbhoj3uu1DO1ZMacNvLoyJJiNfcvg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         toastr.options = {
             "closeButton": false,
@@ -64,12 +68,13 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" runat="server" href="~/">Application name</a>
+                    <a class="navbar-brand" runat="server" href="~/">Issue Tracker</a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/">Home</a></li>
                         <li><a runat="server" href="~/Pages/ProjectCreate">Create a Project</a></li>
+                        <li><a runat="server" href="~/Pages/IssueCreate">Create an Issue</a></li>
                         <li><a runat="server" href="~/Contact">Contact</a></li>
                     </ul>
                 </div>
@@ -80,9 +85,17 @@
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
+                <p>&copy; <%: DateTime.Now.Year %> - Issue Tracker</p>
             </footer>
+
+            <div id="divViewContainer" style="display: none; height: 100%; width: 100%;">
+                <iframe id="ifrViewContainer" style="width: 100%; height: 590px; border: 0;" src=""></iframe>
+            </div>
         </div>
+        
+        <asp:PlaceHolder runat="server">
+            <script type="text/javascript" src='<%= $"{ResolveUrl("~/wwwroot/scripts/Site.js")}?v={System.IO.File.GetLastWriteTime(Server.MapPath("~/wwwroot/scripts/Site.js")).ToString("yyMMddHHmmss")}" %>'></script>
+        </asp:PlaceHolder>
     </form>
 </body>
 </html>

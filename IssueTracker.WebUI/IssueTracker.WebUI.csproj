@@ -107,6 +107,7 @@
   <ItemGroup>
     <Content Include="About.aspx" />
     <Content Include="Contact.aspx" />
+    <Content Include="Pages\IssueCreate.aspx" />
     <Content Include="Pages\ProjectCreate.aspx" />
     <Content Include="Pages\Projects.aspx" />
     <Content Include="wwwroot\css\bootstrap-theme.css" />
@@ -137,6 +138,7 @@
     <Content Include="wwwroot\scripts\jquery-3.4.1.slim.js" />
     <Content Include="wwwroot\scripts\jquery-3.4.1.slim.min.js" />
     <Content Include="wwwroot\scripts\modernizr-2.8.3.js" />
+    <Content Include="wwwroot\scripts\Site.js" />
     <Content Include="wwwroot\scripts\WebForms\DetailsView.js" />
     <Content Include="wwwroot\scripts\WebForms\Focus.js" />
     <Content Include="wwwroot\scripts\WebForms\GridView.js" />
@@ -202,6 +204,13 @@
     </Compile>
     <Compile Include="Pages\Board.aspx.designer.cs">
       <DependentUpon>Board.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\IssueCreate.aspx.cs">
+      <DependentUpon>IssueCreate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\IssueCreate.aspx.designer.cs">
+      <DependentUpon>IssueCreate.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\ProjectCreate.aspx.cs">
       <DependentUpon>ProjectCreate.aspx</DependentUpon>

@@ -47,13 +47,13 @@ namespace IssueTracker.ModelLayer.Issues.Requests
 
         public static CreateIssueRequest Generate(
             int SessionId,
-            short IssueTypeId,
             int ProjectId,
+            short IssueTypeId,
             string IssueTitle) =>
             new CreateIssueRequest(
                 SessionId,
-                IssueTypeId,
                 ProjectId,
+                IssueTypeId,
                 IssueTitle);
     }
 }
