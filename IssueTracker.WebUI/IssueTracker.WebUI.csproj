@@ -108,8 +108,10 @@
     <Content Include="About.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Pages\IssueCreate.aspx" />
+    <Content Include="Pages\IssueSummary.aspx" />
     <Content Include="Pages\ProjectCreate.aspx" />
-    <Content Include="Pages\Projects.aspx" />
+    <Content Include="Pages\ProjectList.aspx" />
+    <Content Include="UserControls\DropdownControl.ascx" />
     <Content Include="wwwroot\css\bootstrap-theme.css" />
     <Content Include="wwwroot\css\bootstrap-theme.min.css" />
     <Content Include="wwwroot\css\bootstrap.css" />
@@ -212,6 +214,13 @@
     <Compile Include="Pages\IssueCreate.aspx.designer.cs">
       <DependentUpon>IssueCreate.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\IssueSummary.aspx.cs">
+      <DependentUpon>IssueSummary.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\IssueSummary.aspx.designer.cs">
+      <DependentUpon>IssueSummary.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ProjectCreate.aspx.cs">
       <DependentUpon>ProjectCreate.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -219,12 +228,12 @@
     <Compile Include="Pages\ProjectCreate.aspx.designer.cs">
       <DependentUpon>ProjectCreate.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Projects.aspx.cs">
-      <DependentUpon>Projects.aspx</DependentUpon>
+    <Compile Include="Pages\ProjectList.aspx.cs">
+      <DependentUpon>ProjectList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\Projects.aspx.designer.cs">
-      <DependentUpon>Projects.aspx</DependentUpon>
+    <Compile Include="Pages\ProjectList.aspx.designer.cs">
+      <DependentUpon>ProjectList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Roadmap.aspx.cs">
       <DependentUpon>Roadmap.aspx</DependentUpon>
@@ -240,6 +249,13 @@
     </Compile>
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\DropdownControl.ascx.cs">
+      <DependentUpon>DropdownControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\DropdownControl.ascx.designer.cs">
+      <DependentUpon>DropdownControl.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

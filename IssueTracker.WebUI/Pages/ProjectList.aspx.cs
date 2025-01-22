@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace IssueTracker.WebUI.Pages
 {
-    public partial class Projects : System.Web.UI.Page
+    public partial class ProjectList : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

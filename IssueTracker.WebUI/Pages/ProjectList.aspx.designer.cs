@@ -10,7 +10,7 @@
 
 namespace IssueTracker.WebUI.Pages
 {
-    public partial class Projects
+    public partial class ProjectList
     {
     }
 }

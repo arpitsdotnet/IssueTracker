@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using IssueTracker.ModelLayer.Comments.Objects;
 using IssueTracker.ModelLayer.Constants;
 using IssueTracker.ModelLayer.Projects.Objects;
 using IssueTracker.ModelLayer.Sprints.Objects;
@@ -22,10 +24,11 @@ namespace IssueTracker.ModelLayer.Issues.Objects
         public Issue ParentIssue { get; set; }
         public short IssueStatusId { get; set; } // TO-DO | IN-PROGRESS | DONE
         public IssueStatus IssueStatus { get; set; }
-        public string IssueEndDate { get; set; }
 
-        public string EpicStartDate { get; set; }
-        public string EpicDueDate { get; set; }
+        public string ExpectedStartDate { get; set; }
+        public string ExpectedDueDate { get; set; }
+        public string ActualStartDate { get; set; }
+        public string ActualEndDate { get; set; }
 
         public short StoryPointEstimate { get; set; }
         public int StorySprintId { get; set; }
@@ -42,33 +45,25 @@ namespace IssueTracker.ModelLayer.Issues.Objects
         public User LastModifiedBy { get; set; }
 
 
-        public List<string> IssueLabelList { get; set; }
-        public void AddIssueLabelItem(string item)
-        {
-            if (IssueLabelList is null) IssueLabelList = new List<string>();
-            IssueLabelList.Add(item);
-        }
-
         public List<Issue> ParentIssueList { get; set; }
-        public void AddParentIssueItem(Issue item)
+        public void AddParentIssue(Issue item)
         {
             if (ParentIssueList is null) ParentIssueList = new List<Issue>();
             ParentIssueList.Add(item);
         }
 
         public List<IssueHistory> HistoryList { get; set; }
-        public void AddIssueHistoryItem(IssueHistory item)
+        public void AddIssueHistory(IssueHistory item)
         {
             if (HistoryList is null) HistoryList = new List<IssueHistory>();
             HistoryList.Add(item);
         }
 
-        public List<Log> Logs { get; set; }
-        public void AddLogItem(Log item)
+        public List<Comment> CommentList { get; set; }
+        public void AddComment(Comment item)
         {
-            if (Logs is null) Logs = new List<Log>();
-            Logs.Add(item);
+            if (CommentList is null) CommentList = new List<Comment>();
+            CommentList.Add(item);
         }
-
     }
 }

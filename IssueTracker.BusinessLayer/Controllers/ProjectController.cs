@@ -17,23 +17,13 @@ namespace IssueTracker.BusinessLayer.Controllers
 
         public ResultList<Project> GetProjects(GetProjectRequest projectRequest)
         {
-            var validationResult = projectRequest.Validate();
-
-            if (validationResult.IsSuccess == false)
-                return validationResult;
-
             var data = _dBContext.LoadData<GetProjectRequest, Project>("sps_Projects", projectRequest);
 
             return data;
         }
 
-        public ResultSingle<Project> SaveProject(CreateProjectRequest projectRequest)
+        public ResultSingle<Project> AddProject(AddProjectRequest projectRequest)
         {
-            var validationResult = projectRequest.Validate();
-
-            if (validationResult.IsSuccess == false)
-                return validationResult;
-
             var data = _dBContext.SaveData<int>("spu_Project", projectRequest);
 
             return new ResultSingle<Project>(data.IsSuccess) { Message = data.Message, Data = new Project { ProjId = data.Data } };

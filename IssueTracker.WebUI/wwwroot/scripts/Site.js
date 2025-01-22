@@ -1,4 +1,40 @@
-﻿
+﻿$(document).ready(function () {
+    var modelHeight = $('.issue-model').height();
+    var modelWidth = $('.issue-model').width();
+    $('.imhri__expand').click(function () {
+        $('.imhri__expand').hide();
+        $('.imhri__compress').show();
+        $('.issue-model')
+            .width($(window).width())
+            .height($(window).height());
+    });
+    $('.imhri__compress').click(function () {
+        $('.imhri__expand').show();
+        $('.imhri__compress').hide();
+        $('.issue-model')
+            .width(modelWidth)
+            .height(modelHeight);
+    });
+
+    $('#options').on('click', 'li', function (e) {
+        $('#dropdown').click();
+
+        var element = $(this).html();
+        //var svg = $('i', element).html();
+        var svg = $('svg', element).parent().html();
+
+        //console.log(svg);
+
+        //var val = "<i class='" + i + "'></i> &nbsp;";
+
+        //console.log(svg)
+        //console.log(svg + $(this).data('innerHtml'))
+
+        $('#options-display').html(svg);
+    });
+});
+
+
 
 function hidePage() {
     document.getElementById("idLoader").style.display = "block";

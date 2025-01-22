@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using IssueTracker.BusinessLayer.Controllers;
+using IssueTracker.ModelLayer.Base;
 using IssueTracker.ModelLayer.Projects.Requests;
 using IssueTracker.WebUIHelper;
 
@@ -60,8 +61,8 @@ namespace IssueTracker.WebUI.Pages
                 var projectTemplateId = Convert.ToInt16(Ddl_ProjectTemplate.SelectedValue);
                 var projectTypeId = Convert.ToInt16(Rbl_ProjectType.SelectedValue);
 
-                var project = CreateProjectRequest.Generate(   
-                    SessionId: 1,
+                var request = AddProjectRequest.Create(
+                    SessionUID: Guid.NewGuid().ToString(),
                     ProjTitle: Txt_ProjectTitle.Text.Trim(),
                     ProjKey: Txt_ProjectKey.Text.Trim(),
                     ProjCategoryId: projectCategoryId,
@@ -70,16 +71,16 @@ namespace IssueTracker.WebUI.Pages
                     ProjIconUrl: ""
                 );
 
-                var result = _projectController.SaveProject(project);
+                var response = _projectController.AddProject(request);
 
-                if (result.IsSuccess == false)
-                    ShowWarning(result.Message);
+                if (response.IsSuccess == false)
+                    ShowWarning(response.Message, response.Title);
 
-                ShowSuccess(result.Message);
+                ShowSuccess(response.Message, response.Title);
             }
-            catch (ArgumentException ex)
+            catch (FieldValidationException ex)
             {
-                ShowWarning(Logger.Log(ex.Message));
+                ShowWarning(ex.Message, ex.Title);
             }
             catch (Exception ex)
             {

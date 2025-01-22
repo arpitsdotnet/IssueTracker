@@ -3,79 +3,120 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <asp:UpdatePanel runat="server">
         <ContentTemplate>
-            <div id="divIssueModel" class="issue-model">
-                <div class="im__header">
-                    <div class="imh__left">
-                        <div class="imhl__icon"><i class="fa mr-5 fa-pencil"></i>Add Epic</div>
-                        <div class="imhl__seperator"></div>
-                        <div class="imhl__icon"><i class="fa mr-5 fa-pencil"></i>Add Story</div>
-                        <div class="imhl__seperator"></div>
-                        <div class="imhl__icon"><i class="fa mr-5 fa-check-square text-info"></i>PROJ-1</div>
-                    </div>
-                    <div class="imh__right">
-                        <div class="imhr__icon"><i class="fa fa-times"></i></div>
-                        <div class="imhr__icon imhri__expand" onclick="goFullScreen('divIssueModel');"><i class="fa fa-expand"></i></div>
-                        <div class="imhr__icon imhri__compress" onclick="exitFullScreen();"><i class="fa fa-compress"></i></div>
-                        <div class="imhr__icon"><i class="fa fa-share-nodes"></i></div>
-                        <div class="imhr__icon"><i class="fa-regular fa-star"></i></div>
-                        <div class="imhr__icon"><i class="fa mr-5 fa-eye"></i>1</div>
-                    </div>
-                </div>
-                <div class="im__content">
-                    <div class="imc__left">
-                        <div class="imcl__title">
-                            <h3>Task Title</h3>
-                            <button><i class="fa mr-5 fa-paperclip"></i>Attach</button>
-                            <button><i class="fa mr-5 fa-circle-nodes"></i>Attach a child issue</button>
-                            <button><i class="fa mr-5 fa-link"></i>Link issue</button>
-                        </div>
-                        <div class="imcl_detail">
-                            <div class="form-group">
-                                <label for="description">Description</label>
-                                <textarea id="description" name="description" placeholder="Add a description..."></textarea>
-                            </div>
-                            <div>
-                                <h4>Activity</h4>
-                                <button type="button"><i class="fa-regular fa-comment"></i>Comments</button>
-                                <button type="button"><i class="fa fa-history"></i>History</button>
-                            </div>
-                            <div class="form-group">
-                                <label for="comment">Add a comment</label>
-                                <textarea id="comment" name="comment" placeholder="Add a comment..."></textarea>
-                                <p>Pro tip: press <strong>M</strong> to comment</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="imc__right">
-                        <div class="imcr_status">
-                            To Do 
-                        </div>
-                        <div class="imcr_detail">
-                            <h4>Details</h4>
-                            <div>
-                                <label for="assignee">Assignee</label>
-                                <input type="text" id="assignee" name="assignee" value="kepegox194" readonly>
-                            </div>
-                            <div>
-                                <label for="labels">Labels</label>
-                                <select id="labels" name="labels">
-                                    <option value="VoiceOver">VoiceOver</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label for="reporter">Reporter</label>
-                                <input type="text" id="reporter" name="reporter" value="VoiceOver" readonly>
-                            </div>
-                        </div>
-                        <div class="imcr_footer">
-                            <p>Created 1 minute ago</p>
-                            <p>Updated 1 minute ago</p>
+            <h3>Create Issue</h3>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="Project">Project<span class="required"></span></label>
+                            <asp:DropDownList ID="Ddl_Projects" runat="server" CssClass="form-control">
+                                <asp:ListItem Text="-Select-" />
+                            </asp:DropDownList>
                         </div>
                     </div>
                 </div>
-                <div class="im__footer">
-                    <button><i class="fa mr-5 fa-eraser"></i>Clear</button>
-                    <button><i class="fa mr-5 fa-save"></i>Save</button>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="Project">Issue Type<span class="required"></span></label>
+                            <asp:DropDownList ID="Ddl_IssueTypes" runat="server" CssClass="form-control">
+                                <asp:ListItem Text="Epic" />
+                                <asp:ListItem Text="Story" />
+                                <asp:ListItem Text="Task" Selected="True" />
+                                <asp:ListItem Text="Sub-Task" />
+                                <asp:ListItem Text="Bug" />
+                            </asp:DropDownList>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="Project">Priority<span class="required"></span></label>
+                            <div>
+                                <asp:RadioButtonList ID="Ddl_ProjectTemplate" runat="server" RepeatDirection="Horizontal" CssClass="easy-radio small">
+                                    <asp:ListItem Value="H"><i class="fa fa-arrow-up"></i></asp:ListItem>
+                                    <asp:ListItem Value="M" Selected="True"><i class="fa fa-circle-dot"></i></asp:ListItem>
+                                    <asp:ListItem Value="L"><i class="fa fa-arrow-down"></i></asp:ListItem>
+                                </asp:RadioButtonList>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="Project">Summary<span class="required"></span></label>
+                            <asp:TextBox ID="Txt_IssueSummary" runat="server" CssClass="form-control" placeholder="Summary"></asp:TextBox>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="Project">Epic Links<span class="not-required"></span></label>
+                            <asp:DropDownList ID="Ddl_EpicLinks" runat="server" CssClass="form-control">
+                                <asp:ListItem Text="-Select Epic-" />
+                            </asp:DropDownList>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="Project">Story Links<span class="not-required"></span></label>
+                            <asp:DropDownList ID="Ddl_StoryLinks" runat="server" CssClass="form-control">
+                                <asp:ListItem Text="-Select Story-" />
+                            </asp:DropDownList>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="Project">Start Date<span class="required"></span></label>
+                            <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control">
+                                <asp:ListItem Text="-Select date-" />
+                            </asp:DropDownList>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="Project">Due Date<span class="not-required"></span></label>
+                            <asp:DropDownList ID="DropDownList2" runat="server" CssClass="form-control">
+                                <asp:ListItem Text="-Select date-" />
+                            </asp:DropDownList>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="Project">Description<span class="not-required"></span></label>
+                            <asp:TextBox ID="Txt_Description" runat="server" CssClass="form-control" TextMode="MultiLine" placeholder="Description"></asp:TextBox>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="Project">Reporter<span class="required"></span></label>
+                            <asp:DropDownList ID="Ddl_Reporters" runat="server" CssClass="form-control">
+                                <asp:ListItem Text="-Select Reporter-" />
+                            </asp:DropDownList>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="Project">Assignee<span class="not-required"></span></label>
+                            <asp:DropDownList ID="Ddl_Assignees" runat="server" CssClass="form-control">
+                                <asp:ListItem Text="-Select Assignee-" />
+                            </asp:DropDownList>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <asp:Button ID="Btn_Clear" runat="server" CssClass="btn btn-default" Text="Clear" OnClick="Btn_Clear_Click"/>
+                        <asp:Button ID="Btn_Submit" runat="server" CssClass="btn btn-primary" Text="Save" OnClick="Btn_Submit_Click" />
+                    </div>
                 </div>
             </div>
         </ContentTemplate>

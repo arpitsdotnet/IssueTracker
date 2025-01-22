@@ -41,7 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\FieldValidationException.cs" />
     <Compile Include="Base\PageRequest.cs" />
+    <Compile Include="Validations\PageRequestValidationRules.cs" />
     <Compile Include="Comments\Objects\Comment.cs" />
     <Compile Include="Comments\Objects\CommentHistory.cs" />
     <Compile Include="Constants\IssuePriorities.cs" />
@@ -53,8 +55,11 @@
     <Compile Include="Issues\Objects\IssueHistory.cs" />
     <Compile Include="Issues\Objects\IssuePriority.cs" />
     <Compile Include="Issues\Objects\IssueStatus.cs" />
+    <Compile Include="Validations\IssueValidationRules.cs" />
+    <Compile Include="Validations\ProjectValidationRules.cs" />
+    <Compile Include="Validations\SessionValidationRules.cs" />
     <Compile Include="Issues\Requests\UpdateIssueRequest.cs" />
-    <Compile Include="Issues\Requests\CreateIssueRequest.cs" />
+    <Compile Include="Issues\Requests\AddIssueRequest.cs" />
     <Compile Include="Issues\Requests\GetIssueRequest.cs" />
     <Compile Include="Issues\Objects\IssueType.cs" />
     <Compile Include="Log.cs" />
@@ -62,7 +67,7 @@
     <Compile Include="Projects\Objects\ProjectCategory.cs" />
     <Compile Include="Projects\Objects\Project.cs" />
     <Compile Include="Constants\ProjectRowStatus.cs" />
-    <Compile Include="Projects\Requests\CreateProjectRequest.cs" />
+    <Compile Include="Projects\Requests\AddProjectRequest.cs" />
     <Compile Include="Projects\Requests\GetProjectRequest.cs" />
     <Compile Include="Projects\Objects\ProjectTemplate.cs" />
     <Compile Include="Projects\Objects\ProjectType.cs" />

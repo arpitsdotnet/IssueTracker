@@ -1,23 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 
 namespace IssueTracker.WebUIHelper
 {
     public class RootPage : System.Web.UI.Page
     {
-        public void ShowError(string message) => ShowMessage(message, "error");
-        public void ShowWarning(string message) => ShowMessage(message, "warning");
-        public void ShowInfo(string message) => ShowMessage(message, "info");
-        public void ShowSuccess(string message) => ShowMessage(message, "success");
-        private void ShowMessage(string message, string type = "error")
+        #region Private Methods
+
+        private void ShowMessage(string message, string title, string type = "error")
         {
             message = message.Replace("\"", "`").Replace("\'", "`");
 
-            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), $"{DateTime.Now:yyMMddHHmmss}", $"toastr[\"{type}\"](\"{message}\", \"Success\")", true);
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), $"{DateTime.Now:yyMMddHHmmss}", $"toastr[\"{type}\"](\"{message}\", \"{title}\")", true);
 
         }
+
+        #endregion
+
+        public void ShowError(string message, string title = "Error") => ShowMessage(message, title, "error");
+        public void ShowWarning(string message, string title = "Warning") => ShowMessage(message, title, "warning");
+        public void ShowInfo(string message, string title = "Info") => ShowMessage(message, title, "info");
+        public void ShowSuccess(string message, string title = "Success") => ShowMessage(message, title, "success");
     }
 }
