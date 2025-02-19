@@ -57,6 +57,7 @@
     <Compile Include="Issues\Objects\IssueStatus.cs" />
     <Compile Include="Validations\IssueValidationRules.cs" />
     <Compile Include="Validations\ProjectValidationRules.cs" />
+    <Compile Include="Validations\ClientValidationRules.cs" />
     <Compile Include="Validations\SessionValidationRules.cs" />
     <Compile Include="Issues\Requests\UpdateIssueRequest.cs" />
     <Compile Include="Issues\Requests\AddIssueRequest.cs" />

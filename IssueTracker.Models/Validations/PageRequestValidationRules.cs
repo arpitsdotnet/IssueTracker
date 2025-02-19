@@ -10,6 +10,8 @@ namespace IssueTracker.ModelLayer.Validations
                 throw new FieldValidationException("Required!", "Page No must not be negative or zero.");
             if (PageSize <= 0)
                 throw new FieldValidationException("Required!", "Page Size must not be negative or zero.");
+            if (PageSize > 1000)
+                throw new FieldValidationException("Required!", "Page Size must not be greater than 1000.");
         }
     }
 }

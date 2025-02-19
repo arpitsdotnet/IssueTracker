@@ -9,28 +9,42 @@ namespace IssueTracker.ModelLayer.Projects.Requests
     {
         private GetProjectRequest() { }
 
+        public string ClientUID { get; private set; }
         public string SessionUID { get; private set; }
         public int ProjectId { get; set; }
         public int ProjectManagerId { get; set; }
 
         public static GetProjectRequest Create(
-            int ProjectId) => new GetProjectRequest
+            string ClientUID,
+            string SessionUID,
+            int ProjectId)
+        {
+            ClientValidationRules.ClientUID.IsRequired(ClientUID);
+            SessionValidationRules.SessionUID.IsRequired(SessionUID);
+
+            return new GetProjectRequest
             {
+                ClientUID = ClientUID,
+                SessionUID = SessionUID,
                 ProjectId = ProjectId
             };
+        }
 
         public static GetProjectRequest Generate(
+            string ClientUID,
             string SessionUID,
             int ProjectId = 0,
             int ProjectManagerId = 0,
             int PageNo = 1,
             short PageSize = 1000)
         {
+            ClientValidationRules.ClientUID.IsRequired(ClientUID);
             SessionValidationRules.SessionUID.IsRequired(SessionUID);
             PageRequestValidationRules.Validate(PageNo, PageSize);
 
             return new GetProjectRequest
             {
+                ClientUID = ClientUID,
                 SessionUID = SessionUID,
                 ProjectId = ProjectId,
                 ProjectManagerId = ProjectManagerId,

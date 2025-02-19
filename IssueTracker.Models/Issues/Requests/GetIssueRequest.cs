@@ -8,6 +8,7 @@ namespace IssueTracker.ModelLayer.Issues.Requests
     {
         private GetIssueRequest() { }
 
+        public string ClientUID { get; private set; }
         public string SessionUID { get; private set; }
         public int ProjectId { get; set; }
         public int IssueId { get; set; }
@@ -16,16 +17,19 @@ namespace IssueTracker.ModelLayer.Issues.Requests
         public string IssueTitle { get; set; }
 
         public static GetIssueRequest Create(
+            string ClientUID,
             string SessionUID,
             int ProjectId,
             int IssueId)
         {
+            ClientValidationRules.ClientUID.IsRequired(ClientUID);
             SessionValidationRules.SessionUID.IsRequired(SessionUID);
             ProjectValidationRules.ProjectId.IsRequired(ProjectId);
             IssueValidationRules.IssueId.IsRequired(IssueId);
 
             return new GetIssueRequest
             {
+                ClientUID = ClientUID,
                 SessionUID = SessionUID,
                 ProjectId = ProjectId,
                 IssueId = IssueId,
@@ -33,6 +37,7 @@ namespace IssueTracker.ModelLayer.Issues.Requests
         }
 
         public static GetIssueRequest Create(
+            string ClientUID,
             string SessionUID,
             int ProjectId,
             int IssueId = 0,
@@ -42,6 +47,7 @@ namespace IssueTracker.ModelLayer.Issues.Requests
             int PageNo = 1,
             short PageSize = 100)
         {
+            ClientValidationRules.ClientUID.IsRequired(ClientUID);
             SessionValidationRules.SessionUID.IsRequired(SessionUID);
             ProjectValidationRules.ProjectId.IsRequired(ProjectId);
             IssueValidationRules.IssueKey.HasValidLength(IssueKey);
@@ -50,6 +56,7 @@ namespace IssueTracker.ModelLayer.Issues.Requests
 
             return new GetIssueRequest
             {
+                ClientUID = ClientUID,
                 SessionUID = SessionUID,
                 ProjectId = ProjectId,
                 IssueId = IssueId,
