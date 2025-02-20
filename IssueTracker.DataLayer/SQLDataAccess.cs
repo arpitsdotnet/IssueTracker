@@ -102,7 +102,7 @@ namespace IssueTracker.DataLayer
 
                     List<TResponse> data = con.Query<TResponse>(storedProcedure, dynamicp, commandType: CommandType.StoredProcedure).ToList();
 
-                    ushort isSuccess = dynamicp.Get<ushort>("R_Success");
+                    byte isSuccess = dynamicp.Get<byte>("R_Success");
                     string message = dynamicp.Get<string>("R_Message");
 
                     if (isSuccess > 10)
@@ -142,7 +142,7 @@ namespace IssueTracker.DataLayer
                     List<TResponse> data = con.Query<TResponse>(storedProcedure, dynamicp, commandType: CommandType.StoredProcedure).ToList();
 
                     int recordCount = dynamicp.Get<int>("R_RecordCount");
-                    ushort isSuccess = dynamicp.Get<ushort>("R_Success");
+                    byte isSuccess = dynamicp.Get<byte>("R_Success");
                     string message = dynamicp.Get<string>("R_Message");
 
                     if (isSuccess > 10)
@@ -182,7 +182,7 @@ namespace IssueTracker.DataLayer
                     _tran = con.BeginTransaction();
                     con.Execute(storedProcedure, dynamicp, _tran, commandType: CommandType.StoredProcedure);
 
-                    ushort isSuccess = dynamicp.Get<ushort>("R_Success");
+                    byte isSuccess = dynamicp.Get<byte>("R_Success");
                     string message = dynamicp.Get<string>("R_Message");
                     TResponse data = dynamicp.Get<TResponse>("R_Data");
 
@@ -238,7 +238,7 @@ namespace IssueTracker.DataLayer
 
                 _conn.Execute(storedProcedure, dynamicp, _tran, commandType: CommandType.StoredProcedure);
 
-                ushort isSuccess = dynamicp.Get<ushort>("R_Success");
+                byte isSuccess = dynamicp.Get<byte>("R_Success");
                 string message = dynamicp.Get<string>("R_Message");
                 TResponse data = dynamicp.Get<TResponse>("R_Data");
 
