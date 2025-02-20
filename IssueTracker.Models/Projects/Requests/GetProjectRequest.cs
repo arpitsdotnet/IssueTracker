@@ -17,7 +17,7 @@ namespace IssueTracker.ModelLayer.Projects.Requests
         public static GetProjectRequest Create(
             string ClientUID,
             string SessionUID,
-            int ProjectId)
+            int ProjectId = 0)
         {
             ClientValidationRules.ClientUID.IsRequired(ClientUID);
             SessionValidationRules.SessionUID.IsRequired(SessionUID);

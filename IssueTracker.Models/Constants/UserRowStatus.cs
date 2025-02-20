@@ -1,6 +1,6 @@
 ﻿namespace IssueTracker.ModelLayer.Constants
 {
-    public enum ProjectRowStatus
+    public enum UserRowStatus
     {
         New = 'N',
         InProgress = 'I',
