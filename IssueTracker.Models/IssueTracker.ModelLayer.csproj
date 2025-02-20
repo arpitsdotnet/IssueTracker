@@ -41,8 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\CustomException.cs" />
     <Compile Include="Base\FieldValidationException.cs" />
     <Compile Include="Base\PageRequest.cs" />
+    <Compile Include="Clients\Objects\Client.cs" />
+    <Compile Include="Constants\UserRowStatus.cs" />
     <Compile Include="Validations\PageRequestValidationRules.cs" />
     <Compile Include="Comments\Objects\Comment.cs" />
     <Compile Include="Comments\Objects\CommentHistory.cs" />

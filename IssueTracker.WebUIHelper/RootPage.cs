@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.UI;
+using IssueTracker.ModelLayer.Base;
 
 namespace IssueTracker.WebUIHelper
 {
@@ -19,6 +20,7 @@ namespace IssueTracker.WebUIHelper
 
         public void ShowError(string message, string title = "Error") => ShowMessage(message, title, "error");
         public void ShowWarning(string message, string title = "Warning") => ShowMessage(message, title, "warning");
+        public void ShowWarning(FieldValidationException ex) => ShowMessage(ex.Message, ex.Title, "error");
         public void ShowInfo(string message, string title = "Info") => ShowMessage(message, title, "info");
         public void ShowSuccess(string message, string title = "Success") => ShowMessage(message, title, "success");
     }
