@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IssueTracker.WebUIHelper", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IssueTracker.ModelLayer", "IssueTracker.Models\IssueTracker.ModelLayer.csproj", "{407F49E3-1D4F-4AC3-A34B-485511A2C8EA}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{AC071A58-153A-4D1F-9299-61E6762606AC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IssueTracker.BusinessLayer.Tests.UnitTests", "IssueTracker.BusinessLayer.Tests.UnitTests\IssueTracker.BusinessLayer.Tests.UnitTests.csproj", "{B0430831-4291-4BC3-90E7-0D1E5D4AA4B6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,9 +43,16 @@ Global
 		{407F49E3-1D4F-4AC3-A34B-485511A2C8EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{407F49E3-1D4F-4AC3-A34B-485511A2C8EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{407F49E3-1D4F-4AC3-A34B-485511A2C8EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0430831-4291-4BC3-90E7-0D1E5D4AA4B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0430831-4291-4BC3-90E7-0D1E5D4AA4B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0430831-4291-4BC3-90E7-0D1E5D4AA4B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0430831-4291-4BC3-90E7-0D1E5D4AA4B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B0430831-4291-4BC3-90E7-0D1E5D4AA4B6} = {AC071A58-153A-4D1F-9299-61E6762606AC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5E6B80A4-1DEA-4EFC-8BB9-F532766F63F6}

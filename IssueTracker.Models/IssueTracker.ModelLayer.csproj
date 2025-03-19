@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,11 +44,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Base\CustomException.cs" />
     <Compile Include="Base\FieldValidationException.cs" />
     <Compile Include="Base\PageRequest.cs" />
     <Compile Include="Clients\Objects\Client.cs" />
     <Compile Include="Constants\UserRowStatus.cs" />
+    <Compile Include="Messaging\DefaultEmailSettingKeyModel.cs" />
+    <Compile Include="Messaging\EmailMessageModel.cs" />
+    <Compile Include="Messaging\FCMPushNotificationModel.cs" />
+    <Compile Include="Messaging\FCMServiceAccountKeyModel.cs" />
+    <Compile Include="Messaging\SendGridEmailKeyModel.cs" />
+    <Compile Include="Messaging\DefaultSMSSettingKeyModel.cs" />
+    <Compile Include="Messaging\WhatsappMessageModel.cs" />
     <Compile Include="Validations\PageRequestValidationRules.cs" />
     <Compile Include="Comments\Objects\Comment.cs" />
     <Compile Include="Comments\Objects\CommentHistory.cs" />
@@ -85,6 +94,9 @@
     <Folder Include="Comments\Requests\" />
     <Folder Include="Sprints\Requests\" />
     <Folder Include="Users\Requests\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,5 +1,5 @@
-﻿using System;
-using IssueTracker.DataLayer;
+﻿using IssueTracker.BusinessLayer.Services.Messaging;
+using IssueTracker.DataLayer.Repositories;
 using IssueTracker.ModelLayer.Base;
 using IssueTracker.ModelLayer.Issues.Objects;
 using IssueTracker.ModelLayer.Issues.Requests;
@@ -8,24 +8,46 @@ namespace IssueTracker.BusinessLayer.Controllers
 {
     public class IssueController : CommonController
     {
-        private readonly IApplicationDBContext _dBContext;
-        public IssueController()
+        private readonly IIssueRepository _issueRepository;
+
+        public IssueController(IIssueRepository issueRepository = null)
         {
-            _dBContext = SQLDataAccess.Instance;
+            _issueRepository = issueRepository ?? new IssueRepository();
         }
 
-        public ResultList<Issue> GetIssues(GetIssueRequest issueRequest)
+        public ResultList<Issue> GetIssues(GetIssueRequest request)
         {
-            var data = _dBContext.LoadData<GetIssueRequest, Issue>("sps_Issue", issueRequest);
+            var result = _issueRepository.GetIssues(request);
 
-            return data;
+            return result;
         }
 
-        public ResultSingle<Issue> AddIssue(AddIssueRequest issueRequest)
+        public ResultSingle<Issue> CreateIssue(AddIssueRequest request)
         {
-            var data = _dBContext.SaveData<int>("spu_Issue", issueRequest);
+            var result = _issueRepository.SaveIssue(request);
 
-            return new ResultSingle<Issue>(data.IsSuccess) { Message = data.Message, Data = new Issue { IssueId = data.Data } };
+            if (result.IsSuccess == true)
+            {
+                var sessionUId = request.SessionUId;
+
+                // Create the message service
+                var messageService = new MessageService();
+
+                // Create listeners
+                var emailNotifier = new EmailNotifier();
+
+                // Subscribe to the event
+                messageService.MessageSent += emailNotifier.OnMessageSent;
+
+                messageService.SendMessage(
+                    sessionUId,
+                    $"Congratulation! Your issue { request.IssueTitle } has been created.",
+                    $"Dear User! Your issue { request.IssueTitle } has been created."
+                ).GetAwaiter().GetResult();
+
+            }
+
+            return result;
         }
     }
 }

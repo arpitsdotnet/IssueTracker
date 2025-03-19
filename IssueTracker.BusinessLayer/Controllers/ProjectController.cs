@@ -1,7 +1,8 @@
-﻿using System;
-using System.Linq;
-using IssueTracker.DataLayer;
+﻿using System.Linq;
+using IssueTracker.BusinessLayer.Services.Messaging;
+using IssueTracker.DataLayer.Repositories;
 using IssueTracker.ModelLayer.Base;
+using IssueTracker.ModelLayer.Messaging;
 using IssueTracker.ModelLayer.Projects.Objects;
 using IssueTracker.ModelLayer.Projects.Requests;
 
@@ -9,24 +10,48 @@ namespace IssueTracker.BusinessLayer.Controllers
 {
     public class ProjectController : CommonController
     {
-        private readonly IApplicationDBContext _dBContext;
-        public ProjectController()
+        private readonly IProjectRepository _projectRepository;
+
+        public ProjectController(IProjectRepository projectRepository = null)
         {
-            _dBContext = SQLDataAccess.Instance;
+            _projectRepository = projectRepository ?? new ProjectRepository();
         }
 
-        public ResultList<Project> GetProjects(GetProjectRequest projectRequest)
+        public ResultList<Project> GetProjects(GetProjectRequest request)
         {
-            var data = _dBContext.LoadData<GetProjectRequest, Project>("sps_Projects", projectRequest);
+            var result = _projectRepository.GetProjects(request);
 
-            return data;
+            return result;
         }
 
-        public ResultSingle<Project> AddProject(AddProjectRequest projectRequest)
+        public ResultSingle<Project> CreateProject(AddProjectRequest request)
         {
-            var data = _dBContext.SaveData<int>("spu_Project", projectRequest);
+            var result = _projectRepository.SaveProject(request);
 
-            return new ResultSingle<Project>(data.IsSuccess) { Message = data.Message, Data = new Project { ProjId = data.Data } };
+            if (result.IsSuccess == true)
+            {
+                var sessionUId = request.SessionUID;
+
+                // Create the message service
+                var messageService = new MessageService();
+
+                // Create listeners
+                var emailNotifier = new EmailNotifier();
+                var smsNotifier = new SmsNotifier();
+
+                // Subscribe to the event
+                messageService.MessageSent += emailNotifier.OnMessageSent;
+                messageService.MessageSent += smsNotifier.OnMessageSent;
+
+                messageService.SendMessage(
+                    sessionUId, 
+                    $"Congratulation! Your project { request.ProjTitle } has been created.", 
+                    $"Dear User! Your project { request.ProjTitle } has been created."
+                ).GetAwaiter().GetResult();
+
+            }
+
+            return result;
         }
 
         public string GenerateProjectKey(string text)

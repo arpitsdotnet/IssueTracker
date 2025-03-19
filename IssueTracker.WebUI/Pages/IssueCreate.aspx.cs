@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using IssueTracker.BusinessLayer.Controllers;
 using IssueTracker.ModelLayer.Base;
 using IssueTracker.ModelLayer.Issues.Requests;
@@ -77,7 +72,7 @@ namespace IssueTracker.WebUI.Pages
             {
                 var request = AddIssueRequest.Create(Guid.NewGuid().ToString(), 1, 1, "Title");
 
-                var response = _issueController.AddIssue(request);
+                var response = _issueController.CreateIssue(request);
 
                 if (response.IsSuccess == false)
                     ShowWarning(response.Message, response.Title);

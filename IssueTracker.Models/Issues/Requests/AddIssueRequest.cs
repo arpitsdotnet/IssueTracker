@@ -1,7 +1,4 @@
-﻿using System;
-using IssueTracker.ModelLayer.Base;
-using IssueTracker.ModelLayer.Issues.Objects;
-using IssueTracker.ModelLayer.Validations;
+﻿using IssueTracker.ModelLayer.Validations;
 
 namespace IssueTracker.ModelLayer.Issues.Requests
 {

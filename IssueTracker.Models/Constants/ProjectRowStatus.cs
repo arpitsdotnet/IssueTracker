@@ -2,7 +2,7 @@
 {
     public enum ProjectRowStatus
     {
-        New = 'N',
+        Open = 'O',
         InProgress = 'I',
         Paused = 'P',
         Completed = 'C',

@@ -26,11 +26,14 @@ namespace IssueTracker.DataLayer
             get
             {
                 //Lock is used to make the call Thread-safe
-                lock (lockObject)
+                if (_Instance == null)
                 {
-                    if (_Instance == null)
+                    lock (lockObject)
                     {
-                        _Instance = new SQLDataAccess();
+                        if (_Instance == null)
+                        {
+                            _Instance = new SQLDataAccess();
+                        }
                     }
                 }
                 return _Instance;

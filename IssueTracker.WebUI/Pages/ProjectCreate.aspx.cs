@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using IssueTracker.BusinessLayer.Controllers;
 using IssueTracker.ModelLayer.Base;
 using IssueTracker.ModelLayer.Projects.Requests;
@@ -71,7 +70,7 @@ namespace IssueTracker.WebUI.Pages
                     ProjIconUrl: ""
                 );
 
-                var response = _projectController.AddProject(request);
+                var response = _projectController.CreateProject(request);
 
                 if (response.IsSuccess == false)
                     ShowWarning(response.Message, response.Title);
