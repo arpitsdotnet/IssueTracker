@@ -1,13 +1,15 @@
 ﻿namespace IssueTracker.ModelLayer.Constants
 {
-    public class IssueStatuses
+    public enum IssueStatuses
     {
-        public const char PENDING = 'P';
-        public const char IN_PROGRESS = 'I';
-        public const char AT_RISK = 'A';
-        public const char UNDER_DISCUSSION = 'D';
-        public const char NO_CHANGE = 'N';
-        public const char BLOCKED = 'B';
-        public const char CLOSED = 'C';
+        OPEN = 'O',
+        IN_PROGRESS = 'I',
+        AT_RISK = 'A',
+        UNDER_DISCUSSION = 'U',
+        NO_CHANGE = 'N',
+        BLOCKED = 'B',
+        FIXED = 'F',
+        TESTED = 'T',
+        CLOSED = 'C'
     }
 }

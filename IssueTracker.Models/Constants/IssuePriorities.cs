@@ -1,9 +1,10 @@
 ﻿namespace IssueTracker.ModelLayer.Constants
 {
-    public class IssuePriorities
+    public enum IssuePriorities
     {
-        public const short HIGH = 100;
-        public const short MEDIUM = 10;
-        public const short LOW = 0;
+        CRITICAL = 5,
+        HIGH = 3,
+        MEDIUM = 2,
+        LOW = 1
     }
 }
