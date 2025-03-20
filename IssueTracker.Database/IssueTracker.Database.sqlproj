@@ -128,4 +128,8 @@
       <QuotedIdentifier>On</QuotedIdentifier>
     </Build>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="dbo\Stored Procedures\s_SeedData.sql" />
+    <None Include="IssueTracker.Database.publish.xml" />
+  </ItemGroup>
 </Project>
