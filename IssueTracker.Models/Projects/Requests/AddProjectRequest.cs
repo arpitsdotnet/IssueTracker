@@ -25,7 +25,8 @@ namespace IssueTracker.ModelLayer.Projects.Requests
             this.ProjTemplateId = ProjTemplateId;
             this.ProjTypeId = ProjTypeId;
             this.ProjIconUrl = ProjIconUrl;
-            this.RowStatus = ProjectRowStatus.Open;
+            this.RowStatus = RowStatuses.APPROVED;
+            this.ProjStatus = ProjectStatuses.NEW;
         }
 
         public string SessionUID { get; private set; }
@@ -35,7 +36,8 @@ namespace IssueTracker.ModelLayer.Projects.Requests
         public short ProjCategoryId { get; set; }
         public short ProjTemplateId { get; set; }
         public short ProjTypeId { get; set; }
-        public ProjectRowStatus RowStatus { get; private set; }
+        public RowStatuses RowStatus { get; private set; }
+        public ProjectStatuses ProjStatus { get; private set; }
 
         public static AddProjectRequest Create(
             string SessionUID,

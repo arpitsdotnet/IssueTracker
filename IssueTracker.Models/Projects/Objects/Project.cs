@@ -21,7 +21,7 @@ namespace IssueTracker.ModelLayer.Projects.Objects
         public int LastModifiedById { get; set; }
         public virtual User LastModifiedBy { get; set; }
 
-        public ProjectRowStatus ProjStatus { get; set; }
+        public ProjectStatuses ProjStatus { get; set; }
 
         public string ProjKey { get; set; }
         public string ProjTitle { get; set; }

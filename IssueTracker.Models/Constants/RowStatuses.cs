@@ -2,8 +2,8 @@
 {
     public enum RowStatuses
     {
-        Approved = 'A',
-        Modify = 'M',
-        Deleted = 'D'        
+        APPROVED = 'A',
+        MODIFY = 'M',
+        DELETED = 'D'        
     }
 }

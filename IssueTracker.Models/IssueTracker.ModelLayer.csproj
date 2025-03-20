@@ -47,7 +47,7 @@
     <Compile Include="Base\FieldValidationException.cs" />
     <Compile Include="Base\PageRequest.cs" />
     <Compile Include="Clients\Objects\Client.cs" />
-    <Compile Include="Constants\UserRowStatus.cs" />
+    <Compile Include="Constants\RowStatuses.cs" />
     <Compile Include="Messaging\DefaultEmailSettingKeyModel.cs" />
     <Compile Include="Messaging\EmailMessageModel.cs" />
     <Compile Include="Messaging\FCMPushNotificationModel.cs" />
@@ -61,7 +61,6 @@
     <Compile Include="Constants\IssuePriorities.cs" />
     <Compile Include="Constants\IssueStatuses.cs" />
     <Compile Include="Constants\IssueTypes.cs" />
-    <Compile Include="Constants\IssueRowStatus.cs" />
     <Compile Include="Epic.cs" />
     <Compile Include="Issues\Objects\Issue.cs" />
     <Compile Include="Issues\Objects\IssueHistory.cs" />
@@ -79,7 +78,7 @@
     <Compile Include="Projects\Objects\ProjectHistory.cs" />
     <Compile Include="Projects\Objects\ProjectCategory.cs" />
     <Compile Include="Projects\Objects\Project.cs" />
-    <Compile Include="Constants\ProjectRowStatus.cs" />
+    <Compile Include="Constants\ProjectStatuses.cs" />
     <Compile Include="Projects\Requests\AddProjectRequest.cs" />
     <Compile Include="Projects\Requests\GetProjectRequest.cs" />
     <Compile Include="Projects\Objects\ProjectTemplate.cs" />

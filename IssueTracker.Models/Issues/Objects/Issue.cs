@@ -36,7 +36,7 @@ namespace IssueTracker.ModelLayer.Issues.Objects
         public int StoryManagerId { get; set; }
         public User StoryManager { get; set; }
 
-        public IssueRowStatus RowStatus { get; set; }
+        public RowStatuses RowStatus { get; set; }
         public string CreatedOn { get; set; }
         public int CreatedById { get; set; }
         public User CreatedBy { get; set; }

@@ -8,7 +8,7 @@ namespace IssueTracker.ModelLayer.Users.Objects
         public bool IsActive { get; set; }
         public string CreatedOn { get; set; }
         public string LastModifiedOn { get; set; }
-        public UserRowStatus UserRowStatus { get; set; }
+        public RowStatuses RowStatus { get; set; }
         public string UserName { get; set; }
         public string UserEmail { get; set; }
         public string UserPhone { get; set; }
