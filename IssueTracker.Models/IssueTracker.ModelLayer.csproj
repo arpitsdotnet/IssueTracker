@@ -55,6 +55,8 @@
     <Compile Include="Messaging\SendGridEmailKeyModel.cs" />
     <Compile Include="Messaging\DefaultSMSSettingKeyModel.cs" />
     <Compile Include="Messaging\WhatsappMessageModel.cs" />
+    <Compile Include="SysCategories\Objects\Category.cs" />
+    <Compile Include="SysCategories\Requests\GetCategoryRequest.cs" />
     <Compile Include="Validations\PageRequestValidationRules.cs" />
     <Compile Include="Comments\Objects\Comment.cs" />
     <Compile Include="Comments\Objects\CommentHistory.cs" />
