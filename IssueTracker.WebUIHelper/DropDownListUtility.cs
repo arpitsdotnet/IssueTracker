@@ -2,7 +2,7 @@
 
 namespace IssueTracker.WebUIHelper
 {
-    public static class DropdownUtility
+    public static class DropDownListUtility
     {
         public static void BindData(this DropDownList ddl, object data = null, string textField = "", string valueField = "", string defaultItemText = "- Select -", string defaultItemValue = "0")
         {

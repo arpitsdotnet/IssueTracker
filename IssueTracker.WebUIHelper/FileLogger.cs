@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Configuration;
 using System.IO;
 using System.Web;
 using Newtonsoft.Json;
 
 namespace IssueTracker.WebUIHelper
 {
-    public class Logger
+    public class FileLogger
     {
         private static readonly object _LockStreamWriter = new object();
         private static DateTime _DateTimeNow { get { return DateTime.Now; } }
@@ -20,7 +21,7 @@ namespace IssueTracker.WebUIHelper
         public static string Log(Exception ex, Object obj1 = null, Object obj2 = null)
         {
             WriteMessageToFile($"ERROR {_MessageHeader} \t{ex.Message} \t{ex.InnerException?.Message}", ex, obj1, obj2);
-            return "Oops! Something went wrong, please contact administration.";
+            return $"Oops! Something went wrong, please contact administration. Details: {ex.Message}";
         }
 
         private static void WriteMessageToFile(string formattedMessage, Exception ex = null, Object obj1 = null, Object obj2 = null)
@@ -57,7 +58,17 @@ namespace IssueTracker.WebUIHelper
 
         private static string GetFilePath()
         {
-            string directory = $"~/_Logs/WebException/{_DateTimeNow:yyyyMM}";
+            var fileLoggerPath = string.Empty;
+            try
+            {
+                fileLoggerPath = ConfigurationManager.AppSettings["FILE_LOGGER_PATH"].ToString().TrimStart('/').TrimEnd('/');
+            }
+            catch
+            {
+                throw new ArgumentNullException("Unable to find FILE_LOGGER_PATH setting.");
+            }
+
+            string directory = $"~/{fileLoggerPath }/{_DateTimeNow:yyyyMM}";
             string directoryPath = HttpContext.Current.Server.MapPath(directory);
 
             if (Directory.Exists(directoryPath) == false)
