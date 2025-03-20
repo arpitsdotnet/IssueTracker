@@ -34,7 +34,7 @@ namespace IssueTracker.WebUI.Pages
             }
             catch (Exception ex)
             {
-                ShowError(Logger.Log(ex));
+                ShowError(FileLogger.Log(ex));
             }
         }
 
@@ -85,7 +85,7 @@ namespace IssueTracker.WebUI.Pages
             }
             catch (Exception ex)
             {
-                ShowError(Logger.Log(ex));
+                ShowError(FileLogger.Log(ex));
             }
         }
     }

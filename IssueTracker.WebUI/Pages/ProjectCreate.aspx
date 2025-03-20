@@ -14,7 +14,7 @@
                                         <asp:Label ID="Lbl_ProjectTitle" runat="server" Text="Name *"></asp:Label>
                                     </div>
                                     <div>
-                                        <asp:TextBox ID="Txt_ProjectTitle" runat="server" CssClass="form-control" OnTextChanged="Txt_ProjectTitle_TextChanged" AutoPostBack="true"></asp:TextBox>
+                                        <asp:TextBox ID="Txt_ProjectTitle" runat="server" CssClass="form-control text-capitalize" OnTextChanged="Txt_ProjectTitle_TextChanged" AutoPostBack="true"></asp:TextBox>
                                         <small>Try a team name, project goal or milestones.</small>
                                     </div>
                                 </div>
@@ -23,7 +23,7 @@
                                         <asp:Label ID="Lbl_ProjectKey" runat="server" Text="Key *"></asp:Label>
                                     </div>
                                     <div>
-                                        <asp:TextBox ID="Txt_ProjectKey" runat="server" CssClass="form-control"></asp:TextBox>
+                                        <asp:TextBox ID="Txt_ProjectKey" runat="server" CssClass="form-control text-uppercase"></asp:TextBox>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -38,6 +38,9 @@
                                     </div>
                                 </div>
                             </ContentTemplate>
+                            <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID="Txt_ProjectTitle" EventName="TextChanged" />
+                            </Triggers>
                         </asp:UpdatePanel>
                     </div>
                     <div class="col-md-6">
@@ -46,7 +49,7 @@
                                 <asp:Label ID="Lbl_ProjectTemplate" runat="server" Text="Template *"></asp:Label>
                             </div>
                             <div>
-                                <asp:RadioButtonList ID="Ddl_ProjectTemplate" runat="server" RepeatDirection="Horizontal" CssClass="easy-radio">
+                                <asp:RadioButtonList ID="Rbl_ProjectTemplate" runat="server" RepeatDirection="Horizontal" CssClass="easy-radio">
                                     <asp:ListItem Text="Scrum" Value="SCRUM" Selected="True" />
                                     <asp:ListItem Text="Kanban" Value="KANBAN" />
                                     <asp:ListItem Text="Bug Tracking" Value="BUGTRKNG" />

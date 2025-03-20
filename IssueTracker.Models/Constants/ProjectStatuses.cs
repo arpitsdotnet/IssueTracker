@@ -4,7 +4,7 @@
     {
         NEW = 'N',
         IN_PROGRESS = 'I',
-        PAUSED = 'P',
+        BLOCKED = 'B',
         COMPLETED = 'C'
     }
 }

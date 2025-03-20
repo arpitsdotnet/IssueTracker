@@ -78,13 +78,13 @@ namespace IssueTracker.WebUI.Pages
         protected global::System.Web.UI.WebControls.Label Lbl_ProjectTemplate;
 
         /// <summary>
-        /// Ddl_ProjectTemplate control.
+        /// Rbl_ProjectTemplate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList Ddl_ProjectTemplate;
+        protected global::System.Web.UI.WebControls.RadioButtonList Rbl_ProjectTemplate;
 
         /// <summary>
         /// Lbl_ProjectType control.

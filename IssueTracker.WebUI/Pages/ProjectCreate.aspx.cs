@@ -19,16 +19,39 @@ namespace IssueTracker.WebUI.Pages
         {
             try
             {
+                if (!IsPostBack)
+                {
+                    Ddl_ProjectCategory_Bind();
+                    Rbl_ProjectTemplate_Bind();
+                    Rbl_ProjectType_Bind();
+                }
             }
             catch (ArgumentException ex)
             {
-                ShowWarning(Logger.Log(ex.Message));
+                ShowWarning(FileLogger.Log(ex.Message));
             }
             catch (Exception ex)
             {
-                ShowError(Logger.Log(ex));
+                ShowError(FileLogger.Log(ex));
             }
         }
+
+        #region Private Members
+
+        private void Ddl_ProjectCategory_Bind()
+        {
+
+        }
+        private void Rbl_ProjectTemplate_Bind()
+        {
+
+        }
+        private void Rbl_ProjectType_Bind()
+        {
+
+        }
+
+        #endregion
 
 
         protected void Txt_ProjectTitle_TextChanged(object sender, EventArgs e)
@@ -44,11 +67,11 @@ namespace IssueTracker.WebUI.Pages
             }
             catch (ArgumentException ex)
             {
-                ShowWarning(Logger.Log(ex.Message));
+                ShowWarning(FileLogger.Log(ex.Message));
             }
             catch (Exception ex)
             {
-                ShowError(Logger.Log(ex));
+                ShowError(FileLogger.Log(ex));
             }
         }
 
@@ -57,7 +80,7 @@ namespace IssueTracker.WebUI.Pages
             try
             {
                 var projectCategoryId = Convert.ToInt16(Ddl_ProjectCategory.SelectedValue);
-                var projectTemplateId = Convert.ToInt16(Ddl_ProjectTemplate.SelectedValue);
+                var projectTemplateId = Convert.ToInt16(Rbl_ProjectTemplate.SelectedValue);
                 var projectTypeId = Convert.ToInt16(Rbl_ProjectType.SelectedValue);
 
                 var request = AddProjectRequest.Create(
@@ -83,7 +106,7 @@ namespace IssueTracker.WebUI.Pages
             }
             catch (Exception ex)
             {
-                ShowError(Logger.Log(ex));
+                ShowError(FileLogger.Log(ex));
             }
         }
     }

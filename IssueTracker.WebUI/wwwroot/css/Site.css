@@ -122,3 +122,5 @@ main { margin: 50px; }
 .dropdown a { text-decoration: none; color: #000; }
 
 .caret { float: right; height: 20px; }
+.text-capitalize { text-transform: capitalize !important; }
+.text-uppercase { text-transform: uppercase !important; }

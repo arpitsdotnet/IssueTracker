@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{AC071A58
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IssueTracker.BusinessLayer.Tests.UnitTests", "IssueTracker.BusinessLayer.Tests.UnitTests\IssueTracker.BusinessLayer.Tests.UnitTests.csproj", "{B0430831-4291-4BC3-90E7-0D1E5D4AA4B6}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "IssueTracker.Database", "IssueTracker.Database\IssueTracker.Database.sqlproj", "{A3E3FBBC-FA70-4BF3-96B3-AAAEF447FF05}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,12 @@ Global
 		{B0430831-4291-4BC3-90E7-0D1E5D4AA4B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B0430831-4291-4BC3-90E7-0D1E5D4AA4B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B0430831-4291-4BC3-90E7-0D1E5D4AA4B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3E3FBBC-FA70-4BF3-96B3-AAAEF447FF05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3E3FBBC-FA70-4BF3-96B3-AAAEF447FF05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3E3FBBC-FA70-4BF3-96B3-AAAEF447FF05}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{A3E3FBBC-FA70-4BF3-96B3-AAAEF447FF05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3E3FBBC-FA70-4BF3-96B3-AAAEF447FF05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3E3FBBC-FA70-4BF3-96B3-AAAEF447FF05}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
