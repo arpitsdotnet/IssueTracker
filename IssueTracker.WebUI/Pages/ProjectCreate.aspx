@@ -32,8 +32,6 @@
                                     </div>
                                     <div>
                                         <asp:DropDownList ID="Ddl_ProjectCategory" runat="server" CssClass="form-control">
-                                            <asp:ListItem Text="Software Management" Value="1" Selected="True" />
-                                            <asp:ListItem Text="Service Management" Value="2" />
                                         </asp:DropDownList>
                                     </div>
                                 </div>
@@ -50,9 +48,6 @@
                             </div>
                             <div>
                                 <asp:RadioButtonList ID="Rbl_ProjectTemplate" runat="server" RepeatDirection="Horizontal" CssClass="easy-radio">
-                                    <asp:ListItem Text="Scrum" Value="SCRUM" Selected="True" />
-                                    <asp:ListItem Text="Kanban" Value="KANBAN" />
-                                    <asp:ListItem Text="Bug Tracking" Value="BUGTRKNG" />
                                 </asp:RadioButtonList>
                             </div>
                         </div>
@@ -62,8 +57,6 @@
                             </div>
                             <div>
                                 <asp:RadioButtonList ID="Rbl_ProjectType" runat="server" RepeatDirection="Horizontal" CssClass="easy-radio">
-                                    <asp:ListItem Text="Team-Managed" Value="TEAM" Selected="True" />
-                                    <asp:ListItem Text="Company-Managed" Value="COMPANY" />
                                 </asp:RadioButtonList>
                             </div>
                         </div>

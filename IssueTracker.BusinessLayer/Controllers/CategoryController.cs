@@ -14,7 +14,7 @@ namespace IssueTracker.BusinessLayer.Controllers
             _categoryRepository = categoryRepository ?? new CategoryRepository();
         }
 
-        public ResultList<Category> GetProjects(GetCategoryRequest request)
+        public ResultList<Category> GetCategories(GetCategoryRequest request)
         {
             var result = _categoryRepository.GetCategories(request);
 

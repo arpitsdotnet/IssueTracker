@@ -2,16 +2,20 @@
 using IssueTracker.BusinessLayer.Controllers;
 using IssueTracker.ModelLayer.Base;
 using IssueTracker.ModelLayer.Projects.Dtos;
+using IssueTracker.ModelLayer.SysSubCategories.Dtos;
+using IssueTracker.ModelLayer.SysSubCategories.Models;
 using IssueTracker.WebUIHelper;
 
 namespace IssueTracker.WebUI.Pages
 {
     public partial class ProjectCreate : RootPage
     {
+        private readonly SubCategoryController _subCategoryController;
         private readonly ProjectController _projectController;
 
         public ProjectCreate()
         {
+            _subCategoryController = new SubCategoryController();
             _projectController = new ProjectController();
         }
 
@@ -26,9 +30,13 @@ namespace IssueTracker.WebUI.Pages
                     Rbl_ProjectType_Bind();
                 }
             }
+            catch (FieldValidationException ex)
+            {
+                ShowWarning(ex.Message, ex.Title);
+            }
             catch (ArgumentException ex)
             {
-                ShowWarning(FileLogger.Log(ex.Message));
+                ShowWarning(ex.Message);
             }
             catch (Exception ex)
             {
@@ -40,15 +48,59 @@ namespace IssueTracker.WebUI.Pages
 
         private void Ddl_ProjectCategory_Bind()
         {
+            var request = GetSubCategoryRequest.Create(
+                            ClientUID: Guid.NewGuid().ToString(),
+                            SessionUID: Guid.NewGuid().ToString(),
+                            CategoryKey: "PROJCTGR");
 
+            var result = _subCategoryController.GetSubCategories(request);
+
+            if(result.IsSuccess == false)
+            {
+                throw new ArgumentException(result.Message);
+            }
+
+            Ddl_ProjectCategory.BindData(result.Data, nameof(SubCategory.SubcTitle), nameof(SubCategory.SubcId), "");
         }
         private void Rbl_ProjectTemplate_Bind()
         {
+            var request = GetSubCategoryRequest.Create(
+                            ClientUID: Guid.NewGuid().ToString(),
+                            SessionUID: Guid.NewGuid().ToString(),
+                            CategoryKey: "PROJTMPL");
 
+            var result = _subCategoryController.GetSubCategories(request);
+
+            if (result.IsSuccess == false)
+            {
+                throw new ArgumentException(result.Message);
+            }
+
+            Rbl_ProjectTemplate.BindData(result.Data, nameof(SubCategory.SubcTitle), nameof(SubCategory.SubcId), "");
+            if (Rbl_ProjectTemplate.Items.Count > 0)
+            {
+                Rbl_ProjectTemplate.SelectedIndex = 0;
+            }
         }
         private void Rbl_ProjectType_Bind()
         {
+            var request = GetSubCategoryRequest.Create(
+                            ClientUID: Guid.NewGuid().ToString(),
+                            SessionUID: Guid.NewGuid().ToString(),
+                            CategoryKey: "PROJTYPE");
 
+            var result = _subCategoryController.GetSubCategories(request);
+
+            if (result.IsSuccess == false)
+            {
+                throw new ArgumentException(result.Message);
+            }
+
+            Rbl_ProjectType.BindData(result.Data, nameof(SubCategory.SubcTitle), nameof(SubCategory.SubcId), "");
+            if (Rbl_ProjectType.Items.Count > 0)
+            {
+                Rbl_ProjectType.SelectedIndex = 0;
+            }
         }
 
         #endregion
@@ -67,7 +119,7 @@ namespace IssueTracker.WebUI.Pages
             }
             catch (ArgumentException ex)
             {
-                ShowWarning(FileLogger.Log(ex.Message));
+                ShowWarning(ex.Message);
             }
             catch (Exception ex)
             {

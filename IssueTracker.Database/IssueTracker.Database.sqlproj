@@ -127,6 +127,7 @@
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
     </Build>
+    <Build Include="dbo\Stored Procedures\sps_SubCategories.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="dbo\Stored Procedures\s_SeedData.sql" />

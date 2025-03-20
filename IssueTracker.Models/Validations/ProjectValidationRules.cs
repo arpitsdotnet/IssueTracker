@@ -25,8 +25,8 @@ namespace IssueTracker.ModelLayer.Validations
                     return;
                 if (ProjTitle.Length < 3)
                     throw new FieldValidationException("Invalid!", "Project Title must be atleast 3 characters long.");
-                if (ProjTitle.Length > 20)
-                    throw new FieldValidationException("Invalid!", "Project Title must not be greater than 20 characters.");
+                if (ProjTitle.Length > 30)
+                    throw new FieldValidationException("Invalid!", "Project Title must not be greater than 30 characters.");
             }
         }
         public class ProjKey

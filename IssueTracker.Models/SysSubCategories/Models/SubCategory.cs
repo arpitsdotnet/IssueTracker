@@ -5,6 +5,7 @@ namespace IssueTracker.ModelLayer.SysSubCategories.Models
 {
     public class SubCategory
     {
+        public int SubcId { get; set; }
         public int CateId { get; set; }
         public string ClientUID { get; set; }
         public RowStatuses RowStatus { get; set; }
@@ -14,9 +15,9 @@ namespace IssueTracker.ModelLayer.SysSubCategories.Models
         public string ModifiedOn { get; set; }
         public int ModifierId { get; set; }
         public User Modifier { get; set; }
-        public string CateKey { get; set; }
-        public string CateTitle { get; set; }
-        public string CateIconUrl { get; set; }
+        public string SubcKey { get; set; }
+        public string SubcTitle { get; set; }
+        public string SubcIconUrl { get; set; }
 
     }
 }
