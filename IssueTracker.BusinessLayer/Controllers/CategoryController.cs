@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using IssueTracker.DataLayer.Repositories;
+﻿using IssueTracker.DataLayer.Repositories;
+using IssueTracker.ModelLayer.Base;
+using IssueTracker.ModelLayer.SysCategories.Dtos;
+using IssueTracker.ModelLayer.SysCategories.Models;
 
 namespace IssueTracker.BusinessLayer.Controllers
 {
@@ -14,6 +12,13 @@ namespace IssueTracker.BusinessLayer.Controllers
         public CategoryController(ICategoryRepository categoryRepository = null)
         {
             _categoryRepository = categoryRepository ?? new CategoryRepository();
+        }
+
+        public ResultList<Category> GetProjects(GetCategoryRequest request)
+        {
+            var result = _categoryRepository.GetCategories(request);
+
+            return result;
         }
     }
 }

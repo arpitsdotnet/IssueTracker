@@ -1,6 +1,6 @@
 ﻿using IssueTracker.ModelLayer.Base;
-using IssueTracker.ModelLayer.Issues.Objects;
-using IssueTracker.ModelLayer.Issues.Requests;
+using IssueTracker.ModelLayer.Issues.Dtos;
+using IssueTracker.ModelLayer.Issues.Models;
 
 namespace IssueTracker.DataLayer.Repositories
 {

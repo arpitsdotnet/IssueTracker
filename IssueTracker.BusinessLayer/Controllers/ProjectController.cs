@@ -3,8 +3,8 @@ using IssueTracker.BusinessLayer.Services.Messaging;
 using IssueTracker.DataLayer.Repositories;
 using IssueTracker.ModelLayer.Base;
 using IssueTracker.ModelLayer.Messaging;
-using IssueTracker.ModelLayer.Projects.Objects;
-using IssueTracker.ModelLayer.Projects.Requests;
+using IssueTracker.ModelLayer.Projects.Dtos;
+using IssueTracker.ModelLayer.Projects.Models;
 
 namespace IssueTracker.BusinessLayer.Controllers
 {

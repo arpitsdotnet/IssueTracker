@@ -1,6 +1,6 @@
 ﻿using IssueTracker.ModelLayer.Validations;
 
-namespace IssueTracker.ModelLayer.Issues.Requests
+namespace IssueTracker.ModelLayer.Issues.Dtos
 {
     public class AddIssueRequest
     {

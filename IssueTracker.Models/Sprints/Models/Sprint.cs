@@ -1,4 +1,4 @@
-﻿namespace IssueTracker.ModelLayer.Sprints.Objects
+﻿namespace IssueTracker.ModelLayer.Sprints.Models
 {
     public class Sprint
     {

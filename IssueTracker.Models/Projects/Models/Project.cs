@@ -1,8 +1,9 @@
 ﻿using IssueTracker.ModelLayer.Clients.Objects;
 using IssueTracker.ModelLayer.Constants;
-using IssueTracker.ModelLayer.Users.Objects;
+using IssueTracker.ModelLayer.SysSubCategories.Models;
+using IssueTracker.ModelLayer.Users.Models;
 
-namespace IssueTracker.ModelLayer.Projects.Objects
+namespace IssueTracker.ModelLayer.Projects.Models
 {
     public class Project
     {
@@ -28,18 +29,18 @@ namespace IssueTracker.ModelLayer.Projects.Objects
         public string ProjIconUrl { get; set; }
 
         public short ProjCategoryId { get; set; }
-        public virtual ProjectCategory ProjCategory { get; set; }
+        public virtual SubCategory ProjCategory { get; set; }
 
         public short ProjTemplateId { get; set; }
-        public virtual ProjectTemplate ProjTemplate { get; set; }
+        public virtual SubCategory ProjTemplate { get; set; }
 
         public short ProjTypeId { get; set; }
-        public virtual ProjectType ProjType { get; set; }
+        public virtual SubCategory ProjType { get; set; }
 
         public int ProjManagerId { get; set; }
         public virtual User ProjManager { get; set; }
 
-        public int ProjDefaultAssigneeId { get; set; }        
+        public int ProjDefaultAssigneeId { get; set; }
         public virtual User ProjDefaultAssignee { get; set; }
 
     }

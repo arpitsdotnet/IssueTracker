@@ -1,7 +1,7 @@
 ﻿using IssueTracker.ModelLayer.Constants;
-using IssueTracker.ModelLayer.Users.Objects;
+using IssueTracker.ModelLayer.Users.Models;
 
-namespace IssueTracker.ModelLayer.SysCategories.Objects
+namespace IssueTracker.ModelLayer.SysCategories.Models
 {
     public class Category
     {

@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using IssueTracker.ModelLayer.Comments.Objects;
+﻿using System.Collections.Generic;
+using IssueTracker.ModelLayer.Comments.Models;
 using IssueTracker.ModelLayer.Constants;
-using IssueTracker.ModelLayer.Projects.Objects;
-using IssueTracker.ModelLayer.Sprints.Objects;
-using IssueTracker.ModelLayer.Users.Objects;
+using IssueTracker.ModelLayer.Projects.Models;
+using IssueTracker.ModelLayer.Sprints.Models;
+using IssueTracker.ModelLayer.SysSubCategories.Models;
+using IssueTracker.ModelLayer.Users.Models;
 
-namespace IssueTracker.ModelLayer.Issues.Objects
+namespace IssueTracker.ModelLayer.Issues.Models
 {
     public class Issue
     {
@@ -17,13 +17,13 @@ namespace IssueTracker.ModelLayer.Issues.Objects
         public int ProjectId { get; set; }
         public Project Project { get; set; }
         public short IssueTypeId { get; set; } // EPIC | STORY | TASK | SUB-TASK | BUG
-        public IssueType IssueType { get; set; }
+        public SubCategory IssueType { get; set; }
         public short IssuePriorityId { get; set; } // HIGH | MEDIUM | LOW
-        public IssuePriority IssuePriority { get; set; }
+        public SubCategory IssuePriority { get; set; }
         public int ParentIssueId { get; set; }
         public Issue ParentIssue { get; set; }
         public short IssueStatusId { get; set; } // TO-DO | IN-PROGRESS | DONE
-        public IssueStatus IssueStatus { get; set; }
+        public SubCategory IssueStatus { get; set; }
 
         public string ExpectedStartDate { get; set; }
         public string ExpectedDueDate { get; set; }

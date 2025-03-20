@@ -2,7 +2,7 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using IssueTracker.ModelLayer.Users.Objects;
+using IssueTracker.ModelLayer.Users.Models;
 using Microsoft.IdentityModel.Tokens;
 
 namespace IssueTracker.BusinessLayer.Services.Authentication

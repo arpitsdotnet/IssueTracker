@@ -1,16 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using IssueTracker.BusinessLayer.Controllers;
-using IssueTracker.DataLayer;
-using IssueTracker.DataLayer.Repositories;
 using IssueTracker.ModelLayer.Base;
-using IssueTracker.ModelLayer.Issues.Objects;
-using IssueTracker.ModelLayer.Issues.Requests;
-using IssueTracker.ModelLayer.Projects.Objects;
-using Moq;
+using IssueTracker.ModelLayer.Issues.Dtos;
 using Xunit;
 
 namespace IssueTracker.BusinessLayer.Tests.UnitTests.Controllers

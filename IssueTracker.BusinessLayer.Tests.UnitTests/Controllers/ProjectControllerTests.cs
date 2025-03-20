@@ -7,8 +7,8 @@ using IssueTracker.BusinessLayer.Controllers;
 using IssueTracker.DataLayer;
 using IssueTracker.DataLayer.Repositories;
 using IssueTracker.ModelLayer.Base;
-using IssueTracker.ModelLayer.Projects.Objects;
-using IssueTracker.ModelLayer.Projects.Requests;
+using IssueTracker.ModelLayer.Projects.Dtos;
+using IssueTracker.ModelLayer.Projects.Models;
 using Moq;
 using Xunit;
 

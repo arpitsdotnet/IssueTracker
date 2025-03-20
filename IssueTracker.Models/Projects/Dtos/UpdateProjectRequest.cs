@@ -1,9 +1,7 @@
-﻿namespace IssueTracker.ModelLayer.Issues.Requests
+﻿namespace IssueTracker.ModelLayer.Projects.Dtos
 {
-    public class UpdateIssueRequest
+    public class UpdateProjectRequest
     {
-        private UpdateIssueRequest() { }
-
         public short IssueTypeId { get; set; }
         public int ProjectId { get; set; }
         public string IssueTitle { get; set; }

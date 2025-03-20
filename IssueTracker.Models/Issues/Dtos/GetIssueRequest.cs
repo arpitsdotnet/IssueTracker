@@ -2,7 +2,7 @@
 using IssueTracker.ModelLayer.Base;
 using IssueTracker.ModelLayer.Validations;
 
-namespace IssueTracker.ModelLayer.Issues.Requests
+namespace IssueTracker.ModelLayer.Issues.Dtos
 {
     public class GetIssueRequest : PageRequest
     {
@@ -52,7 +52,7 @@ namespace IssueTracker.ModelLayer.Issues.Requests
             ProjectValidationRules.ProjectId.IsRequired(ProjectId);
             IssueValidationRules.IssueKey.HasValidLength(IssueKey);
             IssueValidationRules.IssueTitle.HasValidLength(IssueTitle);
-            PageRequestValidationRules.Validate(PageNo,PageSize);
+            PageRequestValidationRules.Validate(PageNo, PageSize);
 
             return new GetIssueRequest
             {

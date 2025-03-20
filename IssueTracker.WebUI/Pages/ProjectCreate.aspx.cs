@@ -1,7 +1,7 @@
 ﻿using System;
 using IssueTracker.BusinessLayer.Controllers;
 using IssueTracker.ModelLayer.Base;
-using IssueTracker.ModelLayer.Projects.Requests;
+using IssueTracker.ModelLayer.Projects.Dtos;
 using IssueTracker.WebUIHelper;
 
 namespace IssueTracker.WebUI.Pages

@@ -1,4 +1,4 @@
-﻿namespace IssueTracker.ModelLayer.Issues.Objects
+﻿namespace IssueTracker.ModelLayer.Issues.Models
 {
     public class IssueHistory
     {

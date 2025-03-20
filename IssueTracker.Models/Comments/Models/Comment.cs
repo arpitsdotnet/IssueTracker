@@ -1,4 +1,4 @@
-﻿namespace IssueTracker.ModelLayer.Comments.Objects
+﻿namespace IssueTracker.ModelLayer.Comments.Models
 {
     public class Comment
     {

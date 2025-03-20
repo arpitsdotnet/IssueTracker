@@ -1,15 +1,15 @@
 ﻿using IssueTracker.ModelLayer.Validations;
 
-namespace IssueTracker.ModelLayer.SysCategories.Requests
+namespace IssueTracker.ModelLayer.SysSubCategories.Dtos
 {
-    public class GetCategoryRequest
+    public class GetSubCategoryRequest
     {
-        private GetCategoryRequest() { }
+        private GetSubCategoryRequest() { }
 
         public string ClientUID { get; private set; }
         public string SessionUID { get; private set; }
         public int CategoryId { get; set; }
-        public static GetCategoryRequest Create(
+        public static GetSubCategoryRequest Create(
             string ClientUID,
             string SessionUID,
             int CategoryId = 0)
@@ -17,7 +17,7 @@ namespace IssueTracker.ModelLayer.SysCategories.Requests
             ClientValidationRules.ClientUID.IsRequired(ClientUID);
             SessionValidationRules.SessionUID.IsRequired(SessionUID);
 
-            return new GetCategoryRequest
+            return new GetSubCategoryRequest
             {
                 ClientUID = ClientUID,
                 SessionUID = SessionUID,

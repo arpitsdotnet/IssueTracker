@@ -1,6 +1,6 @@
 ﻿using IssueTracker.ModelLayer.Constants;
 
-namespace IssueTracker.ModelLayer.Users.Objects
+namespace IssueTracker.ModelLayer.Users.Models
 {
     public class User
     {

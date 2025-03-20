@@ -1,10 +1,7 @@
-﻿using System;
-using IssueTracker.ModelLayer.Base;
-using IssueTracker.ModelLayer.Constants;
-using IssueTracker.ModelLayer.Projects.Objects;
+﻿using IssueTracker.ModelLayer.Constants;
 using IssueTracker.ModelLayer.Validations;
 
-namespace IssueTracker.ModelLayer.Projects.Requests
+namespace IssueTracker.ModelLayer.Projects.Dtos
 {
     public class AddProjectRequest
     {
@@ -25,8 +22,8 @@ namespace IssueTracker.ModelLayer.Projects.Requests
             this.ProjTemplateId = ProjTemplateId;
             this.ProjTypeId = ProjTypeId;
             this.ProjIconUrl = ProjIconUrl;
-            this.RowStatus = RowStatuses.APPROVED;
-            this.ProjStatus = ProjectStatuses.NEW;
+            RowStatus = RowStatuses.APPROVED;
+            ProjStatus = ProjectStatuses.NEW;
         }
 
         public string SessionUID { get; private set; }

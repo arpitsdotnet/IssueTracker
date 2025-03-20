@@ -1,9 +1,7 @@
-﻿using System;
-using IssueTracker.ModelLayer.Base;
-using IssueTracker.ModelLayer.Projects.Objects;
+﻿using IssueTracker.ModelLayer.Base;
 using IssueTracker.ModelLayer.Validations;
 
-namespace IssueTracker.ModelLayer.Projects.Requests
+namespace IssueTracker.ModelLayer.Projects.Dtos
 {
     public class GetProjectRequest : PageRequest
     {
