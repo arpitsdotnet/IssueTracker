@@ -1,4 +1,6 @@
-﻿using IssueTracker.ModelLayer.Base;
+﻿using System;
+using System.Collections.Generic;
+using IssueTracker.ModelLayer.Base;
 using IssueTracker.ModelLayer.Issues.Dtos;
 using IssueTracker.ModelLayer.Issues.Models;
 
@@ -7,7 +9,7 @@ namespace IssueTracker.DataLayer.Repositories
     public interface IIssueRepository
     {
         ResultList<Issue> GetIssues(GetIssueRequest request);
-        ResultSingle<Issue> SaveIssue(AddIssueRequest request);
+        ResultList<Issue> SaveIssue(AddIssueRequest request);
     }
 
     public class IssueRepository : IIssueRepository
@@ -26,11 +28,11 @@ namespace IssueTracker.DataLayer.Repositories
             return result;
         }
 
-        public ResultSingle<Issue> SaveIssue(AddIssueRequest request)
+        public ResultList<Issue> SaveIssue(AddIssueRequest request)
         {
-            var result = _dBContext.SaveData<int>("spu_Issue", request);
+            var result = _dBContext.SaveData("spu_Issue", request);
 
-            return new ResultSingle<Issue>(result.IsSuccess) { Message = result.Message, Data = new Issue { IssueId = result.Data } };
+            return new ResultList<Issue>(result.HasValue) { Message = result.Message, Data = new List<Issue>() { new Issue { IssueId = Convert.ToInt32(result.Data) } } };
         }
     }
 }

@@ -2,7 +2,7 @@
 using IssueTracker.ModelLayer.Base;
 using IssueTracker.ModelLayer.Messaging;
 
-namespace IssueTracker.BusinessLayer.Services.Messaging
+namespace IssueTracker.BusinessLayer.Services.Abstracts
 {
     public interface IEmailSender
     {

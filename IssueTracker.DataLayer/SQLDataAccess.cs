@@ -77,7 +77,7 @@ namespace IssueTracker.DataLayer
         }
         public void RollbackTransaction()
         {
-            if (_tran == null)
+            if (_tran == null || _tran.Connection == null)
                 return;
 
             _tran.Rollback();
@@ -102,16 +102,15 @@ namespace IssueTracker.DataLayer
                     dynamicp.AddDynamicParams(parameters);
                     dynamicp.Add("R_Success", dbType: DbType.Byte, direction: ParameterDirection.Output);
                     dynamicp.Add("R_Message", dbType: DbType.String, direction: ParameterDirection.Output, size: 1000);
+                    dynamicp.Add("R_Data", dbType: DbType.Int64, direction: ParameterDirection.Output);
 
                     List<TResponse> data = con.Query<TResponse>(storedProcedure, dynamicp, commandType: CommandType.StoredProcedure).ToList();
 
-                    byte isSuccess = dynamicp.Get<byte>("R_Success");
+                    byte hasValue = dynamicp.Get<byte>("R_Success");
                     string message = dynamicp.Get<string>("R_Message");
+                    long recordCount = dynamicp.Get<long>("R_Data");
 
-                    if (isSuccess > 10)
-                        throw new Exception(message);
-
-                    if (isSuccess == 0)
+                    if (hasValue == 0)
                         throw new ArgumentException(message);
 
                     if (data == null || data.Count <= 0)
@@ -138,20 +137,17 @@ namespace IssueTracker.DataLayer
                 {
                     var dynamicp = new Dapper.DynamicParameters();
                     dynamicp.AddDynamicParams(parameters);
-                    dynamicp.Add("R_RecordCount", dbType: DbType.Int32, direction: ParameterDirection.Output);
                     dynamicp.Add("R_Success", dbType: DbType.Byte, direction: ParameterDirection.Output);
                     dynamicp.Add("R_Message", dbType: DbType.String, direction: ParameterDirection.Output, size: 1000);
+                    dynamicp.Add("R_Data", dbType: DbType.Int64, direction: ParameterDirection.Output);
 
                     List<TResponse> data = con.Query<TResponse>(storedProcedure, dynamicp, commandType: CommandType.StoredProcedure).ToList();
 
-                    int recordCount = dynamicp.Get<int>("R_RecordCount");
-                    byte isSuccess = dynamicp.Get<byte>("R_Success");
+                    byte hasValue = dynamicp.Get<byte>("R_Success");
                     string message = dynamicp.Get<string>("R_Message");
+                    long recordCount = dynamicp.Get<long>("R_Data");
 
-                    if (isSuccess > 10)
-                        throw new Exception(message);
-
-                    if (isSuccess == 0)
+                    if (hasValue == 0)
                         throw new ArgumentException(message);
 
                     if (data == null || data.Count <= 0)
@@ -170,46 +166,45 @@ namespace IssueTracker.DataLayer
             }
         }
 
-        public ResultSingle<TResponse> SaveData<TResponse>(string storedProcedure, object parameters)
+        public ResultSingle<long> SaveData(string storedProcedure, object parameters)
         {
             try
             {
-                using (SqlConnection con = new SqlConnection(GetConnectionString()))
+                using (_conn = new SqlConnection(GetConnectionString()))
                 {
                     var dynamicp = new Dapper.DynamicParameters();
                     dynamicp.AddDynamicParams(parameters);
                     dynamicp.Add("R_Success", dbType: DbType.Byte, direction: ParameterDirection.Output);
                     dynamicp.Add("R_Message", dbType: DbType.String, direction: ParameterDirection.Output, size: 1000);
-                    dynamicp.Add("R_Data", dbType: DbType.Object, direction: ParameterDirection.Output);
+                    dynamicp.Add("R_Data", dbType: DbType.Int64, direction: ParameterDirection.Output);
 
-                    _tran = con.BeginTransaction();
-                    con.Execute(storedProcedure, dynamicp, _tran, commandType: CommandType.StoredProcedure);
+                    BeginTransaction();
+                    _conn.Execute(storedProcedure, dynamicp, _tran, commandType: CommandType.StoredProcedure);
 
-                    byte isSuccess = dynamicp.Get<byte>("R_Success");
+                    byte hasValue = dynamicp.Get<byte>("R_Success");
                     string message = dynamicp.Get<string>("R_Message");
-                    TResponse data = dynamicp.Get<TResponse>("R_Data");
+                    long RecordId = dynamicp.Get<long>("R_Data");
 
-                    if (isSuccess > 10)
-                        throw new Exception(message);
-
-                    if (isSuccess == 0)
+                    if (hasValue == 0)
                         throw new ArgumentException(message);
 
-                    _tran.Commit();
-                    return new ResultSingle<TResponse>(true) { Message = message, Data = data };
+                    CommitTransaction();
+                    return new ResultSingle<long>(true) { Message = message, Data = RecordId };
                 }
             }
             catch (ArgumentException ex)
             {
-                if (_tran != null)
-                    _tran.Rollback();
-                return new ResultSingle<TResponse>(false) { Message = ex.Message };
+                RollbackTransaction();
+                return new ResultSingle<long>(false) { Message = ex.Message };
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                if (_tran != null)
-                    _tran.Rollback();
+                RollbackTransaction();
                 throw;
+            }
+            finally
+            {
+                CloseConnection();
             }
         }
 
@@ -241,28 +236,25 @@ namespace IssueTracker.DataLayer
 
                 _conn.Execute(storedProcedure, dynamicp, _tran, commandType: CommandType.StoredProcedure);
 
-                byte isSuccess = dynamicp.Get<byte>("R_Success");
+                byte hasValue = dynamicp.Get<byte>("R_Success");
                 string message = dynamicp.Get<string>("R_Message");
-                TResponse data = dynamicp.Get<TResponse>("R_Data");
+                TResponse data = (TResponse)dynamicp.Get<object>("R_Data");
 
-                if (isSuccess > 10)
-                    throw new Exception(message);
-
-                if (isSuccess == 0)
+                if (hasValue == 0)
                     throw new ArgumentException(message);
 
                 return new ResultSingle<TResponse>(true) { Message = message, Data = data };
             }
             catch (ArgumentException ex)
             {
-                if (_tran != null)
-                    _tran.Rollback();
+                RollbackTransaction();
+                CloseConnection();
                 return new ResultSingle<TResponse>(false) { Message = ex.Message };
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                if (_tran != null)
-                    _tran.Rollback();
+                RollbackTransaction();
+                CloseConnection();
                 throw;
             }
         }

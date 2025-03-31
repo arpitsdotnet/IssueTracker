@@ -18,10 +18,26 @@ namespace IssueTracker.WebUIHelper
 
         #endregion
 
-        public void ShowError(string message, string title = "Error") => ShowMessage(message, title, "error");
-        public void ShowWarning(string message, string title = "Warning") => ShowMessage(message, title, "warning");
-        public void ShowWarning(FieldValidationException ex) => ShowMessage(ex.Message, ex.Title, "error");
-        public void ShowInfo(string message, string title = "Info") => ShowMessage(message, title, "info");
-        public void ShowSuccess(string message, string title = "Success") => ShowMessage(message, title, "success");
+        protected void ShowError(string message, string title = "Error") => ShowMessage(message, title, "error");
+        protected void ShowWarning(string message, string title = "Warning") => ShowMessage(message, title, "warning");
+        protected void ShowWarning(FieldValidationException ex) => ShowMessage(ex.Message, ex.Title, "error");
+        protected void ShowInfo(string message, string title = "Info") => ShowMessage(message, title, "info");
+        protected void ShowSuccess(string message, string title = "Success") => ShowMessage(message, title, "success");
+
+        protected void HandleWebException(Action action)
+        {
+            try
+            {
+                action.Invoke();
+            }
+            catch (ArgumentException ex)
+            {
+                ShowError(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                ShowError(ex.Message);
+            }
+        }
     }
 }

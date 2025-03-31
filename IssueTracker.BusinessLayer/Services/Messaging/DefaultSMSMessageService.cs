@@ -1,16 +1,12 @@
 ﻿using System;
 using System.Net;
 using System.Threading.Tasks;
+using IssueTracker.BusinessLayer.Services.Abstracts;
 using IssueTracker.ModelLayer.Base;
 using IssueTracker.ModelLayer.Messaging;
 
 namespace IssueTracker.BusinessLayer.Services.Messaging
 {
-    public interface ISMSSender
-    {
-        Task<ResultSingle<string>> SendAsync(string mobileNumber, string messageBody, string templateId);
-    }
-
     public class DefaultSMSMessageService : ISMSSender
     {
         private readonly DefaultSMSSettingKeyModel _setting;

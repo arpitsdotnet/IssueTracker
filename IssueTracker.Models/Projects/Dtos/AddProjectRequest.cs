@@ -1,4 +1,5 @@
-﻿using IssueTracker.ModelLayer.Constants;
+﻿using System;
+using IssueTracker.ModelLayer.Constants;
 using IssueTracker.ModelLayer.Validations;
 
 namespace IssueTracker.ModelLayer.Projects.Dtos
@@ -7,6 +8,7 @@ namespace IssueTracker.ModelLayer.Projects.Dtos
     {
         private AddProjectRequest() { }
         private AddProjectRequest(
+            string ClientUID,
             string SessionUID,
             string ProjKey,
             string ProjTitle,
@@ -15,6 +17,7 @@ namespace IssueTracker.ModelLayer.Projects.Dtos
             short ProjTypeId,
             string ProjIconUrl)
         {
+            this.ClientUID = ClientUID;
             this.SessionUID = SessionUID;
             this.ProjKey = ProjKey;
             this.ProjTitle = ProjTitle;
@@ -22,10 +25,10 @@ namespace IssueTracker.ModelLayer.Projects.Dtos
             this.ProjTemplateId = ProjTemplateId;
             this.ProjTypeId = ProjTypeId;
             this.ProjIconUrl = ProjIconUrl;
-            RowStatus = RowStatuses.APPROVED;
-            ProjStatus = ProjectStatuses.NEW;
+            this.ProjStatus = Convert.ToChar(ProjectStatuses.NEW);
         }
 
+        public string ClientUID { get; private set; }
         public string SessionUID { get; private set; }
         public string ProjKey { get; set; }
         public string ProjTitle { get; set; }
@@ -33,10 +36,12 @@ namespace IssueTracker.ModelLayer.Projects.Dtos
         public short ProjCategoryId { get; set; }
         public short ProjTemplateId { get; set; }
         public short ProjTypeId { get; set; }
-        public RowStatuses RowStatus { get; private set; }
-        public ProjectStatuses ProjStatus { get; private set; }
+        public int ProjManagerId { get; set; }
+        public int ProjDefaultAssigneeId { get; set; }
+        public char ProjStatus { get; private set; }
 
         public static AddProjectRequest Create(
+            string ClientUID,
             string SessionUID,
             string ProjKey,
             string ProjTitle,
@@ -45,6 +50,7 @@ namespace IssueTracker.ModelLayer.Projects.Dtos
             short ProjTypeId,
             string ProjIconUrl)
         {
+            ClientValidationRules.ClientUID.IsRequired(ClientUID);
             SessionValidationRules.SessionUID.IsRequired(SessionUID);
 
             ProjectValidationRules.ProjTitle.IsRequired(ProjTitle);
@@ -62,6 +68,7 @@ namespace IssueTracker.ModelLayer.Projects.Dtos
             ProjectValidationRules.ProjIconUrl.HasValidImage(ProjIconUrl);
 
             return new AddProjectRequest(
+                ClientUID,
                 SessionUID,
                 ProjKey,
                 ProjTitle,

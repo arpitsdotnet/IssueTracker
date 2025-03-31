@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using IssueTracker.BusinessLayer.Controllers;
+using IssueTracker.BusinessLayer.Services.Abstracts;
 using IssueTracker.DataLayer;
 using IssueTracker.DataLayer.Repositories;
 using IssueTracker.ModelLayer.Base;
@@ -137,7 +138,7 @@ namespace IssueTracker.BusinessLayer.Tests.UnitTests.Controllers
             repository.Setup(x => x.GetProjects(request)).Returns(expected);
 
             // Act
-            _sut = new ProjectController(repository.Object);
+            _sut = new ProjectController(It.IsAny<ILogger<ProjectController>>(), It.IsAny<ICacheClient>(), repository.Object);
             var result = _sut.GetProjects(request);
 
             // Assert
@@ -149,15 +150,16 @@ namespace IssueTracker.BusinessLayer.Tests.UnitTests.Controllers
         {
             // Arrange
             var text = "Proj!ect@123";
-            var expected = "PROJ";
+            var expected = new List<string> { "PROJ" };
 
-            _sut = new ProjectController(It.IsAny<IProjectRepository>());
+            _sut = new ProjectController(It.IsAny<ILogger<ProjectController>>(), It.IsAny<ICacheClient>(), It.IsAny<IProjectRepository>());
 
             // Act
             var result = _sut.GenerateProjectKey(text);
 
             // Assert
-            Assert.Equal(expected, result);
+            Assert.Equal(true, result.HasValue);
+            Assert.Equal(expected, result.Data);
         }
 
         [Fact]
@@ -165,15 +167,16 @@ namespace IssueTracker.BusinessLayer.Tests.UnitTests.Controllers
         {
             // Arrange
             var text = "Project Key Example";
-            var expected = "PKE";
+            var expected = new List<string> { "PKE" };
 
-            _sut = new ProjectController(It.IsAny<IProjectRepository>());
+            _sut = new ProjectController(It.IsAny<ILogger<ProjectController>>(), It.IsAny<ICacheClient>(), It.IsAny<IProjectRepository>());
 
             // Act
             var result = _sut.GenerateProjectKey(text);
 
             // Assert
-            Assert.Equal(expected, result);
+            Assert.Equal(true, result.HasValue);
+            Assert.Equal(expected, result.Data);
         }
 
         [Fact]
@@ -181,15 +184,16 @@ namespace IssueTracker.BusinessLayer.Tests.UnitTests.Controllers
         {
             // Arrange
             var text = "Project";
-            var expected = "PROJ";
+            var expected = new List<string> { "PROJ" };
 
-            _sut = new ProjectController(It.IsAny<IProjectRepository>());
+            _sut = new ProjectController(It.IsAny<ILogger<ProjectController>>(), It.IsAny<ICacheClient>(), It.IsAny<IProjectRepository>());
 
             // Act
             var result = _sut.GenerateProjectKey(text);
 
             // Assert
-            Assert.Equal(expected, result);
+            Assert.Equal(true, result.HasValue);
+            Assert.Equal(expected, result.Data);
         }
 
         [Fact]
@@ -197,15 +201,16 @@ namespace IssueTracker.BusinessLayer.Tests.UnitTests.Controllers
         {
             // Arrange
             var text = "project key";
-            var expected = "PK";
+            var expected = new List<string> { "PK" };
 
-            _sut = new ProjectController(It.IsAny<IProjectRepository>());
+            _sut = new ProjectController(It.IsAny<ILogger<ProjectController>>(), It.IsAny<ICacheClient>(), It.IsAny<IProjectRepository>());
 
             // Act
             var result = _sut.GenerateProjectKey(text);
 
             // Assert
-            Assert.Equal(expected, result);
+            Assert.Equal(true, result.HasValue);
+            Assert.Equal(expected, result.Data);
         }
 
         [Fact]
@@ -213,15 +218,16 @@ namespace IssueTracker.BusinessLayer.Tests.UnitTests.Controllers
         {
             // Arrange
             var text = "Short";
-            var expected = "SHOR";
+            var expected = new List<string> { "SHOR" };
 
-            _sut = new ProjectController(It.IsAny<IProjectRepository>());
+            _sut = new ProjectController(It.IsAny<ILogger<ProjectController>>(), It.IsAny<ICacheClient>(), It.IsAny<IProjectRepository>());
 
             // Act
             var result = _sut.GenerateProjectKey(text);
 
             // Assert
-            Assert.Equal(expected, result);
+            Assert.Equal(true, result.HasValue);
+            Assert.Equal(expected, result.Data);
         }
 
         [Fact]
@@ -229,15 +235,16 @@ namespace IssueTracker.BusinessLayer.Tests.UnitTests.Controllers
         {
             // Arrange
             var text = "";
-            var expected = "";
+            var expected = new List<string> { "" };
 
-            _sut = new ProjectController(It.IsAny<IProjectRepository>());
+            _sut = new ProjectController(It.IsAny<ILogger<ProjectController>>(), It.IsAny<ICacheClient>(), It.IsAny<IProjectRepository>());
 
             // Act
             var result = _sut.GenerateProjectKey(text);
 
             // Assert
-            Assert.Equal(expected, result);
+            Assert.Equal(true, result.HasValue);
+            Assert.Equal(expected, result.Data);
         }
     }
 }

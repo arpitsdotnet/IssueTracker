@@ -1,4 +1,7 @@
-﻿using IssueTracker.BusinessLayer.Services.Messaging;
+﻿using IssueTracker.BusinessLayer.Services.Abstracts;
+using IssueTracker.BusinessLayer.Services.CacheService;
+using IssueTracker.BusinessLayer.Services.LogService;
+using IssueTracker.BusinessLayer.Services.Messaging;
 using IssueTracker.DataLayer.Repositories;
 using IssueTracker.ModelLayer.Base;
 using IssueTracker.ModelLayer.Issues.Dtos;
@@ -8,46 +11,67 @@ namespace IssueTracker.BusinessLayer.Controllers
 {
     public class IssueController : CommonController
     {
+        private readonly ILogger<IssueController> _logger;
+        private readonly ICacheClient _cacheClient;
         private readonly IIssueRepository _issueRepository;
 
-        public IssueController(IIssueRepository issueRepository = null)
+        public IssueController(
+            ILogger<IssueController> logger,
+            ICacheClient cacheClient,
+            IIssueRepository issueRepository)
         {
-            _issueRepository = issueRepository ?? new IssueRepository();
+            _logger = logger;
+            _cacheClient = cacheClient;
+            _issueRepository = issueRepository;
+        }
+        public IssueController() : this(
+            new FileLogger<IssueController>(),
+            new CacheClient(),
+            new IssueRepository())
+        {
         }
 
         public ResultList<Issue> GetIssues(GetIssueRequest request)
         {
-            var result = _issueRepository.GetIssues(request);
+            _logger.Log("GetIssues.GetIssueRequest", request);
+            return HandleBusinessException(_logger, () =>
+            {
+                var result = _issueRepository.GetIssues(request);
 
-            return result;
+                return result;
+            });
         }
 
-        public ResultSingle<Issue> CreateIssue(AddIssueRequest request)
+        public ResultList<Issue> CreateIssue(AddIssueRequest request)
         {
-            var result = _issueRepository.SaveIssue(request);
-
-            if (result.IsSuccess == true)
+            _logger.Log("CreateIssue.AddIssueRequest", request);
+            return HandleBusinessException(_logger, () =>
             {
-                var sessionUId = request.SessionUId;
+                var result = _issueRepository.SaveIssue(request);
 
-                // Create the message service
-                var messageService = new MessageService();
+                if (result.HasValue == true)
+                {
+                    var sessionUId = request.SessionUId;
 
-                // Create listeners
-                var emailNotifier = new EmailNotifier();
+                    // Create the message service
+                    var messageService = new MessageService();
 
-                // Subscribe to the event
-                messageService.MessageSent += emailNotifier.OnMessageSent;
+                    // Create listeners
+                    var emailNotifier = new EmailNotifier();
 
-                messageService.SendMessage(
-                    sessionUId,
-                    $"Congratulation! Your issue { request.IssueTitle } has been created.",
-                    $"Dear User! Your issue { request.IssueTitle } has been created."
-                ).GetAwaiter().GetResult();
+                    // Subscribe to the event
+                    messageService.MessageSent += emailNotifier.OnMessageSent;
 
-            }
+                    messageService.SendMessage(
+                        sessionUId,
+                        $"Congratulation! Your issue { request.IssueTitle } has been created.",
+                        $"Dear User! Your issue { request.IssueTitle } has been created."
+                    ).GetAwaiter().GetResult();
 
-            return result;
+                }
+
+                return result;
+            });
         }
     }
 }

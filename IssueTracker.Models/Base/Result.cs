@@ -7,27 +7,36 @@ namespace IssueTracker.ModelLayer.Base
 {
     public class ResultList<TResponse>
     {
-        public ResultList(bool isSuccess)
+        public ResultList(bool hasValue)
         {
-            IsSuccess = isSuccess;
+            HasValue = hasValue;
         }
 
-        public bool IsSuccess { get; private set; }
-        public string Title { get; set; }
+        public bool HasValue { get; private set; }
+        public short StatusCode { get; set; } = 200;
+        public string Title { get; set; } = "Success!";
         public string Message { get; set; }
-        public int RecordCount { get; set; }
+        public long RecordCount { get; set; }
 
         public List<TResponse> Data { get; set; }
+
+        //public List<TResponse> AddResultItem(TResponse response)
+        //{
+        //    if (Data == null)
+        //        Data = new List<TResponse>();
+        //    Data.Add(response);
+        //    return 
+        //}
     }
 
     public class ResultSingle<TResponse>
     {
-        public ResultSingle(bool isSuccess)
+        public ResultSingle(bool hasValue)
         {
-            IsSuccess = isSuccess;
+            HasValue = hasValue;
         }
 
-        public bool IsSuccess { get; private set; }
+        public bool HasValue { get; private set; }
         public string Title { get; set; }
         public string Message { get; set; }
 

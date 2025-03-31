@@ -1,4 +1,6 @@
-﻿using IssueTracker.ModelLayer.Base;
+﻿using System;
+using System.Collections.Generic;
+using IssueTracker.ModelLayer.Base;
 using IssueTracker.ModelLayer.Projects.Dtos;
 using IssueTracker.ModelLayer.Projects.Models;
 
@@ -7,7 +9,7 @@ namespace IssueTracker.DataLayer.Repositories
     public interface IProjectRepository
     {
         ResultList<Project> GetProjects(GetProjectRequest request);
-        ResultSingle<Project> SaveProject(AddProjectRequest request);
+        ResultList<Project> SaveProject(AddProjectRequest request);
     }
 
     public class ProjectRepository : IProjectRepository
@@ -26,11 +28,11 @@ namespace IssueTracker.DataLayer.Repositories
             return result;
         }
 
-        public ResultSingle<Project> SaveProject(AddProjectRequest request)
+        public ResultList<Project> SaveProject(AddProjectRequest request)
         {
-            var result = _dBContext.SaveData<int>("spu_Project", request);
+            var result = _dBContext.SaveData("spu_Project", request);
 
-            return new ResultSingle<Project>(result.IsSuccess) { Message = result.Message, Data = new Project { ProjId = result.Data } };
+            return new ResultList<Project>(result.HasValue) { Message = result.Message, Data = new List<Project>() { new Project { ProjId = Convert.ToInt32(result.Data) } } };
         }
 
     }

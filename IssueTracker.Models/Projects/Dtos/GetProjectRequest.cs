@@ -15,22 +15,6 @@ namespace IssueTracker.ModelLayer.Projects.Dtos
         public static GetProjectRequest Create(
             string ClientUID,
             string SessionUID,
-            int ProjectId = 0)
-        {
-            ClientValidationRules.ClientUID.IsRequired(ClientUID);
-            SessionValidationRules.SessionUID.IsRequired(SessionUID);
-
-            return new GetProjectRequest
-            {
-                ClientUID = ClientUID,
-                SessionUID = SessionUID,
-                ProjectId = ProjectId
-            };
-        }
-
-        public static GetProjectRequest Generate(
-            string ClientUID,
-            string SessionUID,
             int ProjectId = 0,
             int ProjectManagerId = 0,
             int PageNo = 1,

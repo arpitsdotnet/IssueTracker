@@ -21,21 +21,13 @@ namespace IssueTracker.WebUI.Pages
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            try
+            HandleWebException(() =>
             {
                 if (!IsPostBack)
                 {
                     Project_DropdownBind();
                 }
-            }
-            catch (FieldValidationException ex)
-            {
-                ShowWarning(ex.Message, ex.Title);
-            }
-            catch (Exception ex)
-            {
-                ShowError(FileLogger.Log(ex));
-            }
+            });
         }
 
         #region Private Members
@@ -48,7 +40,7 @@ namespace IssueTracker.WebUI.Pages
             GetProjectRequest request = GetProjectRequest.Create(ClientUID, SessionUID);
 
             var projectResult = _projectController.GetProjects(request);
-            if (projectResult.IsSuccess == false)
+            if (projectResult.HasValue == false)
             {
                 ShowWarning(projectResult.Message, nameof(Project));
                 return;
@@ -68,25 +60,17 @@ namespace IssueTracker.WebUI.Pages
 
         protected void Btn_Submit_Click(object sender, EventArgs e)
         {
-            try
+            HandleWebException(() =>
             {
-                var request = AddIssueRequest.Create(Guid.NewGuid().ToString(), 1, 1, "Title");
+                var request = AddIssueRequest.Create(Guid.NewGuid().ToString(), Guid.NewGuid().ToString(), 1, 1, "Title");
 
                 var response = _issueController.CreateIssue(request);
 
-                if (response.IsSuccess == false)
+                if (response.HasValue == false)
                     ShowWarning(response.Message, response.Title);
 
                 ShowSuccess(response.Message, response.Title);
-            }
-            catch (FieldValidationException ex)
-            {
-                ShowWarning(ex.Message, ex.Title);
-            }
-            catch (Exception ex)
-            {
-                ShowError(FileLogger.Log(ex));
-            }
+            });
         }
     }
 }

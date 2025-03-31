@@ -1,4 +1,7 @@
-﻿using IssueTracker.DataLayer.Repositories;
+﻿using IssueTracker.BusinessLayer.Services.Abstracts;
+using IssueTracker.BusinessLayer.Services.CacheService;
+using IssueTracker.BusinessLayer.Services.LogService;
+using IssueTracker.DataLayer.Repositories;
 using IssueTracker.ModelLayer.Base;
 using IssueTracker.ModelLayer.SysSubCategories.Dtos;
 using IssueTracker.ModelLayer.SysSubCategories.Models;
@@ -7,18 +10,35 @@ namespace IssueTracker.BusinessLayer.Controllers
 {
     public class SubCategoryController : CommonController
     {
+        private readonly ILogger<SubCategoryController> _logger;
+        private readonly ICacheClient _cacheClient;
         private readonly ISubCategoryRepository _subCategoryRepository;
 
-        public SubCategoryController(ISubCategoryRepository subCategoryRepository = null)
+        public SubCategoryController(
+            ILogger<SubCategoryController> logger,
+            ICacheClient cacheClient,
+            ISubCategoryRepository subCategoryRepository)
         {
-            _subCategoryRepository = subCategoryRepository ?? new SubCategoryRepository();
+            _logger = logger;
+            _cacheClient = cacheClient;
+            _subCategoryRepository = subCategoryRepository;
+        }
+        public SubCategoryController() : this(
+            new FileLogger<SubCategoryController>(),
+            new CacheClient(),
+            new SubCategoryRepository())
+        {
         }
 
         public ResultList<SubCategory> GetSubCategories(GetSubCategoryRequest request)
         {
-            var result = _subCategoryRepository.GetSubCategories(request);
+            _logger.Log("GetSubCategories.GetSubCategoryRequest", request);
+            return HandleBusinessException(_logger, () =>
+            {
+                var result = _subCategoryRepository.GetSubCategories(request);
 
-            return result;
+                return result;
+            });
         }
     }
 }

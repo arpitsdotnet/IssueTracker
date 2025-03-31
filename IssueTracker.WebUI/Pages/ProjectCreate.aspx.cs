@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using IssueTracker.BusinessLayer.Controllers;
 using IssueTracker.ModelLayer.Base;
 using IssueTracker.ModelLayer.Projects.Dtos;
@@ -21,7 +22,7 @@ namespace IssueTracker.WebUI.Pages
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            try
+            HandleWebException(() =>
             {
                 if (!IsPostBack)
                 {
@@ -29,19 +30,7 @@ namespace IssueTracker.WebUI.Pages
                     Rbl_ProjectTemplate_Bind();
                     Rbl_ProjectType_Bind();
                 }
-            }
-            catch (FieldValidationException ex)
-            {
-                ShowWarning(ex.Message, ex.Title);
-            }
-            catch (ArgumentException ex)
-            {
-                ShowWarning(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                ShowError(FileLogger.Log(ex));
-            }
+            });
         }
 
         #region Private Members
@@ -55,7 +44,7 @@ namespace IssueTracker.WebUI.Pages
 
             var result = _subCategoryController.GetSubCategories(request);
 
-            if(result.IsSuccess == false)
+            if (result.HasValue == false)
             {
                 throw new ArgumentException(result.Message);
             }
@@ -71,7 +60,7 @@ namespace IssueTracker.WebUI.Pages
 
             var result = _subCategoryController.GetSubCategories(request);
 
-            if (result.IsSuccess == false)
+            if (result.HasValue == false)
             {
                 throw new ArgumentException(result.Message);
             }
@@ -91,7 +80,7 @@ namespace IssueTracker.WebUI.Pages
 
             var result = _subCategoryController.GetSubCategories(request);
 
-            if (result.IsSuccess == false)
+            if (result.HasValue == false)
             {
                 throw new ArgumentException(result.Message);
             }
@@ -108,34 +97,34 @@ namespace IssueTracker.WebUI.Pages
 
         protected void Txt_ProjectTitle_TextChanged(object sender, EventArgs e)
         {
-            try
+            HandleWebException(() =>
             {
                 if (string.IsNullOrEmpty(Txt_ProjectTitle.Text.Trim()))
                     return;
 
                 string text = Txt_ProjectTitle.Text.Trim();
 
-                Txt_ProjectKey.Text = _projectController.GenerateProjectKey(text);
-            }
-            catch (ArgumentException ex)
-            {
-                ShowWarning(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                ShowError(FileLogger.Log(ex));
-            }
+                var result = _projectController.GenerateProjectKey(text);
+
+                if (result.HasValue == false)
+                {
+                    throw new ArgumentException(result.Message);
+                }
+
+                Txt_ProjectKey.Text = result.Data.First();
+            });
         }
 
         protected void Btn_Submit_Click(object sender, EventArgs e)
         {
-            try
+            HandleWebException(() =>
             {
                 var projectCategoryId = Convert.ToInt16(Ddl_ProjectCategory.SelectedValue);
                 var projectTemplateId = Convert.ToInt16(Rbl_ProjectTemplate.SelectedValue);
                 var projectTypeId = Convert.ToInt16(Rbl_ProjectType.SelectedValue);
 
                 var request = AddProjectRequest.Create(
+                    ClientUID: Guid.NewGuid().ToString(),
                     SessionUID: Guid.NewGuid().ToString(),
                     ProjTitle: Txt_ProjectTitle.Text.Trim(),
                     ProjKey: Txt_ProjectKey.Text.Trim(),
@@ -145,21 +134,15 @@ namespace IssueTracker.WebUI.Pages
                     ProjIconUrl: ""
                 );
 
-                var response = _projectController.CreateProject(request);
+                var result = _projectController.CreateProject(request);
 
-                if (response.IsSuccess == false)
-                    ShowWarning(response.Message, response.Title);
+                if (result.HasValue == false)
+                {
+                    throw new ArgumentException(result.Message);
+                }
 
-                ShowSuccess(response.Message, response.Title);
-            }
-            catch (FieldValidationException ex)
-            {
-                ShowWarning(ex.Message, ex.Title);
-            }
-            catch (Exception ex)
-            {
-                ShowError(FileLogger.Log(ex));
-            }
+                ShowSuccess(result.Message);
+            });
         }
     }
 }

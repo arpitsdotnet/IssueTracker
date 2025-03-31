@@ -20,26 +20,6 @@ namespace IssueTracker.ModelLayer.Issues.Dtos
             string ClientUID,
             string SessionUID,
             int ProjectId,
-            int IssueId)
-        {
-            ClientValidationRules.ClientUID.IsRequired(ClientUID);
-            SessionValidationRules.SessionUID.IsRequired(SessionUID);
-            ProjectValidationRules.ProjectId.IsRequired(ProjectId);
-            IssueValidationRules.IssueId.IsRequired(IssueId);
-
-            return new GetIssueRequest
-            {
-                ClientUID = ClientUID,
-                SessionUID = SessionUID,
-                ProjectId = ProjectId,
-                IssueId = IssueId,
-            };
-        }
-
-        public static GetIssueRequest Create(
-            string ClientUID,
-            string SessionUID,
-            int ProjectId,
             int IssueId = 0,
             short IssueTypeId = 0,
             string IssueKey = "",

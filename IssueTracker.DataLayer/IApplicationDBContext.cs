@@ -13,7 +13,7 @@ namespace IssueTracker.DataLayer
 
         ResultList<TResponse> LoadData<TResponse>(string storedProcedure, object parameters);
         ResultList<TResponse> LoadData<TRequest, TResponse>(string storedProcedure, TRequest parameters);
-        ResultSingle<TResponse> SaveData<TResponse>(string storedProcedure, object parameters);
+        ResultSingle<long> SaveData(string storedProcedure, object parameters);
         ResultSingle<TResponse> SaveContinueData<TResponse>(string storedProcedure, object parameters);
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using IssueTracker.BusinessLayer.Services.Messaging;
+using IssueTracker.BusinessLayer.Services.Abstracts;
 using IssueTracker.ModelLayer.Base;
 using IssueTracker.ModelLayer.Messaging;
 using SendGrid;
