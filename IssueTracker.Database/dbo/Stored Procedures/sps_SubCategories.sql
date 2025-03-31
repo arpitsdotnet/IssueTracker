@@ -1,8 +1,7 @@
-﻿CREATE PROCEDURE [dbo].[sps_SubCategories]
+﻿CREATE PROCEDURE [dbo].[sps_SubCategories](
 @CategoryId int=0,@CategoryKey varchar(10)='',
 @ClientUID varchar(128), @SessionUID varchar(128), 
-@R_RecordCount int out,@R_Success tinyint out,@R_Message varchar(1000) out
-AS
+@R_Success tinyint out,@R_Message varchar(1000) out,@R_Data bigint out) AS
 BEGIN
 
 	SET @R_Success = 1
@@ -17,5 +16,5 @@ BEGIN
 		AND (@CategoryId=0 OR b.CateId=@CategoryId)
 		AND (@CategoryKey='' OR b.CateKey=@CategoryKey)
 		
-	SET @R_RecordCount = @@ROWCOUNT
+	SET @R_Data = @@ROWCOUNT
 END
