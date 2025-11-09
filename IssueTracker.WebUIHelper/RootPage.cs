@@ -24,20 +24,5 @@ namespace IssueTracker.WebUIHelper
         protected void ShowInfo(string message, string title = "Info") => ShowMessage(message, title, "info");
         protected void ShowSuccess(string message, string title = "Success") => ShowMessage(message, title, "success");
 
-        protected void HandleWebException(Action action)
-        {
-            try
-            {
-                action.Invoke();
-            }
-            catch (ArgumentException ex)
-            {
-                ShowError(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                ShowError(ex.Message);
-            }
-        }
     }
 }

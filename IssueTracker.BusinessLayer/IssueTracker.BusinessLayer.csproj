@@ -100,6 +100,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Services\Abstracts\IDateTimeProvider.cs" />
     <Compile Include="Services\Abstracts\ICacheClient.cs" />
     <Compile Include="Controllers\SubCategoryController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
@@ -113,6 +114,7 @@
     <Compile Include="Services\Encryption\CryptographyUtility.cs" />
     <Compile Include="Services\Encryption\SsplSecurity.cs" />
     <Compile Include="Services\Encryption\HashUtility.cs" />
+    <Compile Include="Services\Helpers\DateTimeHelper.cs" />
     <Compile Include="Services\LogService\FileLogger.cs" />
     <Compile Include="Services\Abstracts\ILogger.cs" />
     <Compile Include="Services\Messaging\DefaultEmailMessageService.cs" />

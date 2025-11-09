@@ -47,6 +47,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstracts\ICookieProvider.cs" />
+    <Compile Include="Abstracts\IDocFileUploader.cs" />
+    <Compile Include="Abstracts\IFileUploader.cs" />
+    <Compile Include="Abstracts\IImageFileUploader.cs" />
+    <Compile Include="Constants\DateTimeConst.cs" />
+    <Compile Include="Constants\PageSets.cs" />
+    <Compile Include="Constants\Var.cs" />
+    <Compile Include="Helpers\ConfigurationHelper.cs" />
+    <Compile Include="Helpers\CookieHelper.cs" />
+    <Compile Include="Helpers\FileUploadHelpers\DocumentFileUploadHelper.cs" />
+    <Compile Include="Helpers\FileUploadHelpers\ExcelFileUploadHelper.cs" />
+    <Compile Include="Helpers\FileUploadHelper.cs" />
+    <Compile Include="Helpers\FileUploadHelpers\FileUploadResponse.cs" />
+    <Compile Include="Helpers\FileUploadHelpers\ImageFileUploadHelper.cs" />
     <Compile Include="RadioButtonListUtility.cs" />
     <Compile Include="DropDownListUtility.cs" />
     <Compile Include="FileLogger.cs" />
@@ -56,12 +70,17 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\IssueTracker.BusinessLayer\IssueTracker.BusinessLayer.csproj">
+      <Project>{D2032627-8B79-425B-96D9-FBC0E29FA3DE}</Project>
+      <Name>IssueTracker.BusinessLayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\IssueTracker.Models\IssueTracker.ModelLayer.csproj">
       <Project>{407F49E3-1D4F-4AC3-A34B-485511A2C8EA}</Project>
       <Name>IssueTracker.ModelLayer</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

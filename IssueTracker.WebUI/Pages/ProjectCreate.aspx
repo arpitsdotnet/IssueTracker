@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ProjectCreate.aspx.cs" Inherits="IssueTracker.WebUI.Pages.ProjectCreate" %>
 
+<%@ Register Src="~/UserControls/TextboxControl.ascx" TagPrefix="uc" TagName="TextboxControl" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <asp:UpdatePanel runat="server">
         <ContentTemplate>
@@ -10,26 +11,15 @@
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
                                 <div class="form-group">
-                                    <div>
-                                        <asp:Label ID="Lbl_ProjectTitle" runat="server" Text="Name *"></asp:Label>
-                                    </div>
+                                    <asp:Label ID="Lbl_ProjectTitle" runat="server" Text="Name *"></asp:Label>
                                     <div>
                                         <asp:TextBox ID="Txt_ProjectTitle" runat="server" CssClass="form-control text-capitalize" OnTextChanged="Txt_ProjectTitle_TextChanged" AutoPostBack="true"></asp:TextBox>
                                         <small>Try a team name, project goal or milestones.</small>
                                     </div>
                                 </div>
+                                <uc:TextboxControl runat="server" ID="Txt_ProjectKey" IsRequired="true" LabelText="Key" CssClass="text-uppercase" ></uc:TextboxControl>                                
                                 <div class="form-group">
-                                    <div>
-                                        <asp:Label ID="Lbl_ProjectKey" runat="server" Text="Key *"></asp:Label>
-                                    </div>
-                                    <div>
-                                        <asp:TextBox ID="Txt_ProjectKey" runat="server" CssClass="form-control text-uppercase"></asp:TextBox>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div>
-                                        <asp:Label ID="Lbl_ProjectCategory" runat="server" Text="Category *"></asp:Label>
-                                    </div>
+                                    <asp:Label ID="Lbl_ProjectCategory" runat="server" Text="Category *"></asp:Label>
                                     <div>
                                         <asp:DropDownList ID="Ddl_ProjectCategory" runat="server" CssClass="form-control">
                                         </asp:DropDownList>

@@ -40,8 +40,16 @@ namespace IssueTracker.BusinessLayer.Services.LogService
                     sw.WriteLine(formattedMessage);
                     if (ex != null)
                     {
-                        sw.WriteLine();
-                        sw.WriteLine("EXCEPTION: {0}", JsonConvert.SerializeObject(ex));
+                        if (ex.InnerException != null)
+                        {
+                            sw.WriteLine();
+                            sw.WriteLine("INNER-EXCEPTION: {0}", JsonConvert.SerializeObject(ex.InnerException));
+                        }
+                        if (ex.StackTrace != null)
+                        {
+                            sw.WriteLine();
+                            sw.WriteLine("STACK-TRACE: {0}", JsonConvert.SerializeObject(ex.StackTrace));
+                        }
                     }
                     if (obj1 != null)
                     {

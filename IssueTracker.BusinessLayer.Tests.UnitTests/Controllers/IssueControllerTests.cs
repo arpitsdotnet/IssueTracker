@@ -4,7 +4,7 @@ using IssueTracker.ModelLayer.Base;
 using IssueTracker.ModelLayer.Issues.Dtos;
 using Xunit;
 
-namespace IssueTracker.BusinessLayer.Tests.UnitTests.Controllers
+namespace IssueTracker.BusinessLayer.UnitTests.Controllers
 {
     public class IssueControllerTests : CommonController
     {

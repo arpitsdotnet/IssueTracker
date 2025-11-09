@@ -33,22 +33,13 @@ namespace IssueTracker.WebUI.Pages
         protected global::System.Web.UI.WebControls.TextBox Txt_ProjectTitle;
 
         /// <summary>
-        /// Lbl_ProjectKey control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Lbl_ProjectKey;
-
-        /// <summary>
         /// Txt_ProjectKey control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Txt_ProjectKey;
+        protected global::IssueTracker.WebUI.UserControls.TextboxControl Txt_ProjectKey;
 
         /// <summary>
         /// Lbl_ProjectCategory control.

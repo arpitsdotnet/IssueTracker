@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.IO;
 using System.Web;
+using IssueTracker.WebUIHelper.Helpers;
 using Newtonsoft.Json;
 
 namespace IssueTracker.WebUIHelper
@@ -58,23 +59,18 @@ namespace IssueTracker.WebUIHelper
 
         private static string GetFilePath()
         {
-            var fileLoggerPath = string.Empty;
-            try
-            {
-                fileLoggerPath = ConfigurationManager.AppSettings["FILE_LOGGER_PATH"].ToString().TrimStart('/').TrimEnd('/');
-            }
-            catch
-            {
-                throw new ArgumentNullException("Unable to find FILE_LOGGER_PATH setting.");
-            }
+            //var clientCode = ConfigurationHelper.GetKeyValue("CLIENT_CODE");
+            var projectEnvironment = ConfigurationHelper.GetKeyValue("PROJECT_ENVIRONMENT");
+            var fileLoggerPath = ConfigurationHelper.GetKeyValue("FILE_LOGGER_PATH").TrimStart('/').TrimEnd('/');
+           
+            //string directory = $"~/{fileLoggerPath}/{clientCode}/{_DateTimeNow:yyyyMM}";
+            //directory = HttpContext.Current.Server.MapPath(directory);
+            string directory = $"{fileLoggerPath}/{projectEnvironment}/{_DateTimeNow:yyyyMM}";
+            
+            if (Directory.Exists(directory) == false)
+                Directory.CreateDirectory(directory);
 
-            string directory = $"~/{fileLoggerPath }/{_DateTimeNow:yyyyMM}";
-            string directoryPath = HttpContext.Current.Server.MapPath(directory);
-
-            if (Directory.Exists(directoryPath) == false)
-                Directory.CreateDirectory(directoryPath);
-
-            string filePath = $"{directoryPath}/{_DateTimeNow:yyyyMMdd}.txt";   //Text File Name
+            string filePath = $"{directory}/{_DateTimeNow:yyyyMMdd}.txt";   //Text File Name
 
             if (File.Exists(filePath) == false)
                 File.Create(filePath).Dispose();

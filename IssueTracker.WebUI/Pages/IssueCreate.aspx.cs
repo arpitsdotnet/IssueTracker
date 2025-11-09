@@ -32,6 +32,22 @@ namespace IssueTracker.WebUI.Pages
 
         #region Private Members
 
+        protected void HandleWebException(Action action)
+        {
+            try
+            {
+                action.Invoke();
+            }
+            catch (ArgumentException ex)
+            {
+                ShowError(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                ShowError(ex.Message);
+            }
+        }
+
         private void Project_DropdownBind()
         {
             string ClientUID = Guid.NewGuid().ToString();

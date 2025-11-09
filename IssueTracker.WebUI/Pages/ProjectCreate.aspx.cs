@@ -35,12 +35,33 @@ namespace IssueTracker.WebUI.Pages
 
         #region Private Members
 
+        protected void HandleWebException(Action action)
+        {
+            try
+            {
+                action.Invoke();
+            }
+            catch(FieldValidationException ex)
+            {
+                ShowWarning(ex.Message);
+            }
+            catch (ArgumentException ex)
+            {
+                ShowWarning(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                FileLogger.Log(ex);
+                ShowError(ex.Message);
+            }
+        }
+
         private void Ddl_ProjectCategory_Bind()
         {
-            var request = GetSubCategoryRequest.Create(
-                            ClientUID: Guid.NewGuid().ToString(),
-                            SessionUID: Guid.NewGuid().ToString(),
-                            CategoryKey: "PROJCTGR");
+            var request = GetSubCategoryRequest.CreateProjectCategoryObject(
+                ClientUID: Guid.NewGuid().ToString(),
+                SessionUID: Guid.NewGuid().ToString()
+            );
 
             var result = _subCategoryController.GetSubCategories(request);
 
@@ -53,10 +74,10 @@ namespace IssueTracker.WebUI.Pages
         }
         private void Rbl_ProjectTemplate_Bind()
         {
-            var request = GetSubCategoryRequest.Create(
-                            ClientUID: Guid.NewGuid().ToString(),
-                            SessionUID: Guid.NewGuid().ToString(),
-                            CategoryKey: "PROJTMPL");
+            var request = GetSubCategoryRequest.CreateProjectTemplateObject(
+                ClientUID: Guid.NewGuid().ToString(),
+                SessionUID: Guid.NewGuid().ToString()
+            );
 
             var result = _subCategoryController.GetSubCategories(request);
 
@@ -73,10 +94,10 @@ namespace IssueTracker.WebUI.Pages
         }
         private void Rbl_ProjectType_Bind()
         {
-            var request = GetSubCategoryRequest.Create(
-                            ClientUID: Guid.NewGuid().ToString(),
-                            SessionUID: Guid.NewGuid().ToString(),
-                            CategoryKey: "PROJTYPE");
+            var request = GetSubCategoryRequest.CreateProjectTypeObject(
+                ClientUID: Guid.NewGuid().ToString(),
+                SessionUID: Guid.NewGuid().ToString()
+            );
 
             var result = _subCategoryController.GetSubCategories(request);
 
@@ -126,8 +147,8 @@ namespace IssueTracker.WebUI.Pages
                 var request = AddProjectRequest.Create(
                     ClientUID: Guid.NewGuid().ToString(),
                     SessionUID: Guid.NewGuid().ToString(),
-                    ProjTitle: Txt_ProjectTitle.Text.Trim(),
-                    ProjKey: Txt_ProjectKey.Text.Trim(),
+                    ProjTitle: Txt_ProjectTitle.Text,
+                    ProjKey: Txt_ProjectKey.Text,
                     ProjCategoryId: projectCategoryId,
                     ProjTemplateId: projectTemplateId,
                     ProjTypeId: projectTypeId,

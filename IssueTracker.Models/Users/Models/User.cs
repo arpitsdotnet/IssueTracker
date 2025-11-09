@@ -13,9 +13,10 @@ namespace IssueTracker.ModelLayer.Users.Models
         public string UserEmail { get; set; }
         public string UserPhone { get; set; }
         public short UserRoleId { get; set; } // ADMINISTRATOR | MANAGER | TEAM LEAD | SCRUM MASTER | DEVELOPER | TESTER | DESIGNER
+        public string UserRoleCode { get; set; } // ADMINISTRATOR | MANAGER | TEAM LEAD | SCRUM MASTER | DEVELOPER | TESTER | DESIGNER
         public string OTP { get; set; }
         public string OTPExpiryTime { get; set; }
         public string OTPInvalidCount { get; set; }
-
+        public string ProfileFilePath { get; set; }
     }
 }

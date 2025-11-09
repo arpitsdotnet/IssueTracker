@@ -5,6 +5,30 @@ using System.Web;
 
 namespace IssueTracker.ModelLayer.Base
 {
+    public sealed class Result<T> where T : class
+    {
+        private Result(T value, string message)
+        {
+            Value = value;
+            Message = message;
+            IsSuccess = true;
+        }
+        private Result(Error error)
+        {
+            Error = error;
+            IsSuccess = false;
+        }
+
+        public bool IsSuccess { get; set; }
+        public bool IsFailure => !IsSuccess;
+        public Error Error { get; }
+        public T Value { get; }
+        public string Message { get; }
+
+        public static Result<T> Success(T value, string message = null) => new Result<T>(value, message);
+        public static Result<T> Failure(Error error) => new Result<T>(error);
+    }
+
     public class ResultList<TResponse>
     {
         public ResultList(bool hasValue)
@@ -19,14 +43,6 @@ namespace IssueTracker.ModelLayer.Base
         public long RecordCount { get; set; }
 
         public List<TResponse> Data { get; set; }
-
-        //public List<TResponse> AddResultItem(TResponse response)
-        //{
-        //    if (Data == null)
-        //        Data = new List<TResponse>();
-        //    Data.Add(response);
-        //    return 
-        //}
     }
 
     public class ResultSingle<TResponse>
