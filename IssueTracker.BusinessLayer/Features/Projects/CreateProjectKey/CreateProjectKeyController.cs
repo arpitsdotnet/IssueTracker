@@ -22,7 +22,7 @@ namespace IssueTracker.BusinessLayer.Features.Projects.CreateProjectKey
         {
             if (string.IsNullOrWhiteSpace(request.Text) == true)
                 return Result<CreateProjectKeyResponse>.Failure(
-                    new Error(ErrorType.Validation,ErrorCode.BAD_REQUEST,"Text field should not be empty."));
+                    new Error(ErrorType.Validation, ErrorCode.BAD_REQUEST, "Text field should not be empty."));
 
             CreateProjectKeyResponse key = new CreateProjectKeyResponse { Key = Guid.NewGuid().ToString() };
             return Result<CreateProjectKeyResponse>.Success(key);

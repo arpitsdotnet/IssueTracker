@@ -2,21 +2,21 @@
 using System.Threading.Tasks;
 using IssueTracker.BusinessLayer.Features.Projects.CreateProject;
 using IssueTracker.BusinessLayer.Features.Projects.CreateProjectKey;
-using IssueTracker.BusinessLayer.Features.SysCategories.GetSubCategoriesByCategoryCode;
 using IssueTracker.BusinessLayer.Features.SysCategories.Models;
+using IssueTracker.BusinessLayer.Features.SysSubCategories.GetSysSubCategories;
 using IssueTracker.WebUIHelper;
 
 namespace IssueTracker.WebUI.Pages
 {
     public partial class ProjectCreate : RootPage
     {
-        private readonly GetSysSubCategoriesByCategoryCodeController _getSubCategoriesByCategoryCodeHandler;
+        private readonly GetSysSubCategoriesController _getSubCategoriesByCategoryCodeHandler;
         private readonly CreateProjectKeyController _createProjectKeyHandler;
         private readonly CreateProjectController _createProjectHandler;
 
         public ProjectCreate()
         {
-            _getSubCategoriesByCategoryCodeHandler = new GetSysSubCategoriesByCategoryCodeController();
+            _getSubCategoriesByCategoryCodeHandler = new GetSysSubCategoriesController();
             _createProjectKeyHandler = new CreateProjectKeyController();
             _createProjectHandler = new CreateProjectController();
         }
@@ -59,7 +59,7 @@ namespace IssueTracker.WebUI.Pages
 
         private async Task Ddl_ProjectCategory_Bind()
         {
-            var request = new GetSysSubCategoriesByCategoryCodeRequest
+            var request = new GetSysSubCategoriesRequest
             {
                 ClientUID = Guid.NewGuid().ToString(),
                 SessionUID = Guid.NewGuid().ToString(),
@@ -77,7 +77,7 @@ namespace IssueTracker.WebUI.Pages
         }
         private async Task Rbl_ProjectTemplate_Bind()
         {
-            var request = new GetSysSubCategoriesByCategoryCodeRequest
+            var request = new GetSysSubCategoriesRequest
             {
                 ClientUID = Guid.NewGuid().ToString(),
                 SessionUID = Guid.NewGuid().ToString(),
@@ -99,7 +99,7 @@ namespace IssueTracker.WebUI.Pages
         }
         private async Task Rbl_ProjectType_Bind()
         {
-            var request = new GetSysSubCategoriesByCategoryCodeRequest
+            var request = new GetSysSubCategoriesRequest
             {
                 ClientUID = Guid.NewGuid().ToString(),
                 SessionUID = Guid.NewGuid().ToString(),

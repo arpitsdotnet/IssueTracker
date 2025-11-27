@@ -2,7 +2,6 @@
 using IssueTracker.BusinessLayer.Base;
 using IssueTracker.BusinessLayer.Extensions.ExceptionHandlers;
 using IssueTracker.BusinessLayer.Features.Issues;
-using IssueTracker.BusinessLayer.Features.Issues.Dtos;
 using IssueTracker.BusinessLayer.Features.Issues.Models;
 using IssueTracker.BusinessLayer.Services.Abstracts;
 using IssueTracker.BusinessLayer.Services.LogService;
@@ -12,10 +11,14 @@ namespace IssueTracker.BusinessLayer.Controllers
 {
     public sealed class GetIssuesRequest : BaseModel
     {
-
+        public int ProjectId { get; set; } = 0;
+        public int IssueId { get; set; } = 0;
+        public short IssueTypeId { get; set; } = 0;
+        public string IssueKey { get; set; } = "";
+        public string IssueTitle { get; set; } = "";
     }
 
-    public class GetIssuesController : CommonController
+    public class GetIssuesController
     {
         private readonly ILogger<GetIssuesController> _logger;
         private readonly GetIssuesRepository _repository;

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
 using IssueTracker.BusinessLayer.Features.Issues.CreateIssue;
-using IssueTracker.BusinessLayer.Features.Issues.Dtos;
 using IssueTracker.BusinessLayer.Features.Projects.GetProjects;
 using IssueTracker.BusinessLayer.Features.Projects.Models;
 using IssueTracker.WebUIHelper;
@@ -11,12 +10,12 @@ namespace IssueTracker.WebUI.Pages
     public partial class IssueCreate : RootPage
     {
         private readonly GetProjectsController _getProjectsController;
-        private readonly CreateIssueController _createIssueController;
+        private readonly AddIssueController _createIssueController;
 
         public IssueCreate()
         {
             _getProjectsController = new GetProjectsController();
-            _createIssueController = new CreateIssueController();
+            _createIssueController = new AddIssueController();
         }
 
         protected async Task Page_Load(object sender, EventArgs e)
@@ -85,7 +84,7 @@ namespace IssueTracker.WebUI.Pages
                 string ClientUID = Guid.NewGuid().ToString();
                 string SessionUID = Guid.NewGuid().ToString();
 
-                var request = new CreateIssueRequest
+                var request = new BusinessLayer.Features.Issues.CreateIssue.AddIssueRequest
                 {
                     ClientUID = ClientUID,
                     SessionUID = SessionUID,

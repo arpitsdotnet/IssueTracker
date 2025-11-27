@@ -11,7 +11,7 @@ using Xunit;
 
 namespace IssueTracker.BusinessLayer.UnitTests.Controllers
 {
-    public class ProjectControllerTests : CommonController
+    public class ProjectControllerTests
     {
         //private readonly Mock<ILogger<CreateProjectController>> _loggerMock;
         //private readonly Mock<ICacheClient> _cacheClientMock;

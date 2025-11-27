@@ -9,6 +9,8 @@ namespace IssueTracker.BusinessLayer.Features.Projects.GetProjects
 {
     public class GetProjectsRequest : BaseModel
     {
+        public int ProjectId { get; set; } = 0;
+        public int ProjectManagerId { get; set; } = 0;
     }
 
     public class GetProjectsController

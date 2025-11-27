@@ -2,7 +2,6 @@
 using IssueTracker.BusinessLayer.Base;
 using IssueTracker.BusinessLayer.Controllers;
 using IssueTracker.BusinessLayer.Extensions.ExceptionHandlers;
-using IssueTracker.BusinessLayer.Features.Issues.Dtos;
 using IssueTracker.BusinessLayer.Features.Issues.Models;
 using IssueTracker.BusinessLayer.Services.Abstracts;
 using IssueTracker.BusinessLayer.Services.LogService;
@@ -10,27 +9,27 @@ using IssueTracker.BusinessLayer.Services.Messaging;
 
 namespace IssueTracker.BusinessLayer.Features.Issues.CreateIssue
 {
-    public sealed class CreateIssueRequest : BaseModel
+    public sealed class AddIssueRequest : BaseModel
     {
         public int ProjectId { get; set; }
         public int IssueTypeId { get; set; }
         public string IssueTitle { get; set; }
     }
 
-    public class CreateIssueController : CommonController
+    public class AddIssueController
     {
-        private readonly ILogger<CreateIssueController> _logger;
-        private readonly CreateIssueRepository _repository;
+        private readonly ILogger<AddIssueController> _logger;
+        private readonly AddIssueRepository _repository;
 
-        public CreateIssueController()
+        public AddIssueController()
         {
-            _logger = new FileLogger<CreateIssueController>();
-            _repository = new CreateIssueRepository();
+            _logger = new FileLogger<AddIssueController>();
+            _repository = new AddIssueRepository();
 
         }
 
 
-        public async Task<ResultList<Issue>> Handle(CreateIssueRequest request)
+        public async Task<ResultList<Issue>> Handle(AddIssueRequest request)
         {
             _logger.Log("CreateIssue.AddIssueRequest", request);
             return await DefaultExceptionHandler.Handle(_logger, async () =>

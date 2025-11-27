@@ -9,14 +9,14 @@ using IssueTracker.BusinessLayer.Features.UserIdentity.Models;
 using IssueTracker.BusinessLayer.Services.Abstracts;
 using IssueTracker.BusinessLayer.Services.LogService;
 
-namespace IssueTracker.BusinessLayer.Features.SysCategories.GetSubCategoriesByCategoryCode
+namespace IssueTracker.BusinessLayer.Features.SysSubCategories.GetSysSubCategories
 {
-    public class GetSysSubCategoriesByCategoryCodeRequest : BaseModel
+    public class GetSysSubCategoriesRequest : BaseModel
     {
         public string CategoryCode { get; set; }
     }
 
-    public class GetSysSubCategoriesByCategoryCodeResponse
+    public class GetSysSubCategoriesResponse
     {
         public int CateId { get; set; }
         public string ClientUID { get; set; }
@@ -32,19 +32,19 @@ namespace IssueTracker.BusinessLayer.Features.SysCategories.GetSubCategoriesByCa
         public string CateIconUrl { get; set; }
     }
 
-    public sealed class GetSysSubCategoriesByCategoryCodeController
+    public sealed class GetSysSubCategoriesController
     {
-        private readonly ILogger<GetSysSubCategoriesByCategoryCodeController> _logger;
+        private readonly ILogger<GetSysSubCategoriesController> _logger;
         private readonly Validator _validations;
-        private readonly GetSysSubCategoriesByCategoryCodeRepository _repository;
-        public GetSysSubCategoriesByCategoryCodeController()
+        private readonly GetSysSubCategoriesRepository _repository;
+        public GetSysSubCategoriesController()
         {
-            _logger = LoggerFactory<GetSysSubCategoriesByCategoryCodeController>.Instance;
+            _logger = LoggerFactory<GetSysSubCategoriesController>.Instance;
             _validations = new Validator();
-            _repository = new GetSysSubCategoriesByCategoryCodeRepository();
+            _repository = new GetSysSubCategoriesRepository();
         }
 
-        public class Validator : AbstractValidator<GetSysSubCategoriesByCategoryCodeRequest>
+        public class Validator : AbstractValidator<GetSysSubCategoriesRequest>
         {
             public Validator()
             {
@@ -54,7 +54,7 @@ namespace IssueTracker.BusinessLayer.Features.SysCategories.GetSubCategoriesByCa
             }
         }
 
-        public async Task<ResultList<GetSysSubCategoriesByCategoryCodeResponse>> Handle(GetSysSubCategoriesByCategoryCodeRequest request)
+        public async Task<ResultList<GetSysSubCategoriesResponse>> Handle(GetSysSubCategoriesRequest request)
         {
             _logger.Log("GetSubCategoriesByCategoryCodeController.GetSubCategoriesByCategoryCodeRequest", request);
 

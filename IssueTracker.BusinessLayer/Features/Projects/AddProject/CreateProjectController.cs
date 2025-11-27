@@ -22,7 +22,7 @@ namespace IssueTracker.BusinessLayer.Features.Projects.CreateProject
         public char ProjStatus { get; set; }
     }
 
-    public class CreateProjectController : CommonController
+    public class CreateProjectController
     {
         private readonly ILogger<CreateProjectController> _logger;
         private readonly CreateProjectRepository _repository;

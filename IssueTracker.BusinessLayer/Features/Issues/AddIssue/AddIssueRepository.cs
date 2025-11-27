@@ -8,17 +8,17 @@ using IssueTracker.BusinessLayer.Services.DbContexts;
 
 namespace IssueTracker.BusinessLayer.Features.Issues.CreateIssue
 {
-    public class CreateIssueRepository
+    public class AddIssueRepository
     {
         public readonly IApplicationDBContext _dBContext;
 
-        public CreateIssueRepository()
+        public AddIssueRepository()
         {
             _dBContext = DbContextFactory.Instance;
         }
 
 
-        public async Task<ResultList<Issue>> Handle(CreateIssueRequest request)
+        public async Task<ResultList<Issue>> Handle(AddIssueRequest request)
         {
             var result = await _dBContext.SaveDataAsync("spu_Issue", request);
 

@@ -6,18 +6,18 @@ using IssueTracker.BusinessLayer.Contracts;
 using IssueTracker.BusinessLayer.Features.Projects.Models;
 using IssueTracker.BusinessLayer.Services.DbContexts;
 
-namespace IssueTracker.BusinessLayer.Features.Projects.UpdateProject
+namespace IssueTracker.BusinessLayer.Features.Projects.EditProject
 {
-    public class UpdateProjectRepository
+    public class EditProjectRepository
     {
         public readonly IApplicationDBContext _dBContext;
 
-        public UpdateProjectRepository()
+        public EditProjectRepository()
         {
             _dBContext = DbContextFactory.Instance;
         }
 
-        public async Task<ResultList<Project>> Handle(UpdateProjectRequest request)
+        public async Task<ResultList<Project>> Handle(EditProjectRequest request)
         {
             var result = await _dBContext.SaveDataAsync("spu_Project", request);
 
