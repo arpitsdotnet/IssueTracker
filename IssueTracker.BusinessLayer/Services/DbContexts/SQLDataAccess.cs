@@ -178,7 +178,7 @@ namespace IssueTracker.BusinessLayer.Services.DbContexts
                 RollbackTransaction();
                 return new ResultSingle<long>(false) { Message = ex.Message };
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 RollbackTransaction();
                 throw;
@@ -232,7 +232,7 @@ namespace IssueTracker.BusinessLayer.Services.DbContexts
                 CloseConnection();
                 return new ResultSingle<TResponse>(false) { Message = ex.Message };
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 RollbackTransaction();
                 CloseConnection();

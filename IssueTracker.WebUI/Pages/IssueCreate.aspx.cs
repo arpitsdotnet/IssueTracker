@@ -78,7 +78,7 @@ namespace IssueTracker.WebUI.Pages
 
         }
 
-        protected async Task Btn_Submit_Click(object sender, EventArgs e)
+        protected void Btn_Submit_Click(object sender, EventArgs e)
         {
             HandleWebException(async () =>
             {
