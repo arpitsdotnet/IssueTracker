@@ -4,8 +4,8 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Google.Apis.Auth.OAuth2;
-using IssueTracker.ModelLayer.Base;
-using IssueTracker.ModelLayer.Messaging;
+using IssueTracker.BusinessLayer.Base;
+using IssueTracker.BusinessLayer.Services.Messaging.Models;
 using Newtonsoft.Json;
 
 namespace IssueTracker.BusinessLayer.Utilities.MessageUtility

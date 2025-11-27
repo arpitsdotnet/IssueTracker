@@ -1,10 +1,9 @@
 ﻿using System;
-using System.IO;
 using System.Net.Mail;
 using System.Threading.Tasks;
+using IssueTracker.BusinessLayer.Base;
 using IssueTracker.BusinessLayer.Services.Abstracts;
-using IssueTracker.ModelLayer.Base;
-using IssueTracker.ModelLayer.Messaging;
+using IssueTracker.BusinessLayer.Services.Messaging.Models;
 
 namespace IssueTracker.BusinessLayer.Services.Messaging
 {

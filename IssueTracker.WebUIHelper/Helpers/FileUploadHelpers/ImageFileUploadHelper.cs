@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using System.Web.UI.WebControls;
-using IssueTracker.ModelLayer.Base;
+﻿using System.Web.UI.WebControls;
+using IssueTracker.BusinessLayer.Base;
 using IssueTracker.WebUIHelper.Abstracts;
 
 namespace IssueTracker.WebUIHelper.Helpers.FileUploadHelpers

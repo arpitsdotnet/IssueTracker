@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Caching;
+using IssueTracker.BusinessLayer.Base;
 using IssueTracker.BusinessLayer.Services.Abstracts;
-using IssueTracker.ModelLayer.Base;
 
 namespace IssueTracker.BusinessLayer.Services.CacheService
 {

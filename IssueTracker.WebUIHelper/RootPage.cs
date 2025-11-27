@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Web.UI;
-using IssueTracker.ModelLayer.Base;
+using IssueTracker.BusinessLayer.Base;
 
 namespace IssueTracker.WebUIHelper
 {

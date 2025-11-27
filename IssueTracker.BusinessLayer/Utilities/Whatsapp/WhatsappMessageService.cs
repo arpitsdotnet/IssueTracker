@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using IssueTracker.ModelLayer.Messaging;
+using IssueTracker.BusinessLayer.Services.Messaging.Models;
 
 namespace IssueTracker.BusinessLayer.Utilities.Whatsapp
 {

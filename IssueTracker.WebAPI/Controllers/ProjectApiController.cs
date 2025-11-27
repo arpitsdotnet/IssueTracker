@@ -1,23 +1,22 @@
 ﻿using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Http;
-using IssueTracker.BusinessLayer.Controllers;
-using IssueTracker.ModelLayer.Base;
-using IssueTracker.ModelLayer.Projects.Dtos;
-using IssueTracker.ModelLayer.Projects.Models;
+using IssueTracker.BusinessLayer.Base;
+using IssueTracker.BusinessLayer.Features.Projects.CreateProject;
+using IssueTracker.BusinessLayer.Features.Projects.CreateProjectKey;
+using IssueTracker.BusinessLayer.Features.Projects.Models;
 
 namespace IssueTracker.WebAPI.Controllers
-{    
+{
     public class ProjectApiController : ApiController
     {
-        private readonly ProjectController _projectController;
+        private readonly CreateProjectKeyController _createProjectKeyController;
+        private readonly CreateProjectController _createProjectController;
 
-        public ProjectApiController(ProjectController projectController)
+        public ProjectApiController()
         {
-            _projectController = projectController;
-        }
-        public ProjectApiController() : this(
-            new ProjectController())
-        {
+            _createProjectKeyController = new CreateProjectKeyController();
+            _createProjectController = new CreateProjectController();
         }
 
         // GET api/<controller>
@@ -38,18 +37,18 @@ namespace IssueTracker.WebAPI.Controllers
         [Route("api/<controller>/projectkey")]
         public IHttpActionResult GetProjectKey(string key)
         {
-            ResultList<string> result = _projectController.GenerateProjectKey(key);
+            var result = _createProjectKeyController.Handle(new CreateProjectKeyRequest { ClientUID = "", SessionUID = "", Text = key });
 
-            if (result.HasValue)
-                return Ok(new { ProjectKey = result.Data.FirstOrDefault() });
+            if (result.IsSuccess)
+                return Ok(new { ProjectKey = result.Value.Key });
 
             return BadRequest(result.Message);
         }
 
         // POST api/<controller>
-        public IHttpActionResult Post([FromBody] AddProjectRequest request)
+        public async Task<IHttpActionResult> Post([FromBody] CreateProjectRequest request)
         {
-            ResultList<Project> result = _projectController.CreateProject(request);
+            ResultList<Project> result = await _createProjectController.Handle(request);
 
             if (result.HasValue)
                 return Ok(new { Message = result.Message, Data = result.Data.FirstOrDefault() });

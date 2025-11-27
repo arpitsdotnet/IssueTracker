@@ -1,33 +1,33 @@
 ﻿using System;
-using IssueTracker.BusinessLayer.Controllers;
-using IssueTracker.ModelLayer.Base;
-using IssueTracker.ModelLayer.Issues.Dtos;
-using IssueTracker.ModelLayer.Projects.Dtos;
-using IssueTracker.ModelLayer.Projects.Models;
+using System.Threading.Tasks;
+using IssueTracker.BusinessLayer.Features.Issues.CreateIssue;
+using IssueTracker.BusinessLayer.Features.Issues.Dtos;
+using IssueTracker.BusinessLayer.Features.Projects.GetProjects;
+using IssueTracker.BusinessLayer.Features.Projects.Models;
 using IssueTracker.WebUIHelper;
 
 namespace IssueTracker.WebUI.Pages
 {
     public partial class IssueCreate : RootPage
     {
-        private readonly ProjectController _projectController;
-        private readonly IssueController _issueController;
+        private readonly GetProjectsController _getProjectsController;
+        private readonly CreateIssueController _createIssueController;
 
         public IssueCreate()
         {
-            _projectController = new ProjectController();
-            _issueController = new IssueController();
+            _getProjectsController = new GetProjectsController();
+            _createIssueController = new CreateIssueController();
         }
 
-        protected void Page_Load(object sender, EventArgs e)
+        protected async Task Page_Load(object sender, EventArgs e)
         {
-            HandleWebException(() =>
+            //HandleWebException(() =>
             {
                 if (!IsPostBack)
                 {
-                    Project_DropdownBind();
+                    await Project_DropdownBind();
                 }
-            });
+            }//);
         }
 
         #region Private Members
@@ -48,14 +48,18 @@ namespace IssueTracker.WebUI.Pages
             }
         }
 
-        private void Project_DropdownBind()
+        private async Task Project_DropdownBind()
         {
             string ClientUID = Guid.NewGuid().ToString();
             string SessionUID = Guid.NewGuid().ToString();
 
-            GetProjectRequest request = GetProjectRequest.Create(ClientUID, SessionUID);
+            var request = new GetProjectsRequest
+            {
+                ClientUID = ClientUID,
+                SessionUID = SessionUID
+            };
 
-            var projectResult = _projectController.GetProjects(request);
+            var projectResult = await _getProjectsController.Handle(request);
             if (projectResult.HasValue == false)
             {
                 ShowWarning(projectResult.Message, nameof(Project));
@@ -74,13 +78,23 @@ namespace IssueTracker.WebUI.Pages
 
         }
 
-        protected void Btn_Submit_Click(object sender, EventArgs e)
+        protected async Task Btn_Submit_Click(object sender, EventArgs e)
         {
-            HandleWebException(() =>
+            HandleWebException(async () =>
             {
-                var request = AddIssueRequest.Create(Guid.NewGuid().ToString(), Guid.NewGuid().ToString(), 1, 1, "Title");
+                string ClientUID = Guid.NewGuid().ToString();
+                string SessionUID = Guid.NewGuid().ToString();
 
-                var response = _issueController.CreateIssue(request);
+                var request = new CreateIssueRequest
+                {
+                    ClientUID = ClientUID,
+                    SessionUID = SessionUID,
+                    ProjectId = 1,
+                    IssueTypeId = 1,
+                    IssueTitle = "Title"
+                };
+
+                var response = await _createIssueController.Handle(request);
 
                 if (response.HasValue == false)
                     ShowWarning(response.Message, response.Title);

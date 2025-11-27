@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using IssueTracker.ModelLayer.Base;
+using IssueTracker.BusinessLayer.Base;
 
 namespace IssueTracker.BusinessLayer.Services.Abstracts
 {

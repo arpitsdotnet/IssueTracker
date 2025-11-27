@@ -7,11 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IssueTracker.WebUI", "Issue
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IssueTracker.BusinessLayer", "IssueTracker.BusinessLayer\IssueTracker.BusinessLayer.csproj", "{D2032627-8B79-425B-96D9-FBC0E29FA3DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IssueTracker.DataLayer", "IssueTracker.DataLayer\IssueTracker.DataLayer.csproj", "{2D7407EA-B9BE-41D1-9876-4F76BA379BB2}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IssueTracker.WebUIHelper", "IssueTracker.WebUIHelper\IssueTracker.WebUIHelper.csproj", "{DF21ECFB-DC18-4764-9F1D-0519A39512BF}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IssueTracker.ModelLayer", "IssueTracker.Models\IssueTracker.ModelLayer.csproj", "{407F49E3-1D4F-4AC3-A34B-485511A2C8EA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{AC071A58-153A-4D1F-9299-61E6762606AC}"
 EndProject
@@ -22,7 +18,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IssueTracker.WebAPI", "IssueTracker.WebAPI\IssueTracker.WebAPI.csproj", "{7E48C1CE-6A47-4E37-B3F2-A9CD267B0AE8}"
 	ProjectSection(ProjectDependencies) = postProject
 		{D2032627-8B79-425B-96D9-FBC0E29FA3DE} = {D2032627-8B79-425B-96D9-FBC0E29FA3DE}
-		{407F49E3-1D4F-4AC3-A34B-485511A2C8EA} = {407F49E3-1D4F-4AC3-A34B-485511A2C8EA}
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{21F293E3-BD37-4C5A-94B5-6E521C92EE2B}"
@@ -41,18 +36,10 @@ Global
 		{D2032627-8B79-425B-96D9-FBC0E29FA3DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D2032627-8B79-425B-96D9-FBC0E29FA3DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D2032627-8B79-425B-96D9-FBC0E29FA3DE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2D7407EA-B9BE-41D1-9876-4F76BA379BB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2D7407EA-B9BE-41D1-9876-4F76BA379BB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2D7407EA-B9BE-41D1-9876-4F76BA379BB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2D7407EA-B9BE-41D1-9876-4F76BA379BB2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DF21ECFB-DC18-4764-9F1D-0519A39512BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DF21ECFB-DC18-4764-9F1D-0519A39512BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF21ECFB-DC18-4764-9F1D-0519A39512BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF21ECFB-DC18-4764-9F1D-0519A39512BF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{407F49E3-1D4F-4AC3-A34B-485511A2C8EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{407F49E3-1D4F-4AC3-A34B-485511A2C8EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{407F49E3-1D4F-4AC3-A34B-485511A2C8EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{407F49E3-1D4F-4AC3-A34B-485511A2C8EA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B0430831-4291-4BC3-90E7-0D1E5D4AA4B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B0430831-4291-4BC3-90E7-0D1E5D4AA4B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B0430831-4291-4BC3-90E7-0D1E5D4AA4B6}.Release|Any CPU.ActiveCfg = Release|Any CPU

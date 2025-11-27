@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
-using IssueTracker.ModelLayer.Base;
-using IssueTracker.ModelLayer.Messaging;
+using IssueTracker.BusinessLayer.Base;
+using IssueTracker.BusinessLayer.Services.Messaging.Models;
 
 namespace IssueTracker.BusinessLayer.Services.Abstracts
 {

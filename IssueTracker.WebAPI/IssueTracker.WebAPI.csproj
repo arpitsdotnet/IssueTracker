@@ -109,10 +109,6 @@
       <Project>{d2032627-8b79-425b-96d9-fbc0e29fa3de}</Project>
       <Name>IssueTracker.BusinessLayer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\IssueTracker.Models\IssueTracker.ModelLayer.csproj">
-      <Project>{407f49e3-1d4f-4ac3-a34b-485511a2c8ea}</Project>
-      <Name>IssueTracker.ModelLayer</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

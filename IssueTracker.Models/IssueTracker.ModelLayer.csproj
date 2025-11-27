@@ -44,56 +44,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Base\Error.cs" />
-    <Compile Include="Base\FieldValidationException.cs" />
-    <Compile Include="Base\PageRequest.cs" />
-    <Compile Include="Clients\Objects\Client.cs" />
-    <Compile Include="Constants\CategoryKeys.cs" />
-    <Compile Include="Constants\RowStatuses.cs" />
-    <Compile Include="Messaging\DefaultEmailSettingKeyModel.cs" />
-    <Compile Include="Messaging\EmailMessageModel.cs" />
-    <Compile Include="Messaging\FCMPushNotificationModel.cs" />
-    <Compile Include="Messaging\FCMServiceAccountKeyModel.cs" />
-    <Compile Include="Messaging\SendGridEmailKeyModel.cs" />
-    <Compile Include="Messaging\DefaultSMSSettingKeyModel.cs" />
-    <Compile Include="Messaging\WhatsappMessageModel.cs" />
-    <Compile Include="SysCategories\Models\Category.cs" />
-    <Compile Include="SysCategories\Dtos\GetCategoryRequest.cs" />
-    <Compile Include="SysSubCategories\Dtos\GetSubCategoryRequest.cs" />
-    <Compile Include="SysSubCategories\Models\SubCategory.cs" />
-    <Compile Include="Validations\PageRequestValidationRules.cs" />
-    <Compile Include="Comments\Models\Comment.cs" />
-    <Compile Include="Comments\Models\CommentHistory.cs" />
-    <Compile Include="Constants\IssuePriorities.cs" />
-    <Compile Include="Constants\IssueStatuses.cs" />
-    <Compile Include="Constants\IssueTypes.cs" />
-    <Compile Include="Epic.cs" />
-    <Compile Include="Issues\Models\Issue.cs" />
-    <Compile Include="Issues\Models\IssueHistory.cs" />
-    <Compile Include="Validations\IssueValidationRules.cs" />
-    <Compile Include="Validations\ProjectValidationRules.cs" />
-    <Compile Include="Validations\ClientValidationRules.cs" />
-    <Compile Include="Validations\SessionValidationRules.cs" />
-    <Compile Include="Issues\Dtos\UpdateIssueRequest.cs" />
-    <Compile Include="Issues\Dtos\AddIssueRequest.cs" />
-    <Compile Include="Issues\Dtos\GetIssueRequest.cs" />
-    <Compile Include="Log.cs" />
-    <Compile Include="Projects\Models\ProjectHistory.cs" />
-    <Compile Include="Projects\Models\Project.cs" />
-    <Compile Include="Constants\ProjectStatuses.cs" />
-    <Compile Include="Projects\Dtos\AddProjectRequest.cs" />
-    <Compile Include="Projects\Dtos\GetProjectRequest.cs" />
-    <Compile Include="Projects\Dtos\UpdateProjectRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Base\Result.cs" />
-    <Compile Include="Sprints\Models\Sprint.cs" />
-    <Compile Include="Users\Models\User.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Comments\Dtos\" />
-    <Folder Include="Sprints\Dtos\" />
-    <Folder Include="Users\Dtos\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

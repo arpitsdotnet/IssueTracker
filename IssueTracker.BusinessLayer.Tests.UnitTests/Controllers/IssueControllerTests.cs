@@ -1,14 +1,14 @@
 ﻿using System;
+using IssueTracker.BusinessLayer.Base;
 using IssueTracker.BusinessLayer.Controllers;
-using IssueTracker.ModelLayer.Base;
-using IssueTracker.ModelLayer.Issues.Dtos;
+using IssueTracker.BusinessLayer.Features.Issues.Dtos;
 using Xunit;
 
 namespace IssueTracker.BusinessLayer.UnitTests.Controllers
 {
     public class IssueControllerTests : CommonController
     {
-        private IssueController _sut;
+        //private IssueController _sut;
 
         public IssueControllerTests()
         {

@@ -31,8 +31,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.50.2\lib\net451\Dapper.dll</HintPath>
+    </Reference>
     <Reference Include="FirebaseAdmin, Version=1.17.1.0, Culture=neutral, PublicKeyToken=97c8d00c348326ed, processorArchitecture=MSIL">
       <HintPath>..\packages\FirebaseAdmin.1.17.1\lib\net45\FirebaseAdmin.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.8.6.3\lib\net45\FluentValidation.dll</HintPath>
     </Reference>
     <Reference Include="Google.Api.Gax, Version=2.7.0.0, Culture=neutral, PublicKeyToken=3ec5ea7f18953e47, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Api.Gax.2.7.0\lib\net45\Google.Api.Gax.dll</HintPath>
@@ -80,6 +86,7 @@
     <Reference Include="System.Collections.Immutable, Version=1.2.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Collections.Immutable.1.5.0\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
     </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.IdentityModel" />
@@ -100,16 +107,62 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\BaseModel.cs" />
+    <Compile Include="Base\Error.cs" />
+    <Compile Include="Base\FieldValidationException.cs" />
+    <Compile Include="Base\PageRequest.cs" />
+    <Compile Include="Base\Result.cs" />
+    <Compile Include="Constants\CategoryKeys.cs" />
+    <Compile Include="Constants\IssuePriorities.cs" />
+    <Compile Include="Constants\IssueStatuses.cs" />
+    <Compile Include="Constants\IssueTypes.cs" />
+    <Compile Include="Constants\ProjectStatuses.cs" />
+    <Compile Include="Constants\RowStatuses.cs" />
+    <Compile Include="Contracts\IApplicationDBContext.cs" />
+    <Compile Include="Features\Issues\GetIssuesByProjectId\GetIssuesByProjectIdController.cs" />
+    <Compile Include="Features\Issues\GetIssuesByProjectId\GetIssuesByProjectIdRepository.cs" />
+    <Compile Include="Features\Issues\GetIssues\GetIssuesController.cs" />
+    <Compile Include="Features\Issues\GetIssues\GetIssuesRepository.cs" />
+    <Compile Include="Features\Projects\CreateProjectKey\CreateProjectKeyController.cs" />
+    <Compile Include="Features\Projects\GetProjects\GetProjectsController.cs" />
+    <Compile Include="Extensions\ExceptionHandlers\DefaultExceptionHandler.cs" />
+    <Compile Include="Features\Authentication\Models\Client.cs" />
+    <Compile Include="Features\Comments\Models\Comment.cs" />
+    <Compile Include="Features\Comments\Models\CommentHistory.cs" />
+    <Compile Include="Features\Epics\Models\Epic.cs" />
+    <Compile Include="Features\Issues\Dtos\AddIssueRequest.cs" />
+    <Compile Include="Features\Issues\Dtos\GetIssueRequest.cs" />
+    <Compile Include="Features\Issues\Models\Issue.cs" />
+    <Compile Include="Features\Issues\Models\IssueHistory.cs" />
+    <Compile Include="Features\Issues\Dtos\UpdateIssueRequest.cs" />
+    <Compile Include="Features\Projects\CreateProject\CreateProjectRepository.cs" />
+    <Compile Include="Features\Projects\GetProjects\GetProjectsRepository.cs" />
+    <Compile Include="Features\Projects\Models\Project.cs" />
+    <Compile Include="Features\Projects\Models\ProjectHistory.cs" />
+    <Compile Include="Features\Projects\UpdateProject\UpdateProjectRequest.cs" />
+    <Compile Include="Features\Sprints\Models\Sprint.cs" />
+    <Compile Include="Features\SysSubCategories\GetSysSubCategoriesByCategoryCode\GetSysSubCategoriesByCategoryCodeController.cs" />
+    <Compile Include="Features\SysSubCategories\GetSysSubCategoriesByCategoryCode\GetSysSubCategoriesByCategoryCodeRepository.cs" />
+    <Compile Include="Features\SysSubCategories\GetSysSubCategoriesByCategoryId\GetSubCategoriesByCategoryIdRequest.cs" />
+    <Compile Include="Features\SysCategories\Models\Category.cs" />
+    <Compile Include="Features\SysCategories\Models\SubCategory.cs" />
+    <Compile Include="Features\UserIdentity\Models\User.cs" />
+    <Compile Include="Services\DbContexts\DbContextFactory.cs" />
+    <Compile Include="Services\DbContexts\SQLDataAccess.cs" />
+    <Compile Include="Features\SysCategories\GetSysCategories\GetSysCategoriesController.cs" />
+    <Compile Include="Features\SysCategories\GetSysCategories\GetSysCategoriesRepository.cs" />
+    <Compile Include="Features\SysSubCategories\GetSysSubCategoriesByCategoryId\GetSubCategoryRepository.cs" />
+    <Compile Include="Features\Issues\CreateIssue\CreateIssueRepository.cs" />
+    <Compile Include="Features\Projects\UpdateProject\UpdateProjectRepository.cs" />
     <Compile Include="Services\Abstracts\IDateTimeProvider.cs" />
     <Compile Include="Services\Abstracts\ICacheClient.cs" />
-    <Compile Include="Controllers\SubCategoryController.cs" />
-    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\CommonController.cs" />
-    <Compile Include="Controllers\ProjectController.cs" />
-    <Compile Include="Controllers\IssueController.cs" />
+    <Compile Include="Features\Projects\CreateProject\CreateProjectController.cs" />
+    <Compile Include="Features\Issues\CreateIssue\CreateIssueController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Authentication\JWTToken.cs" />
     <Compile Include="Services\CacheService\CacheClient.cs" />
+    <Compile Include="Services\ConfigurationServices.cs" />
     <Compile Include="Services\EmailService\SendGrid\SendGridEmailSender.cs" />
     <Compile Include="Services\Encryption\CryptographyUtility.cs" />
     <Compile Include="Services\Encryption\SsplSecurity.cs" />
@@ -117,6 +170,7 @@
     <Compile Include="Services\Helpers\DateTimeHelper.cs" />
     <Compile Include="Services\LogService\FileLogger.cs" />
     <Compile Include="Services\Abstracts\ILogger.cs" />
+    <Compile Include="Services\LogService\LoggerFactory.cs" />
     <Compile Include="Services\Messaging\DefaultEmailMessageService.cs" />
     <Compile Include="Services\Abstracts\IEmailSender.cs" />
     <Compile Include="Services\Messaging\EmailNotifier.cs" />
@@ -124,6 +178,13 @@
     <Compile Include="Services\Abstracts\IMobileAppSender.cs" />
     <Compile Include="Services\Messaging\MessageService.cs" />
     <Compile Include="Services\Messaging\MobileAppSender.cs" />
+    <Compile Include="Services\Messaging\Models\DefaultEmailSettingKeyModel.cs" />
+    <Compile Include="Services\Messaging\Models\DefaultSMSSettingKeyModel.cs" />
+    <Compile Include="Services\Messaging\Models\EmailMessageModel.cs" />
+    <Compile Include="Services\Messaging\Models\FCMPushNotificationModel.cs" />
+    <Compile Include="Services\Messaging\Models\FCMServiceAccountKeyModel.cs" />
+    <Compile Include="Services\Messaging\Models\SendGridEmailKeyModel.cs" />
+    <Compile Include="Services\Messaging\Models\WhatsappMessageModel.cs" />
     <Compile Include="Services\Messaging\SmsNotifier.cs" />
     <Compile Include="Utilities\MessageUtility\FCMPushNotification.cs" />
     <Compile Include="Utilities\MessageUtility\IFCMPushNotification.cs" />
@@ -133,23 +194,35 @@
     <Compile Include="Utilities\MessageUtility\IFirebasePushNotification.cs" />
     <Compile Include="Utilities\MessageUtility\FirebasePushNotification.cs" />
     <Compile Include="Utilities\Whatsapp\WhatsappMessageService.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\IssueTracker.DataLayer\IssueTracker.DataLayer.csproj">
-      <Project>{2d7407ea-b9be-41d1-9876-4f76ba379bb2}</Project>
-      <Name>IssueTracker.DataLayer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\IssueTracker.Models\IssueTracker.ModelLayer.csproj">
-      <Project>{407f49e3-1d4f-4ac3-a34b-485511a2c8ea}</Project>
-      <Name>IssueTracker.ModelLayer</Name>
-    </ProjectReference>
+    <Compile Include="Validations\ClientValidationRules.cs" />
+    <Compile Include="Validations\IssueValidationRules.cs" />
+    <Compile Include="Validations\PageRequestValidationRules.cs" />
+    <Compile Include="Validations\ProjectValidationRules.cs" />
+    <Compile Include="Validations\SessionValidationRules.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Base\" />
+    <Folder Include="Features\Authentication\ChangePassword\" />
+    <Folder Include="Features\Authentication\Login\" />
+    <Folder Include="Features\Authentication\Logout\" />
+    <Folder Include="Features\Authentication\Register\" />
+    <Folder Include="Features\Authentication\ResetPassword\" />
+    <Folder Include="Features\Authentication\VerifyEmail\" />
+    <Folder Include="Features\Authentication\ViewProfile\" />
+    <Folder Include="Features\Comments\Dtos\" />
+    <Folder Include="Features\Issues\DeleteIssue\" />
+    <Folder Include="Features\Issues\UpdateIssue\" />
+    <Folder Include="Features\Projects\DeleteProject\" />
+    <Folder Include="Features\Projects\GetProjectByProjectId\" />
+    <Folder Include="Features\Projects\GetProjectsByProjectManagerId\" />
+    <Folder Include="Features\Sprints\Dtos\" />
+    <Folder Include="Features\Stories\CreateStory\" />
+    <Folder Include="Features\Stories\DeleteStory\" />
+    <Folder Include="Features\Stories\Models\" />
+    <Folder Include="Features\Stories\UpdateStory\" />
     <Folder Include="Services\EmailService\Default\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

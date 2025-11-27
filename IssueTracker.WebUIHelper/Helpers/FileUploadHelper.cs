@@ -2,9 +2,9 @@
 using System.IO;
 using System.Web;
 using System.Web.UI.WebControls;
+using IssueTracker.BusinessLayer.Base;
 using IssueTracker.BusinessLayer.Services.Abstracts;
 using IssueTracker.BusinessLayer.Services.Helpers;
-using IssueTracker.ModelLayer.Base;
 using IssueTracker.WebUIHelper.Constants;
 
 namespace IssueTracker.WebUIHelper.Helpers

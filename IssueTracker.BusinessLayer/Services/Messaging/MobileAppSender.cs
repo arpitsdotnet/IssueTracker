@@ -4,9 +4,9 @@ using System.IO;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using IssueTracker.BusinessLayer.Base;
 using IssueTracker.BusinessLayer.Services.Abstracts;
 using IssueTracker.BusinessLayer.Utilities.MessageUtility;
-using IssueTracker.ModelLayer.Base;
 
 namespace IssueTracker.BusinessLayer.Services.Messaging
 {

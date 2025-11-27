@@ -284,14 +284,6 @@
       <Project>{d2032627-8b79-425b-96d9-fbc0e29fa3de}</Project>
       <Name>IssueTracker.BusinessLayer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\IssueTracker.DataLayer\IssueTracker.DataLayer.csproj">
-      <Project>{2D7407EA-B9BE-41D1-9876-4F76BA379BB2}</Project>
-      <Name>IssueTracker.DataLayer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\IssueTracker.Models\IssueTracker.ModelLayer.csproj">
-      <Project>{407f49e3-1d4f-4ac3-a34b-485511a2c8ea}</Project>
-      <Name>IssueTracker.ModelLayer</Name>
-    </ProjectReference>
     <ProjectReference Include="..\IssueTracker.WebUIHelper\IssueTracker.WebUIHelper.csproj">
       <Project>{df21ecfb-dc18-4764-9f1d-0519a39512bf}</Project>
       <Name>IssueTracker.WebUIHelper</Name>

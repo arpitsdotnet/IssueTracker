@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using FirebaseAdmin.Messaging;
-using IssueTracker.ModelLayer.Base;
+using IssueTracker.BusinessLayer.Base;
 
 namespace IssueTracker.BusinessLayer.Utilities.MessageUtility
 {

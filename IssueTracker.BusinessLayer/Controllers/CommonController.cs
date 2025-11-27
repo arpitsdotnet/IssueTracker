@@ -1,22 +1,13 @@
 ﻿using System;
 using System.Configuration;
+using System.Threading.Tasks;
+using IssueTracker.BusinessLayer.Base;
 using IssueTracker.BusinessLayer.Services.Abstracts;
-using IssueTracker.BusinessLayer.Services.LogService;
-using IssueTracker.DataLayer;
-using IssueTracker.ModelLayer.Base;
 
 namespace IssueTracker.BusinessLayer.Controllers
 {
     public class CommonController
     {
-        public readonly IApplicationDBContext _dBContext;
-        public readonly IEmailSender _emailService;
-        public CommonController()
-        {
-            _dBContext = SQLDataAccess.Instance;
-            //_emailService = new DefaultEmailMessageService();
-        }
-
         public string GetAppSettingKey(string key)
         {
             try
@@ -39,11 +30,11 @@ namespace IssueTracker.BusinessLayer.Controllers
          * HTTP Status Code 500 (HTTP Response InternalServerError)
          */
 
-        protected ResultList<UResponse> HandleBusinessException<TController, UResponse>(ILogger<TController> logger, Func<ResultList<UResponse>> action)
+        protected async Task<ResultList<UResponse>> HandleBusinessException<TController, UResponse>(ILogger<TController> logger, Func<Task<ResultList<UResponse>>> action)
         {
             try
             {
-                return action.Invoke();
+                return await action.Invoke();
             }
             catch (FieldValidationException ex)
             {

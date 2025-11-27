@@ -74,10 +74,6 @@
       <Project>{D2032627-8B79-425B-96D9-FBC0E29FA3DE}</Project>
       <Name>IssueTracker.BusinessLayer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\IssueTracker.Models\IssueTracker.ModelLayer.csproj">
-      <Project>{407F49E3-1D4F-4AC3-A34B-485511A2C8EA}</Project>
-      <Name>IssueTracker.ModelLayer</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

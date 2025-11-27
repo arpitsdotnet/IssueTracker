@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using IssueTracker.ModelLayer.Users.Models;
+using IssueTracker.BusinessLayer.Features.UserIdentity.Models;
 using IssueTracker.WebUIHelper;
 using IssueTracker.WebUIHelper.Abstracts;
 using IssueTracker.WebUIHelper.Constants;

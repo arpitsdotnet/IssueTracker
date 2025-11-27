@@ -1,5 +1,5 @@
 ﻿using System.Web.UI.WebControls;
-using IssueTracker.ModelLayer.Base;
+using IssueTracker.BusinessLayer.Base;
 using IssueTracker.WebUIHelper.Helpers.FileUploadHelpers;
 
 namespace IssueTracker.WebUIHelper.Abstracts
